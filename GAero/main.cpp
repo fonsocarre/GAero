@@ -1,18 +1,19 @@
 //
 //  main.cpp
-//  GAero
+//  GAlgorithm
 //
-//  Created by Alfonso Carre on 09/02/14.
+//  Created by Alfonso Carre on 04/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
 
 #include <iostream>
+#include "GAclass.h"
 
 int main(int argc, const char * argv[])
 {
 
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    GAclass GA("/Users/fonso/C++/GAlgorithm/GAlgorithm/Settings/settings.cfg");
+    
+    std::cout<<"printing"<<std::endl;
 }
 

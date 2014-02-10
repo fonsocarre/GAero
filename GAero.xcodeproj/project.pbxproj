@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19EFD92918A80A6F001675E6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD92818A80A6F001675E6 /* main.cpp */; };
 		19EFD92B18A80A6F001675E6 /* GAero.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 19EFD92A18A80A6F001675E6 /* GAero.1 */; };
+		19EFD93C18A80B0B001675E6 /* GAclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93418A80B0B001675E6 /* GAclass.cpp */; };
+		19EFD93D18A80B0B001675E6 /* GAmethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93718A80B0B001675E6 /* GAmethods.cpp */; };
+		19EFD93E18A80B0B001675E6 /* GApopulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93918A80B0B001675E6 /* GApopulation.cpp */; };
+		19EFD93F18A80B0B001675E6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93B18A80B0B001675E6 /* main.cpp */; };
+		19EFD94918A80B1F001675E6 /* libconfig4cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EFD94318A80B1F001675E6 /* libconfig4cpp.a */; };
+		19EFD94F18A80BEE001675E6 /* GAsettingsClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +31,26 @@
 
 /* Begin PBXFileReference section */
 		19EFD92518A80A6F001675E6 /* GAero */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GAero; sourceTree = BUILT_PRODUCTS_DIR; };
-		19EFD92818A80A6F001675E6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		19EFD92A18A80A6F001675E6 /* GAero.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GAero.1; sourceTree = "<group>"; };
+		19EFD93218A80B0B001675E6 /* FitnessFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitnessFunction.h; sourceTree = "<group>"; };
+		19EFD93418A80B0B001675E6 /* GAclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GAclass.cpp; sourceTree = "<group>"; };
+		19EFD93518A80B0B001675E6 /* GAclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAclass.h; sourceTree = "<group>"; };
+		19EFD93718A80B0B001675E6 /* GAmethods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GAmethods.cpp; sourceTree = "<group>"; };
+		19EFD93918A80B0B001675E6 /* GApopulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GApopulation.cpp; sourceTree = "<group>"; };
+		19EFD93A18A80B0B001675E6 /* GApopulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GApopulation.h; sourceTree = "<group>"; };
+		19EFD93B18A80B0B001675E6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		19EFD94118A80B1F001675E6 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		19EFD94218A80B1F001675E6 /* ConfigurationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationException.h; sourceTree = "<group>"; };
+		19EFD94318A80B1F001675E6 /* libconfig4cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libconfig4cpp.a; sourceTree = "<group>"; };
+		19EFD94418A80B1F001675E6 /* namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = namespace.h; sourceTree = "<group>"; };
+		19EFD94518A80B1F001675E6 /* SchemaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaType.h; sourceTree = "<group>"; };
+		19EFD94618A80B1F001675E6 /* SchemaValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaValidator.h; sourceTree = "<group>"; };
+		19EFD94718A80B1F001675E6 /* StringBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringBuffer.h; sourceTree = "<group>"; };
+		19EFD94818A80B1F001675E6 /* StringVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringVector.h; sourceTree = "<group>"; };
+		19EFD94B18A80B6E001675E6 /* settings.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = settings.cfg; sourceTree = "<group>"; };
+		19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAsettingsClass.cpp; path = GAsettingsClass/GAsettingsClass.cpp; sourceTree = "<group>"; };
+		19EFD94E18A80BEE001675E6 /* GAsettingsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAsettingsClass.h; path = GAsettingsClass/GAsettingsClass.h; sourceTree = "<group>"; };
+		19EFD95118A814BA001675E6 /* settings.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = settings.cfg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EFD94918A80B1F001675E6 /* libconfig4cpp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,10 +84,92 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
-				19EFD92818A80A6F001675E6 /* main.cpp */,
+				19EFD95018A814BA001675E6 /* Settings */,
+				19EFD94C18A80BBF001675E6 /* GAsettingsClass */,
+				19EFD94A18A80B6E001675E6 /* Settings */,
+				19EFD94018A80B1F001675E6 /* config4cpp */,
+				19EFD93118A80B0B001675E6 /* Fitness */,
+				19EFD93318A80B0B001675E6 /* GAclass */,
+				19EFD93618A80B0B001675E6 /* GAmethods */,
+				19EFD93818A80B0B001675E6 /* GApopulation */,
+				19EFD93B18A80B0B001675E6 /* main.cpp */,
 				19EFD92A18A80A6F001675E6 /* GAero.1 */,
 			);
 			path = GAero;
+			sourceTree = "<group>";
+		};
+		19EFD93118A80B0B001675E6 /* Fitness */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD93218A80B0B001675E6 /* FitnessFunction.h */,
+			);
+			path = Fitness;
+			sourceTree = "<group>";
+		};
+		19EFD93318A80B0B001675E6 /* GAclass */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD93418A80B0B001675E6 /* GAclass.cpp */,
+				19EFD93518A80B0B001675E6 /* GAclass.h */,
+			);
+			path = GAclass;
+			sourceTree = "<group>";
+		};
+		19EFD93618A80B0B001675E6 /* GAmethods */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD93718A80B0B001675E6 /* GAmethods.cpp */,
+			);
+			path = GAmethods;
+			sourceTree = "<group>";
+		};
+		19EFD93818A80B0B001675E6 /* GApopulation */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD93918A80B0B001675E6 /* GApopulation.cpp */,
+				19EFD93A18A80B0B001675E6 /* GApopulation.h */,
+			);
+			path = GApopulation;
+			sourceTree = "<group>";
+		};
+		19EFD94018A80B1F001675E6 /* config4cpp */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD94118A80B1F001675E6 /* Configuration.h */,
+				19EFD94218A80B1F001675E6 /* ConfigurationException.h */,
+				19EFD94318A80B1F001675E6 /* libconfig4cpp.a */,
+				19EFD94418A80B1F001675E6 /* namespace.h */,
+				19EFD94518A80B1F001675E6 /* SchemaType.h */,
+				19EFD94618A80B1F001675E6 /* SchemaValidator.h */,
+				19EFD94718A80B1F001675E6 /* StringBuffer.h */,
+				19EFD94818A80B1F001675E6 /* StringVector.h */,
+			);
+			path = config4cpp;
+			sourceTree = "<group>";
+		};
+		19EFD94A18A80B6E001675E6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD94B18A80B6E001675E6 /* settings.cfg */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		19EFD94C18A80BBF001675E6 /* GAsettingsClass */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */,
+				19EFD94E18A80BEE001675E6 /* GAsettingsClass.h */,
+			);
+			name = GAsettingsClass;
+			sourceTree = "<group>";
+		};
+		19EFD95018A814BA001675E6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19EFD95118A814BA001675E6 /* settings.cfg */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,7 +223,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19EFD92918A80A6F001675E6 /* main.cpp in Sources */,
+				19EFD94F18A80BEE001675E6 /* GAsettingsClass.cpp in Sources */,
+				19EFD93E18A80B0B001675E6 /* GApopulation.cpp in Sources */,
+				19EFD93C18A80B0B001675E6 /* GAclass.cpp in Sources */,
+				19EFD93D18A80B0B001675E6 /* GAmethods.cpp in Sources */,
+				19EFD93F18A80B0B001675E6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +305,10 @@
 		19EFD92F18A80A6F001675E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fonso/C++/GAero/GAero/config4cpp",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -202,6 +316,10 @@
 		19EFD93018A80A6F001675E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/fonso/C++/GAero/GAero/config4cpp",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
