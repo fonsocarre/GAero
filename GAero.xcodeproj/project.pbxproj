@@ -10,6 +10,7 @@
 		194EA65518A94DEE0042C74F /* libamac64o.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 194EA65418A94DEE0042C74F /* libamac64o.a */; };
 		194EA65E18A94FB50042C74F /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194EA65C18A94FB50042C74F /* mersenne.cpp */; };
 		194EA65F18A94FB50042C74F /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194EA65D18A94FB50042C74F /* userintf.cpp */; };
+		199F030B18AA3B39004358E2 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199F030918AA3B39004358E2 /* GArandomGenerator.cpp */; };
 		19EFD92B18A80A6F001675E6 /* GAero.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 19EFD92A18A80A6F001675E6 /* GAero.1 */; };
 		19EFD93C18A80B0B001675E6 /* GAclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93418A80B0B001675E6 /* GAclass.cpp */; };
 		19EFD93D18A80B0B001675E6 /* GAmethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93718A80B0B001675E6 /* GAmethods.cpp */; };
@@ -36,6 +37,8 @@
 		194EA65418A94DEE0042C74F /* libamac64o.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamac64o.a; path = GAero/randomc/libamac64o.a; sourceTree = "<group>"; };
 		194EA65C18A94FB50042C74F /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mersenne.cpp; sourceTree = "<group>"; };
 		194EA65D18A94FB50042C74F /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userintf.cpp; sourceTree = "<group>"; };
+		199F030918AA3B39004358E2 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = randomGenerators/GArandomGenerator.cpp; sourceTree = "<group>"; };
+		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = randomGenerators/GArandomGenerator.h; sourceTree = "<group>"; };
 		19CC98E318A9491C00DF9A76 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = randomc.h; sourceTree = "<group>"; };
 		19CC98E518A9491C00DF9A76 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfmt.h; sourceTree = "<group>"; };
 		19EFD92518A80A6F001675E6 /* GAero */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GAero; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		199F030618AA3910004358E2 /* randomGenerators */ = {
+			isa = PBXGroup;
+			children = (
+				199F030918AA3B39004358E2 /* GArandomGenerator.cpp */,
+				199F030A18AA3B39004358E2 /* GArandomGenerator.h */,
+			);
+			name = randomGenerators;
+			sourceTree = "<group>";
+		};
 		19CC98DC18A9491C00DF9A76 /* randomc */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +117,7 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
+				199F030618AA3910004358E2 /* randomGenerators */,
 				19CC98DC18A9491C00DF9A76 /* randomc */,
 				19EFD95018A814BA001675E6 /* Settings */,
 				19EFD94C18A80BBF001675E6 /* GAsettingsClass */,
@@ -249,6 +262,7 @@
 				194EA65E18A94FB50042C74F /* mersenne.cpp in Sources */,
 				19EFD94F18A80BEE001675E6 /* GAsettingsClass.cpp in Sources */,
 				19EFD93E18A80B0B001675E6 /* GApopulation.cpp in Sources */,
+				199F030B18AA3B39004358E2 /* GArandomGenerator.cpp in Sources */,
 				19EFD93C18A80B0B001675E6 /* GAclass.cpp in Sources */,
 				19EFD93D18A80B0B001675E6 /* GAmethods.cpp in Sources */,
 				19EFD93F18A80B0B001675E6 /* main.cpp in Sources */,

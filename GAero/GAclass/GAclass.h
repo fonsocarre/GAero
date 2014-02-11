@@ -11,18 +11,21 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
+#include "GArandomGenerator.h"
 
 class GAclass {
     // class attributes
     int nPopulation;
     std::vector<GApopulation> population;
-    int nGenerations;
     double rMutation;
     double rCrossover;
     GAsettingsClass GAsettings;
+    std::vector<double> avgFitness;
+    std::vector<double> maxFitness;
 
 public:
     // Constructors
@@ -31,11 +34,16 @@ public:
     GAclass(const char* settingsFile);
     GAclass(int nPop, int genomeSize);
     ~GAclass();
+    GArandom randomGen;
+    int nGenerations;
+    int iGeneration;
     
     // Member functions
     void evolve();
+    void initPop();
     
     void (*pFitness)(std::vector<double> genome);
+    
 };
 
 #endif /* defined(__GAclass__) */

@@ -26,4 +26,9 @@ namespace GA {
         
         return newPop;
     }
+    
+    double getAvgFitness(std::vector<GApopulation>)
+    {
+        
+    }
 }

@@ -10,31 +10,39 @@
 #include "GAclass.h"
 #include <stdlib.h>
 #include <fstream>
-#include <time.h>                      // define time()
-#include "randomc.h"                   // define classes for random number generators
-#include <stdio.h>
+#include <vector>
+
 
 int main(int argc, const char * argv[])
 {
 
     GAclass GA("/Users/fonso/C++/GAero/GAero/Settings/settings.cfg");
     
-    // generate initial population
-    int seed = (int)time(0);            // random seed
-    CRandomMersenne RanGen(seed);       // make instance of random number generator
+    GA.initPop();
     
-    std::ofstream fOut;
-    fOut.open("/Users/fonso/C++/GAero/GAero/Output/unifDist.txt");
-    
-    double number;
-    
-    for (int i=0; i<1000; i++)
-    {
-        number = RanGen.Random();
-        fOut<< number << std::endl;
+    for (GA.iGeneration=0; GA.iGeneration<GA.nGenerations; GA.iGeneration++) {
+        GA.evolve();
     }
     
-    fOut.close();
+    
+    
+//    std::ofstream fOut;
+//    fOut.open("/Users/fonso/C++/GAero/GAero/Output/unifDist.txt");
+//    
+//    //double number;
+//    std::vector<double> weights(5);
+//    weights[0] = 0.1;
+//    weights[1] = 0.2;
+//    weights[2] = 0.1;
+//    weights[3] = 0.2;
+//    weights[4] = 0.4;
+//    
+//    for (int i=0; i<5000; i++)
+//    {
+//        fOut<<GA.randomGen.flipPounderedCoin(0.3)<<std::endl;
+//    }
+//    
+//    fOut.close();
 
     
     return 0;

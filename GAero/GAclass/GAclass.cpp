@@ -15,6 +15,7 @@ GAclass::GAclass()
     this->nGenerations=0;
     this->rMutation=0.;
     this->rCrossover=0.;
+    this->randomGen = GArandom();
 }
 
 GAclass::GAclass(int nPop)
@@ -34,11 +35,15 @@ GAclass::GAclass(const char* settingsFile)
     this->nGenerations=this->GAsettings.nGenerations;
     this->rMutation=0.;
     this->rCrossover=0.;
+    this->iGeneration = 0;
     
     for (int i=0; i<this->GAsettings.populationSize; i++)
     {
         this->population.at(i).genome.resize(this->GAsettings.genomeSize);
+        this->population.at(i).genomeLength = GAsettings.genomeSize;
     }
+    this->avgFitness.resize(this->nGenerations);
+    this->maxFitness.resize(this->nGenerations);
 }
 
 GAclass::GAclass(int nPop, int genomeSize)
@@ -52,6 +57,7 @@ GAclass::GAclass(int nPop, int genomeSize)
     for (int i=0; i<nPop; i++)
     {
         this->population.at(i).genome.resize(genomeSize);
+        this->population.at(i).genomeLength = genomeSize;
     }
 }
 
@@ -67,3 +73,40 @@ GAclass::~GAclass()
     this->rCrossover=0.;
     this->nPopulation=0;
 }
+
+void GAclass::initPop()
+{
+    for (int i=0; i<this->nPopulation; i++)
+    {
+        for (int j=0; j<this->GAsettings.genomeSize; j++)
+        {
+            this->population.at(i).genome[j] = this->randomGen.randDouble();
+        }
+        this->population.at(i).generation = 0;
+        this->population.at(i).fitness = 0.;
+    }
+}
+
+void GAclass::evolve()
+{
+    std::cout<<"Evolving..."<<this->iGeneration<<std::endl;
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

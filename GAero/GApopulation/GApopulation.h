@@ -39,7 +39,6 @@ public:
     
     void evaluateFitness();
     friend class GAclass;
-    
 };
 
 
