@@ -90,7 +90,9 @@ void GAclass::initPop()
 void GAclass::evolve()
 {
     std::cout<<"Evolving..."<<this->iGeneration<<std::endl;
-    
+
+
+    //probando el coomit
     
 }
 
