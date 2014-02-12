@@ -7,10 +7,7 @@
 //
 
 #include "GAsettingsClass.h"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include "Configuration.h"
+
 
 GAsettingsClass::GAsettingsClass()
 {

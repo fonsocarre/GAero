@@ -1,0 +1,2 @@
+env = Environment()  # Initialize the environment
+env.Program('GAero', Glob('src/*.cpp'), LIBS=['config4cpp', 'amac64o'], LIBPATH='./lib', CPPPATH = './include')

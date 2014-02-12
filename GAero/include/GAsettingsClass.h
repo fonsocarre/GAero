@@ -10,6 +10,9 @@
 #define __GAsettingsClass__
 
 #include <string>
+#include <iostream>
+#include <stdio.h>
+#include "Configuration.h"
 
 class GAsettingsClass {
     int nGenerations;

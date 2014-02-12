@@ -7,10 +7,11 @@
 //
 
 #include <iostream>
-#include "GAclass.h"
 #include <stdlib.h>
 #include <fstream>
 #include <vector>
+
+#include "GAclass.h"
 
 
 int main(int argc, const char * argv[])
