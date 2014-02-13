@@ -18,6 +18,9 @@ class GAsettingsClass {
     int nGenerations;
     int populationSize;
     int genomeSize;
+    double mutationRate;
+    int nElitist;
+    double crossingRatio;
     
     std::string logFile;
     std::string historyFile;

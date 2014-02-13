@@ -70,3 +70,11 @@ bool operator>= (const GApopulation& obj1,
 {
     return obj1.fitness>=obj2.fitness;
 }
+//*******************************************************
+
+
+//sample FUNCTION TODO
+void GApopulation::evaluateFitness()
+{
+    this->fitness = 0.;
+}

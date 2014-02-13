@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
@@ -20,12 +21,22 @@
 class GAclass {
     // class attributes
     int nPopulation;
+    std::vector<GApopulation> oldPopulation;
     std::vector<GApopulation> population;
     double rMutation;
     double rCrossover;
     GAsettingsClass GAsettings;
     std::vector<double> avgFitness;
     std::vector<double> maxFitness;
+    std::vector<double> minFitness;
+    int usedPopulation;
+    
+    // private class members
+    void getPopFitness();
+    void calculatePopFitness();
+    void evolveElitists();
+    
+    
 
 public:
     // Constructors

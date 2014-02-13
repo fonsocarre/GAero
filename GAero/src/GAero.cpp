@@ -37,6 +37,8 @@ int main(int argc, const char * argv[])
 //    weights[2] = 0.1;
 //    weights[3] = 0.2;
 //    weights[4] = 0.4;
+    
+
 //    
 //    for (int i=0; i<5000; i++)
 //    {
