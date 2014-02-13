@@ -21,7 +21,8 @@ int main(int argc, const char * argv[])
     
     GA.initPop();
     
-    for (GA.iGeneration=0; GA.iGeneration<GA.nGenerations; GA.iGeneration++) {
+    for (GA.iGeneration=0; GA.iGeneration<GA.nGenerations; GA.iGeneration++)
+    {
         GA.evolve();
     }
     

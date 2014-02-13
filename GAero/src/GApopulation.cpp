@@ -76,5 +76,5 @@ bool operator>= (const GApopulation& obj1,
 //sample FUNCTION TODO
 void GApopulation::evaluateFitness()
 {
-    this->fitness = 0.;
+    this->fitness = this->fitnessClass.fitnessFunction(genome);
 }

@@ -36,6 +36,7 @@
 		194EA65C18A94FB50042C74F /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = ../src/mersenne.cpp; sourceTree = "<group>"; };
 		194EA65D18A94FB50042C74F /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = ../src/userintf.cpp; sourceTree = "<group>"; };
 		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
+		1993A59318AD2F410036493B /* GAfitnessFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAfitnessFunction.h; path = GAero/include/GAfitnessFunction.h; sourceTree = SOURCE_ROOT; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
 		19CC98E318A9491C00DF9A76 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = ../include/randomc.h; sourceTree = "<group>"; };
 		19CC98E518A9491C00DF9A76 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = ../include/sfmt.h; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libconfig4cpp.a; path = GAero/lib/libconfig4cpp.a; sourceTree = "<group>"; };
 		19EFD92518A80A6F001675E6 /* GAero */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GAero; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EFD92A18A80A6F001675E6 /* GAero.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GAero.1; sourceTree = "<group>"; };
-		19EFD93218A80B0B001675E6 /* FitnessFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FitnessFunction.h; path = GAero/include/FitnessFunction.h; sourceTree = "<group>"; };
 		19EFD93B18A80B0B001675E6 /* GAero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAero.cpp; path = src/GAero.cpp; sourceTree = "<group>"; };
 		19EFD94118A80B1F001675E6 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configuration.h; path = GAero/include/Configuration.h; sourceTree = "<group>"; };
 		19EFD94218A80B1F001675E6 /* ConfigurationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationException.h; path = GAero/include/ConfigurationException.h; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		19EFD93118A80B0B001675E6 /* Fitness */ = {
 			isa = PBXGroup;
 			children = (
-				19EFD93218A80B0B001675E6 /* FitnessFunction.h */,
+				1993A59318AD2F410036493B /* GAfitnessFunction.h */,
 			);
 			path = Fitness;
 			sourceTree = "<group>";

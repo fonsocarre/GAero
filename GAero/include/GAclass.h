@@ -19,6 +19,7 @@
 #include "GArandomGenerator.h"
 #include "utilities.h"
 
+
 class GAclass {
     // class attributes
     int nPopulation;
@@ -33,8 +34,10 @@ class GAclass {
     // private class members
     void getPopFitness();
     void calculatePopFitness();
+    void calculateOldPopFitness();
     void evolveElitists();
     void crossIndividuals();
+    void createNewIndividuals();
     std::vector<double> oldPopFitness2vec();
     
     
@@ -56,8 +59,9 @@ public:
     void evolve();
     void initPop();
     
-    void (*pFitness)(std::vector<double> genome);
+    double FitnessFunction(std::vector<double> genome);
     
 };
+
 
 #endif /* defined(__GAclass__) */

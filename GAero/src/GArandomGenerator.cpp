@@ -40,13 +40,13 @@ int GArandom::roulette(std::vector<double> weights)
 {
     //normalize vector weights
     double sum = 0;
-    for(std::vector<double>::iterator j=weights.begin();j!=weights.end();++j)
+    for(int j=0; j<weights.size(); j++)
     {
-        sum += *j;
+        sum += weights[j];
     }
-    for(std::vector<double>::iterator j=weights.begin();j!=weights.end();++j)
+    for(int j=0; j<weights.size(); j++)
     {
-        *j = *j / sum;
+        weights[j] = weights[j] / sum;
     }
 
     // random selection

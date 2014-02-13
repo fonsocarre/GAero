@@ -10,11 +10,13 @@
 #define __GApopulation__
 
 #include <vector>
+#include "GAfitnessFunction.h"
 
 class GApopulation {
     std::vector<double> genome;
     int generation;
     int genomeLength;
+    GAfitnessClass fitnessClass;
     
 public:
     // Constructors ********************

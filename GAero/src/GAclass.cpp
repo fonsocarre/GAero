@@ -37,8 +37,10 @@ GAclass::GAclass(const char* settingsFile)
     {
         this->population.at(i).genome.resize(this->GAsettings.genomeSize);
         this->population.at(i).genomeLength = GAsettings.genomeSize;
+        this->oldPopulation.at(i).genome.resize(this->GAsettings.genomeSize);
+        this->oldPopulation.at(i).genomeLength = GAsettings.genomeSize;
     }
-    this->oldPopulation = this->population;
+    //this->oldPopulation = this->population;
     this->avgFitness.resize(this->nGenerations);
     this->maxFitness.resize(this->nGenerations);
 }
@@ -79,8 +81,10 @@ void GAclass::initPop()
         this->oldPopulation[i].fitness = 0.;
     }
     
+    this->calculateOldPopFitness();
+    
     // sorting old population
-    std::sort (this->oldPopulation.begin(), this->oldPopulation.begin()+this->nPopulation);
+    std::sort (this->oldPopulation.begin(), this->oldPopulation.end());
 }
 
 
@@ -144,11 +148,20 @@ void GAclass::calculatePopFitness()
     }
 }
 
+void GAclass::calculateOldPopFitness()
+{
+    for (int iPop=0; iPop<this->nPopulation; iPop++)
+    {
+        this->oldPopulation[iPop].evaluateFitness();
+    }
+}
+
 void GAclass::evolveElitists()
 {
     for (int iPop=0; iPop<this->GAsettings.nElitist; iPop++)
     {
         this->population[iPop] = this->oldPopulation[iPop];
+        this->population[iPop].generation = this->iGeneration;
         this->usedPopulation += 1;
     }
 }
@@ -170,23 +183,47 @@ void GAclass::crossIndividuals()
             index2 = this->randomGen.roulette (weights);
         }
         
-        double fitness1 = this->population[index1].fitness;
-        double fitness2 = this->population[index2].fitness;
-        normalizeFitness(fitness1, fitness2);
+        if (index1==-1 || index2==-1) {std::cout<<"ROULETTE ERROR"<<std::endl;}
         
-        
-        
+        double fitness1 = this->oldPopulation[index1].fitness;
+        double fitness2 = this->oldPopulation[index2].fitness;
+        utilities::normalizeFitness(fitness1, fitness2);
+        // genome filling
+        for (int j=0; j<this->GAsettings.genomeSize; j++)
+        {
+            this->population[iNewPop].genome[j] =
+                        fitness1*this->oldPopulation[index1].genome[j] +
+            fitness2*this->oldPopulation[index2].genome[j];
+        }
+        // other attributes
+        this->population[iNewPop].generation = this->iGeneration;
+        this->population[iNewPop].genomeLength = this->GAsettings.genomeSize;
+    }
+    this->usedPopulation += this->GAsettings.nCrossing;
+}
+
+void GAclass::createNewIndividuals()
+{
+    int nNew = this->nPopulation - this->usedPopulation;
+    for (int iNewPop=0; iNewPop<nNew; iNewPop++)
+    {
+        this->population[iNewPop] = GApopulation(this->GAsettings.genomeSize);
+        this->population[iNewPop].generation = this->iGeneration;
+        for (int iGen=0; iGen<this->GAsettings.genomeSize; iGen++)
+        {
+            this->population[iNewPop].genome[iGen] =
+                            this->randomGen.randDouble();
+        }
         
         
     }
 }
 
-
 std::vector<double> GAclass::oldPopFitness2vec()
 {
     std::vector<double> vec;
     
-    vec.reserve (this->nPopulation);
+    vec.resize (this->nPopulation);
     for (int j=0; j<this->nPopulation; j++)
     {
         vec[j] = this->oldPopulation[j].fitness;
