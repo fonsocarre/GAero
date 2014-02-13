@@ -35,6 +35,7 @@
 /* Begin PBXFileReference section */
 		194EA65C18A94FB50042C74F /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = ../src/mersenne.cpp; sourceTree = "<group>"; };
 		194EA65D18A94FB50042C74F /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = ../src/userintf.cpp; sourceTree = "<group>"; };
+		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
 		19CC98E318A9491C00DF9A76 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = ../include/randomc.h; sourceTree = "<group>"; };
 		19CC98E518A9491C00DF9A76 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = ../include/sfmt.h; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		19EFD94618A80B1F001675E6 /* SchemaValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SchemaValidator.h; path = GAero/include/SchemaValidator.h; sourceTree = "<group>"; };
 		19EFD94718A80B1F001675E6 /* StringBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBuffer.h; path = GAero/include/StringBuffer.h; sourceTree = "<group>"; };
 		19EFD94818A80B1F001675E6 /* StringVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringVector.h; path = GAero/include/StringVector.h; sourceTree = "<group>"; };
-		19EFD94B18A80B6E001675E6 /* settings.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = settings.cfg; sourceTree = "<group>"; };
 		19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAsettingsClass.cpp; path = src/GAsettingsClass.cpp; sourceTree = "<group>"; };
 		19EFD94E18A80BEE001675E6 /* GAsettingsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAsettingsClass.h; path = include/GAsettingsClass.h; sourceTree = "<group>"; };
 		19EFD95118A814BA001675E6 /* settings.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = settings.cfg; sourceTree = "<group>"; };
@@ -75,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1993A59118AD260A0036493B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1993A59218AD26240036493B /* utilities.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		199F030618AA3910004358E2 /* randomGenerators */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +124,11 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
+				1993A59118AD260A0036493B /* Utilities */,
 				199F030618AA3910004358E2 /* randomGenerators */,
 				19CC98DC18A9491C00DF9A76 /* randomc */,
 				19EFD95018A814BA001675E6 /* Settings */,
 				19EFD94C18A80BBF001675E6 /* GAsettingsClass */,
-				19EFD94A18A80B6E001675E6 /* Settings */,
 				19EFD94018A80B1F001675E6 /* config4cpp */,
 				19EFD93118A80B0B001675E6 /* Fitness */,
 				19EFD93318A80B0B001675E6 /* GAclass */,
@@ -169,14 +177,6 @@
 				19EFD94818A80B1F001675E6 /* StringVector.h */,
 			);
 			path = config4cpp;
-			sourceTree = "<group>";
-		};
-		19EFD94A18A80B6E001675E6 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				19EFD94B18A80B6E001675E6 /* settings.cfg */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		19EFD94C18A80BBF001675E6 /* GAsettingsClass */ = {

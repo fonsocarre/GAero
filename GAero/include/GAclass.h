@@ -17,6 +17,7 @@
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
 #include "GArandomGenerator.h"
+#include "utilities.h"
 
 class GAclass {
     // class attributes
@@ -34,6 +35,7 @@ class GAclass {
     void calculatePopFitness();
     void evolveElitists();
     void crossIndividuals();
+    std::vector<double> oldPopFitness2vec();
     
     
 
@@ -44,6 +46,8 @@ public:
     GAclass(const char* settingsFile);
     GAclass(int nPop, int genomeSize);
     ~GAclass();
+    
+    // public attributes
     GArandom randomGen;
     int nGenerations;
     int iGeneration;

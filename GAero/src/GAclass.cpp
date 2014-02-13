@@ -155,8 +155,54 @@ void GAclass::evolveElitists()
 
 void GAclass::crossIndividuals()
 {
+    std::vector<double> weights;
+    weights = oldPopFitness2vec();
     
+    for (int i=0; i<this->GAsettings.nCrossing; i++)
+    {
+        // newPop position of the created individual
+        int iNewPop = i + this->usedPopulation + 1;
+        // roulette selection of the two parents
+        int index1 = this->randomGen.roulette (weights);
+        int index2 = this->randomGen.roulette (weights);
+        while (index1 == index2)
+        {
+            index2 = this->randomGen.roulette (weights);
+        }
+        
+        double fitness1 = this->population[index1].fitness;
+        double fitness2 = this->population[index2].fitness;
+        normalizeFitness(fitness1, fitness2);
+        
+        
+        
+        
+        
+    }
 }
+
+
+std::vector<double> GAclass::oldPopFitness2vec()
+{
+    std::vector<double> vec;
+    
+    vec.reserve (this->nPopulation);
+    for (int j=0; j<this->nPopulation; j++)
+    {
+        vec[j] = this->oldPopulation[j].fitness;
+    }
+    
+    return vec;
+}
+
+
+
+
+
+
+
+
+
 
 
 
