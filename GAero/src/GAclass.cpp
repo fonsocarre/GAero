@@ -13,8 +13,6 @@ GAclass::GAclass()
     this->nPopulation=0;
     this->population.clear();
     this->nGenerations=0;
-    this->rMutation=0.;
-    this->rCrossover=0.;
     this->randomGen = GArandom();
 }
 
@@ -23,8 +21,6 @@ GAclass::GAclass(int nPop)
     this->nPopulation=nPop;
     this->population.resize(nPop);
     this->nGenerations=0;
-    this->rMutation=0.;
-    this->rCrossover=0.;
 }
 
 GAclass::GAclass(const char* settingsFile)
@@ -34,8 +30,6 @@ GAclass::GAclass(const char* settingsFile)
     this->population.resize(this->GAsettings.populationSize);
     this->oldPopulation.resize(this->GAsettings.populationSize);
     this->nGenerations=this->GAsettings.nGenerations;
-    this->rMutation=0.;
-    this->rCrossover=0.;
     this->iGeneration = 0;
     this->usedPopulation = 0;
     
@@ -54,8 +48,6 @@ GAclass::GAclass(int nPop, int genomeSize)
     this->nPopulation=nPop;
     this->population.resize(nPop);
     this->nGenerations=0;
-    this->rMutation=0.;
-    this->rCrossover=0.;
     
     for (int i=0; i<nPop; i++)
     {
@@ -72,8 +64,6 @@ GAclass::~GAclass()
     }
     this->population.clear();
     this->nGenerations=0;
-    this->rMutation=0.;
-    this->rCrossover=0.;
     this->nPopulation=0;
 }
 
@@ -83,33 +73,43 @@ void GAclass::initPop()
     {
         for (int j=0; j<this->GAsettings.genomeSize; j++)
         {
-            this->population.at(i).genome[j] = this->randomGen.randDouble();
+            this->oldPopulation.at(i).genome[j] = this->randomGen.randDouble();
         }
-        this->population.at(i).generation = 0;
-        this->population.at(i).fitness = 0.;
+        this->oldPopulation[i].generation = 0;
+        this->oldPopulation[i].fitness = 0.;
     }
+    
+    // sorting old population
+    std::sort (this->oldPopulation.begin(), this->oldPopulation.begin()+this->nPopulation);
 }
+
+
 
 void GAclass::evolve()
 {
     std::cout<<"EVOLVING......................"<<this->iGeneration<<std::endl;
-
-    // sorting old population
-    std::sort (this->oldPopulation.begin(), this->oldPopulation.begin()+this->nPopulation);
     
+    //------------------EVOLUTION-----------------------
     // selecting and procreating elite
     std::cout<<"    Selecting elite...";
     this->evolveElitists();
     std::cout<<"DONE"<<std::endl;
     
+    // crossover
+    std::cout<<"    Crossing individuals...";
+    this->crossIndividuals();
+    std::cout<<"DONE"<<std::endl;
     
-    
-    this->getPopFitness();
-    this->oldPopulation = this->population;
+    //--------------------------------------------------
     
     // getting fitness for all pop
     this->calculatePopFitness();
     
+    // sorting population
+    std::sort (this->population.begin(), this->population.begin()+this->nPopulation);
+    
+    this->getPopFitness();
+    this->oldPopulation = this->population;
     this->usedPopulation = 0;
 }
 
@@ -153,6 +153,10 @@ void GAclass::evolveElitists()
     }
 }
 
+void GAclass::crossIndividuals()
+{
+    
+}
 
 
 

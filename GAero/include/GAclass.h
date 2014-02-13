@@ -23,8 +23,6 @@ class GAclass {
     int nPopulation;
     std::vector<GApopulation> oldPopulation;
     std::vector<GApopulation> population;
-    double rMutation;
-    double rCrossover;
     GAsettingsClass GAsettings;
     std::vector<double> avgFitness;
     std::vector<double> maxFitness;
@@ -35,6 +33,7 @@ class GAclass {
     void getPopFitness();
     void calculatePopFitness();
     void evolveElitists();
+    void crossIndividuals();
     
     
 

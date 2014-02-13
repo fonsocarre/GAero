@@ -36,7 +36,7 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
         this->genomeSize        = cfg->lookupInt(scope, "genomeSize");
         this->mutationRate      = cfg->lookupFloat(scope, "mutationRate");
         this->nElitist          = cfg->lookupInt(scope, "nElitist");
-        this->crossingRatio     = cfg->lookupFloat(scope, "crossingRatio");
+        this->nCrossing         = cfg->lookupInt(scope, "nCrossing");
         cfg->destroy();
     }
     catch(const config4cpp::ConfigurationException & ex)
@@ -48,9 +48,9 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
     std::cout<<"     nGenerations = "   <<this->nGenerations<<std::endl;
     std::cout<<"     populationSize = " <<this->populationSize<<std::endl;
     std::cout<<"     genomeSize = "     <<this->genomeSize<<std::endl;
-    std::cout<<"     mutationRate = "   <<this->mutationRate<<std::endl;
     std::cout<<"     nElitist = "       <<this->nElitist<<std::endl;
-    std::cout<<"     crossingRatio = "  <<this->crossingRatio<<std::endl;
+    std::cout<<"     nCrossing = "      <<this->nCrossing<<std::endl;
+    std::cout<<"     mutationRate = "   <<this->mutationRate<<std::endl;
     std::cout<<" "                      <<std::endl;
     
     std::cout<<"--Output Settings"<<std::endl;

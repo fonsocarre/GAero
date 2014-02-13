@@ -20,7 +20,7 @@ class GAsettingsClass {
     int genomeSize;
     double mutationRate;
     int nElitist;
-    double crossingRatio;
+    int nCrossing;
     
     std::string logFile;
     std::string historyFile;
