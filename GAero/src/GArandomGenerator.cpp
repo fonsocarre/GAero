@@ -40,59 +40,39 @@ int GArandom::roulette(std::vector<double> weights)
 {
     //normalize vector weights
     double sum = 0;
-//    double min = weights[0];
-//
-//    for(int j=0; j<weights.size(); j++)
-//    {
-//        weights[j] = (weights[j]-min);
-//        sum += weights[j];
-//    }
-//    
-//    for(int j=0; j<weights.size(); j++)
-//    {
-//        weights[j] /= sum;
-//    }
-//    
-//
-//    // random selection
-//    double num = this->generator.Random();
-//    std::vector<double> cummulative = weights;
-//    for (int j=1; j<weights.size(); j++)
-//    {
-//        cummulative[j] += cummulative[j-1];
-//    }
-//    
-//    for (int j=0; j<weights.size(); j++)
-//    {
-//        if (num <= cummulative[j] && num > cummulative[j-1]) return j;
-//    }
-//    
-    for (int i=0; i<weights.size(); i++)
+    int nElements = (int)(weights.size());
+    
+    double min = weights[weights.size()-1];
+
+    for (int i=0; i<nElements; i++)
     {
-        sum += weights[i];
+        sum += fabs(weights[i]-min);
     }
     
-    for (int i=0; i<weights.size(); i++)
+    for (int i=0; i<nElements; i++)
     {
-        weights[i] /= sum;
+        weights[i] = (weights[i]-min) /  sum;
     }
     
-    std::vector<double> cummulative = weights;
-    for (int j=1; j<weights.size(); j++)
+    std::vector<double> cummulative(weights);
+    for (int j=1; j<nElements; j++)
     {
         cummulative[j] += cummulative[j-1];
     }
 
     double num = this->generator.Random();
+    assert(num<=cummulative[cummulative.size()-1]);
     //avoidance of num > max(cummulative)
-    while (num>cummulative[cummulative.size()-1])
-    {
-        num = this->generator.Random();
-    }
+//    while (num>cummulative[cummulative.size()-1])
+//    {
+//        num = this->generator.Random();
+//    }
     
-    for (int j=0; j<weights.size(); j++)
+    for (int j=0; j<nElements; j++)
     {
-        if (num <= cummulative[j] && num > cummulative[j-1]) return j;
+        //if (num <= cummulative[j] && num > cummulative[j-1]) return j;
+        if (num <= cummulative[j]) return j;
+        if (j == nElements-1) std::cout<<"Problem, check roulette"<<std::endl;
     }
     return -1;
 }

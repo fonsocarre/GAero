@@ -11,7 +11,11 @@
 
 #include <time.h>
 #include <vector>
+#include <cassert>
+#include <iostream>
+#include <cmath>
 #include "randomc.h"
+
 
 class GArandom {
     int seed;

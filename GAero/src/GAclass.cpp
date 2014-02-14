@@ -40,9 +40,6 @@ GAclass::GAclass(const char* settingsFile)
         this->oldPopulation.at(i).genome.resize(this->GAsettings.genomeSize);
         this->oldPopulation.at(i).genomeLength = GAsettings.genomeSize;
     }
-    //this->oldPopulation = this->population;
-    this->avgFitness.resize(this->nGenerations);
-    this->maxFitness.resize(this->nGenerations);
 }
 
 GAclass::GAclass(int nPop, int genomeSize)
@@ -120,6 +117,7 @@ void GAclass::evolve()
     std::reverse (this->population.begin(), this->population.end());
     
     this->getPopFitness();
+    this->oldPopulation.clear();
     this->oldPopulation = this->population;
     this->usedPopulation = 0;
 }
@@ -145,6 +143,12 @@ void GAclass::getPopFitness()
     std::cout<<"    max Fitness = "<<maxFitness<<std::endl;
     std::cout<<"    min Fitness = "<<minFitness<<std::endl;
     std::cout<<"    avg Fitness = "<<avgFitness<<std::endl;
+    std::cout<<"    best indiv.: ";
+    for (int i=0; i<this->GAsettings.genomeSize; i++)
+    {
+        std::cout<<this->population[0].genome[i]<<" ";
+    }
+    std::cout<<std::endl;
 }
 
 void GAclass::calculatePopFitness()
@@ -187,11 +191,10 @@ void GAclass::crossIndividuals()
         int index2 = this->randomGen.roulette (weights);
         while (index1 == index2)
         {
-            //std::cout<<"en el bucle"<<std::endl;
             index2 = this->randomGen.roulette (weights);
         }
         
-        if (index1==-1 || index2==-1) {std::cout<<"ROULETTE ERROR"<<std::endl;}
+        if ((index1==-1) || (index2==-1)) {std::cout<<"ROULETTE ERROR"<<std::endl;}
         
         double fitness1 = this->oldPopulation[index1].fitness;
         double fitness2 = this->oldPopulation[index2].fitness;
@@ -214,16 +217,19 @@ void GAclass::crossIndividuals()
 void GAclass::createNewIndividuals()
 {
     int nNew = this->nPopulation - this->usedPopulation;
+    int i;
     for (int iNewPop=0; iNewPop<nNew; iNewPop++)
     {
-        this->population[iNewPop] = GApopulation(this->GAsettings.genomeSize);
-        this->population[iNewPop].generation = this->iGeneration;
+        i = this->usedPopulation + iNewPop;
+        this->population[i] = GApopulation(this->GAsettings.genomeSize);
+        this->population[i].generation = this->iGeneration;
         for (int iGen=0; iGen<this->GAsettings.genomeSize; iGen++)
         {
-            this->population[iNewPop].genome[iGen] =
+            this->population[i].genome[iGen] =
                             this->randomGen.randDouble();
         }
     }
+    this->usedPopulation += nNew;
 }
 
 std::vector<double> GAclass::oldPopFitness2vec()
