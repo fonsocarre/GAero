@@ -17,6 +17,7 @@
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
 #include "GArandomGenerator.h"
+#include "GAoutputclass.h"
 #include "utilities.h"
 
 
