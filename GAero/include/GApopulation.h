@@ -23,7 +23,7 @@ public:
     GApopulation();
     GApopulation(int genomeLength);
     ~GApopulation();
-    GApopulation(const GApopulation& obj); //copy constructor
+    //GApopulation(const GApopulation& obj); //copy constructor
     //**********************************
     
     // logical operators****************

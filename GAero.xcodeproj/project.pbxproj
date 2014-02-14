@@ -331,6 +331,8 @@
 		19EFD92F18A80A6F001675E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fonso/C++/GAero/GAero/lib",
@@ -342,6 +344,8 @@
 		19EFD93018A80A6F001675E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fonso/C++/GAero/GAero/lib",

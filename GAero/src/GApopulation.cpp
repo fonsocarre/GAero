@@ -33,17 +33,17 @@ GApopulation::~GApopulation()
     this->genomeLength = 0;
 }
 
-GApopulation::GApopulation(const GApopulation& obj)
-{
-    GApopulation* out;
-    out = new GApopulation;
-    
-    out->genome = obj.genome;
-    out->generation = obj.generation;
-    out->genomeLength = obj.genomeLength;
-    
-    out->fitness = obj.fitness;
-}
+//GApopulation::GApopulation(const GApopulation& obj)
+//{
+//    GApopulation* out;
+//    out = new GApopulation;
+//    
+//    out->genome = obj.genome;
+//    out->generation = obj.generation;
+//    out->genomeLength = obj.genomeLength;
+//    
+//    out->fitness = obj.fitness;
+//}
 //********************************************************
 
 //******************LOGICAL OPERATORS*********************

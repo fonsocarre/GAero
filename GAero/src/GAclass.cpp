@@ -85,6 +85,7 @@ void GAclass::initPop()
     
     // sorting old population
     std::sort (this->oldPopulation.begin(), this->oldPopulation.end());
+    std::reverse (this->oldPopulation.begin(), this->oldPopulation.end());
 }
 
 
@@ -104,13 +105,19 @@ void GAclass::evolve()
     this->crossIndividuals();
     std::cout<<"DONE"<<std::endl;
     
+    // new individuals
+    std::cout<<"    Creating new individuals...";
+    this->createNewIndividuals();
+    std::cout<<"DONE"<<std::endl;
+    
     //--------------------------------------------------
     
     // getting fitness for all pop
     this->calculatePopFitness();
     
     // sorting population
-    std::sort (this->population.begin(), this->population.begin()+this->nPopulation);
+    std::sort (this->population.begin(), this->population.end());
+    std::reverse (this->population.begin(), this->population.end());
     
     this->getPopFitness();
     this->oldPopulation = this->population;
@@ -126,11 +133,11 @@ void GAclass::getPopFitness()
     
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
-        avgFitness += this->oldPopulation[iPop].fitness;
+        avgFitness += this->population[iPop].fitness;
     }
     avgFitness /= this->nPopulation;
-    minFitness =  this->oldPopulation[0].fitness;
-    maxFitness =  this->oldPopulation[this->nPopulation-1].fitness;
+    maxFitness =  this->population[0].fitness;
+    minFitness =  this->population[this->nPopulation-1].fitness;
     
     this->maxFitness.push_back(maxFitness);
     this->avgFitness.push_back(avgFitness);
@@ -174,12 +181,13 @@ void GAclass::crossIndividuals()
     for (int i=0; i<this->GAsettings.nCrossing; i++)
     {
         // newPop position of the created individual
-        int iNewPop = i + this->usedPopulation + 1;
+        int iNewPop = i + this->usedPopulation;
         // roulette selection of the two parents
         int index1 = this->randomGen.roulette (weights);
         int index2 = this->randomGen.roulette (weights);
         while (index1 == index2)
         {
+            //std::cout<<"en el bucle"<<std::endl;
             index2 = this->randomGen.roulette (weights);
         }
         
@@ -188,12 +196,13 @@ void GAclass::crossIndividuals()
         double fitness1 = this->oldPopulation[index1].fitness;
         double fitness2 = this->oldPopulation[index2].fitness;
         utilities::normalizeFitness(fitness1, fitness2);
+        
         // genome filling
         for (int j=0; j<this->GAsettings.genomeSize; j++)
         {
             this->population[iNewPop].genome[j] =
                         fitness1*this->oldPopulation[index1].genome[j] +
-            fitness2*this->oldPopulation[index2].genome[j];
+                        fitness2*this->oldPopulation[index2].genome[j];
         }
         // other attributes
         this->population[iNewPop].generation = this->iGeneration;
@@ -214,8 +223,6 @@ void GAclass::createNewIndividuals()
             this->population[iNewPop].genome[iGen] =
                             this->randomGen.randDouble();
         }
-        
-        
     }
 }
 

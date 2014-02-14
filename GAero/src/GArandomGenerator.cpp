@@ -40,28 +40,60 @@ int GArandom::roulette(std::vector<double> weights)
 {
     //normalize vector weights
     double sum = 0;
-    for(int j=0; j<weights.size(); j++)
+//    double min = weights[0];
+//
+//    for(int j=0; j<weights.size(); j++)
+//    {
+//        weights[j] = (weights[j]-min);
+//        sum += weights[j];
+//    }
+//    
+//    for(int j=0; j<weights.size(); j++)
+//    {
+//        weights[j] /= sum;
+//    }
+//    
+//
+//    // random selection
+//    double num = this->generator.Random();
+//    std::vector<double> cummulative = weights;
+//    for (int j=1; j<weights.size(); j++)
+//    {
+//        cummulative[j] += cummulative[j-1];
+//    }
+//    
+//    for (int j=0; j<weights.size(); j++)
+//    {
+//        if (num <= cummulative[j] && num > cummulative[j-1]) return j;
+//    }
+//    
+    for (int i=0; i<weights.size(); i++)
     {
-        sum += weights[j];
+        sum += weights[i];
     }
-    for(int j=0; j<weights.size(); j++)
+    
+    for (int i=0; i<weights.size(); i++)
     {
-        weights[j] = weights[j] / sum;
+        weights[i] /= sum;
     }
-
-    // random selection
-    double num = this->generator.Random();
+    
     std::vector<double> cummulative = weights;
     for (int j=1; j<weights.size(); j++)
     {
         cummulative[j] += cummulative[j-1];
+    }
+
+    double num = this->generator.Random();
+    //avoidance of num > max(cummulative)
+    while (num>cummulative[cummulative.size()-1])
+    {
+        num = this->generator.Random();
     }
     
     for (int j=0; j<weights.size(); j++)
     {
         if (num <= cummulative[j] && num > cummulative[j-1]) return j;
     }
-    
     return -1;
 }
 
