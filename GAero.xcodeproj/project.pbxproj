@@ -17,6 +17,7 @@
 		19DB983C18ABDCF5004433A0 /* GAclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB983B18ABDCF5004433A0 /* GAclass.cpp */; };
 		19DB983F18ABDDB1004433A0 /* libamac64o.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DB983D18ABDDB1004433A0 /* libamac64o.a */; };
 		19DB984018ABDDB1004433A0 /* libconfig4cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */; };
+		19E9C03E18B283B6004442E6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E9C03D18B283B6004442E6 /* Accelerate.framework */; };
 		19EFD92B18A80A6F001675E6 /* GAero.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 19EFD92A18A80A6F001675E6 /* GAero.1 */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,8 @@
 		19DB983B18ABDCF5004433A0 /* GAclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAclass.cpp; path = GAero/src/GAclass.cpp; sourceTree = SOURCE_ROOT; };
 		19DB983D18ABDDB1004433A0 /* libamac64o.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamac64o.a; path = GAero/lib/libamac64o.a; sourceTree = "<group>"; };
 		19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libconfig4cpp.a; path = GAero/lib/libconfig4cpp.a; sourceTree = "<group>"; };
+		19E9C03C18B283AB004442E6 /* Algebra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algebra.h; path = include/Algebra.h; sourceTree = "<group>"; };
+		19E9C03D18B283B6004442E6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		19EFD92518A80A6F001675E6 /* GAero */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GAero; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EFD92A18A80A6F001675E6 /* GAero.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GAero.1; sourceTree = "<group>"; };
 		19EFD93B18A80B0B001675E6 /* GAero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAero.cpp; path = src/GAero.cpp; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19E9C03E18B283B6004442E6 /* Accelerate.framework in Frameworks */,
 				19DB983F18ABDDB1004433A0 /* libamac64o.a in Frameworks */,
 				19DB984018ABDDB1004433A0 /* libconfig4cpp.a in Frameworks */,
 			);
@@ -115,9 +119,18 @@
 			path = randomc;
 			sourceTree = "<group>";
 		};
+		19E9C03B18B283A0004442E6 /* Algebra */ = {
+			isa = PBXGroup;
+			children = (
+				19E9C03C18B283AB004442E6 /* Algebra.h */,
+			);
+			name = Algebra;
+			sourceTree = "<group>";
+		};
 		19EFD91C18A80A6F001675E6 = {
 			isa = PBXGroup;
 			children = (
+				19E9C03D18B283B6004442E6 /* Accelerate.framework */,
 				19DB983D18ABDDB1004433A0 /* libamac64o.a */,
 				19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */,
 				19EFD92718A80A6F001675E6 /* GAero */,
@@ -136,6 +149,7 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
+				19E9C03B18B283A0004442E6 /* Algebra */,
 				192CB75A18AE437C001A5D6E /* GAoutput */,
 				1993A59118AD260A0036493B /* Utilities */,
 				199F030618AA3910004358E2 /* randomGenerators */,
