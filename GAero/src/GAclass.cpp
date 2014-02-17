@@ -32,6 +32,7 @@ GAclass::GAclass(const char* settingsFile)
     this->nGenerations=this->GAsettings.nGenerations;
     this->iGeneration = 0;
     this->usedPopulation = 0;
+    this->GAout = GAoutputclass(this->GAsettings.historyFile);
     
     for (int i=0; i<this->GAsettings.populationSize; i++)
     {
@@ -89,23 +90,23 @@ void GAclass::initPop()
 
 void GAclass::evolve()
 {
-    std::cout<<"EVOLVING......................"<<this->iGeneration<<std::endl;
+    this->GAout<<"EVOLVING......................"<<this->iGeneration<<std::endl;
     
     //------------------EVOLUTION-----------------------
     // selecting and procreating elite
-    std::cout<<"    Selecting elite...";
+    this->GAout<<"    Selecting elite...";
     this->evolveElitists();
-    std::cout<<"DONE"<<std::endl;
+    this->GAout<<"DONE"<<std::endl;
     
     // crossover
-    std::cout<<"    Crossing individuals...";
+    this->GAout<<"    Crossing individuals...";
     this->crossIndividuals();
-    std::cout<<"DONE"<<std::endl;
+    this->GAout<<"DONE"<<std::endl;
     
     // new individuals
-    std::cout<<"    Creating new individuals...";
+    this->GAout<<"    Creating new individuals...";
     this->createNewIndividuals();
-    std::cout<<"DONE"<<std::endl;
+    this->GAout<<"DONE"<<std::endl;
     
     //--------------------------------------------------
     
@@ -140,15 +141,15 @@ void GAclass::getPopFitness()
     this->maxFitness.push_back(maxFitness);
     this->avgFitness.push_back(avgFitness);
     this->minFitness.push_back(minFitness);
-    std::cout<<"    max Fitness = "<<maxFitness<<std::endl;
-    std::cout<<"    min Fitness = "<<minFitness<<std::endl;
-    std::cout<<"    avg Fitness = "<<avgFitness<<std::endl;
-    std::cout<<"    best indiv.: ";
+    this->GAout<<"    max Fitness = "<<maxFitness<<std::endl;
+    this->GAout<<"    min Fitness = "<<minFitness<<std::endl;
+    this->GAout<<"    avg Fitness = "<<avgFitness<<std::endl;
+    this->GAout<<"    best indiv.: ";
     for (int i=0; i<this->GAsettings.genomeSize; i++)
     {
-        std::cout<<this->population[0].genome[i]<<" ";
+        this->GAout<<this->population[0].genome[i]<<" ";
     }
-    std::cout<<std::endl;
+    this->GAout<<std::endl;
 }
 
 void GAclass::calculatePopFitness()
@@ -194,7 +195,7 @@ void GAclass::crossIndividuals()
             index2 = this->randomGen.roulette (weights);
         }
         
-        if ((index1==-1) || (index2==-1)) {std::cout<<"ROULETTE ERROR"<<std::endl;}
+        if ((index1==-1) || (index2==-1)) {this->GAout<<"ROULETTE ERROR"<<std::endl;}
         
         double fitness1 = this->oldPopulation[index1].fitness;
         double fitness2 = this->oldPopulation[index2].fitness;

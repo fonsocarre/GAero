@@ -53,6 +53,7 @@ public:
     
     // public attributes
     GArandom randomGen;
+    GAoutputclass GAout;
     int nGenerations;
     int iGeneration;
     
