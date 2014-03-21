@@ -6,11 +6,6 @@
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
 
-#include <iostream>
-#include <stdlib.h>
-#include <fstream>
-#include <vector>
-
 #include "GAclass.h"
 
 
