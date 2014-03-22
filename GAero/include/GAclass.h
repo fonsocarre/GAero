@@ -19,6 +19,7 @@
 #include "GArandomGenerator.h"
 #include "GAoutputclass.h"
 #include "utilities.h"
+#include "GAairfoilFitness.h"
 
 
 class GAclass {
@@ -62,6 +63,7 @@ public:
     void initPop();
     
     double FitnessFunction(std::vector<double> genome);
+    GAfitness fitness;
     
 };
 
