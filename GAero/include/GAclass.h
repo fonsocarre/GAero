@@ -96,6 +96,7 @@ public:
     //! when finished, a new generation is created and the old one
     //! is copied to GAclass::oldPopulation.
     void evolve();
+    //! Generates a random initial population.
     void initPop();
     
     //double FitnessFunction(std::vector<double> genome);
