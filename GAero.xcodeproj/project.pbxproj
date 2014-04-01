@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */; };
 		192FDF9218DCBB6C00FC1832 /* GAairfoilFitness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192FDF9118DCBB6C00FC1832 /* GAairfoilFitness.cpp */; };
+		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
+		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
 		19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */; };
-		19DB983118ABDB9A004433A0 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194EA65C18A94FB50042C74F /* mersenne.cpp */; };
-		19DB983218ABDB9C004433A0 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 194EA65D18A94FB50042C74F /* userintf.cpp */; };
 		19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */; };
 		19DB983618ABDBAC004433A0 /* GAero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93B18A80B0B001675E6 /* GAero.cpp */; };
 		19DB983A18ABDCD4004433A0 /* GApopulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB983918ABDCD4004433A0 /* GApopulation.cpp */; };
@@ -40,13 +40,13 @@
 		192CB75D18AE43A6001A5D6E /* GAoutputclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAoutputclass.h; path = include/GAoutputclass.h; sourceTree = "<group>"; };
 		192FDF9018DCBB4F00FC1832 /* GAairfoilFitness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAairfoilFitness.h; path = GAero/include/GAairfoilFitness.h; sourceTree = SOURCE_ROOT; };
 		192FDF9118DCBB6C00FC1832 /* GAairfoilFitness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAairfoilFitness.cpp; path = GAero/src/GAairfoilFitness.cpp; sourceTree = SOURCE_ROOT; };
-		194EA65C18A94FB50042C74F /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = ../src/mersenne.cpp; sourceTree = "<group>"; };
-		194EA65D18A94FB50042C74F /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = ../src/userintf.cpp; sourceTree = "<group>"; };
+		198F58D418E9AA2A00935C94 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = GAero/include/randomc.h; sourceTree = SOURCE_ROOT; };
+		198F58D518E9AA2A00935C94 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = GAero/include/sfmt.h; sourceTree = SOURCE_ROOT; };
+		198F58D618E9AB0200935C94 /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = GAero/src/mersenne.cpp; sourceTree = SOURCE_ROOT; };
+		198F58D718E9AB0200935C94 /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = GAero/src/userintf.cpp; sourceTree = SOURCE_ROOT; };
 		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
 		1993A59318AD2F410036493B /* GAfitnessFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAfitnessFunction.h; path = GAero/include/GAfitnessFunction.h; sourceTree = SOURCE_ROOT; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
-		19CC98E318A9491C00DF9A76 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = ../include/randomc.h; sourceTree = "<group>"; };
-		19CC98E518A9491C00DF9A76 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = ../include/sfmt.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
 		19DB983718ABDC9F004433A0 /* GApopulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GApopulation.h; path = GAero/include/GApopulation.h; sourceTree = SOURCE_ROOT; };
@@ -115,10 +115,10 @@
 		19CC98DC18A9491C00DF9A76 /* randomc */ = {
 			isa = PBXGroup;
 			children = (
-				194EA65C18A94FB50042C74F /* mersenne.cpp */,
-				194EA65D18A94FB50042C74F /* userintf.cpp */,
-				19CC98E318A9491C00DF9A76 /* randomc.h */,
-				19CC98E518A9491C00DF9A76 /* sfmt.h */,
+				198F58D618E9AB0200935C94 /* mersenne.cpp */,
+				198F58D718E9AB0200935C94 /* userintf.cpp */,
+				198F58D418E9AA2A00935C94 /* randomc.h */,
+				198F58D518E9AA2A00935C94 /* sfmt.h */,
 			);
 			path = randomc;
 			sourceTree = "<group>";
@@ -283,9 +283,9 @@
 			files = (
 				19DB983C18ABDCF5004433A0 /* GAclass.cpp in Sources */,
 				192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */,
-				19DB983218ABDB9C004433A0 /* userintf.cpp in Sources */,
-				19DB983118ABDB9A004433A0 /* mersenne.cpp in Sources */,
+				198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */,
 				19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */,
+				198F58D918E9AB0200935C94 /* userintf.cpp in Sources */,
 				19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */,
 				19DB983A18ABDCD4004433A0 /* GApopulation.cpp in Sources */,
 				192FDF9218DCBB6C00FC1832 /* GAairfoilFitness.cpp in Sources */,

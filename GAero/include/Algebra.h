@@ -20,7 +20,7 @@ extern "C" {
     void dgetri_(int* N, double* A, int* lda, int* IPIV, double* WORK, int* lwork, int* INFO);
 }
 
-std::vector<double> invertMatrix(std::vector<double> A)
+std::vector<double> invertMatrix(std::vector<double>& A)
 {
     int N = sqrt(A.size());
     std::vector<double> mat(N*N);
