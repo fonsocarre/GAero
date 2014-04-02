@@ -19,6 +19,7 @@ int main(int argc, const char * argv[])
     for (GA.iGeneration=0; GA.iGeneration<GA.nGenerations; GA.iGeneration++)
     {
         GA.evolve();
+        if (GA.checkConvergence()) { break; }
     }
     
     return 0;

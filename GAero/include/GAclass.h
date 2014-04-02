@@ -5,7 +5,7 @@
 //  Created by Alfonso Carre on 04/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
-
+#pragma once
 #ifndef __GAclass__
 #define __GAclass__
 
@@ -19,7 +19,7 @@
 #include "GArandomGenerator.h"
 #include "GAoutputclass.h"
 #include "utilities.h"
-#include "GAairfoilFitness.h"
+#include "GAfitnessSample.h"
 
 //! The main Genetic Algorithm class.
 /*! This class implements all the necessary variables and functions
@@ -38,23 +38,26 @@ class GAclass {
     int usedPopulation;
     
     // private class members
-    //! Outputs to file and screen the info about the
-    //! population. Only works in fitness-ordered sets of pop.
+    /** Outputs to file and screen the info about the
+        population. Only works in fitness-ordered sets of pop.*/
     void getPopFitness();
     //! Calculates the fitness of all the NEW population.
     void calculatePopFitness();
     //! Calculates the fitness of the oldPopulation.
+    /** Only for initPop() method. */
     void calculateOldPopFitness();
-    //! Step of evolve() method. Copies the elitists individuals to the
-    //! next generation.
+    /** Step of evolve() method. Copies the elitists individuals to the
+        next generation. */
     void evolveElitists();
-    //! Step of evolve(), crosses the individuals based on roulette
-    //! selection.
+    /** Step of evolve(), crosses the individuals based on roulette
+        selection. */
     void crossIndividuals();
-    //! Last step of evolve(). Fills the empty population
-    //! with new random inidividuals.
+    /** Last step of evolve(). Fills the empty population
+        with new random inidividuals. */
     void createNewIndividuals();
     std::vector<double> oldPopFitness2vec();
+    
+    double fitnessVariation();
     
     
 
@@ -77,6 +80,9 @@ public:
     //! Destructor. Deallocates the vector variables.
     ~GAclass();
     
+    //! Standard OpenFOAM fitness function.
+    GAfitnessSample fitnessSample;
+    
     // public attributes
     
     //! Random number generator. Uses the randomc library
@@ -95,12 +101,14 @@ public:
     //! GA basic routine. Applies the GA steps for each generation
     //! when finished, a new generation is created and the old one
     //! is copied to GAclass::oldPopulation.
-    void evolve();
+    void evolve ();
     //! Generates a random initial population.
-    void initPop();
+    void initPop ();
+    //! Checks convergence based on settings criteria.
+    bool checkConvergence ();
     
     //double FitnessFunction(std::vector<double> genome);
-    GAfitness fitness;
+    GAfitnessClass* fitness;
     
 };
 

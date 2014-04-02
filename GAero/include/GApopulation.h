@@ -10,7 +10,7 @@
 #define __GApopulation__
 
 #include <vector>
-#include "GAfitnessFunction.h"
+//#include "GAfitnessFunction.h"
 
 
 //! Class for individuals belonging to the population.
@@ -20,7 +20,7 @@ class GApopulation {
     std::vector<double> genome;
     int generation;
     int genomeLength;
-    GAfitnessClass fitnessClass;
+    //GAfitnessClass fitnessClass;
     
 public:
     // Constructors ********************
@@ -51,7 +51,7 @@ public:
     
     double fitness;
     
-    void evaluateFitness();
+    //void evaluateFitness();
     friend class GAclass;
 };
 

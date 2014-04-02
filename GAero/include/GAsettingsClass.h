@@ -21,6 +21,7 @@ class GAsettingsClass {
     double mutationRate;
     int nElitist;
     int nCrossing;
+    int minGenerations;
     
     std::string logFile;
     std::string historyFile;

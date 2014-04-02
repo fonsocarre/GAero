@@ -7,6 +7,7 @@
 //
 
 #include "GAclass.h"
+#include "constants.h"
 
 GAclass::GAclass()
 {
@@ -41,6 +42,7 @@ GAclass::GAclass(const char* settingsFile)
         this->oldPopulation.at(i).genome.resize(this->GAsettings.genomeSize);
         this->oldPopulation.at(i).genomeLength = GAsettings.genomeSize;
     }
+    this->fitness = &(this->fitnessSample);
 }
 
 GAclass::GAclass(int nPop, int genomeSize)
@@ -65,6 +67,9 @@ GAclass::~GAclass()
     this->population.clear();
     this->nGenerations=0;
     this->nPopulation=0;
+    this->GAout << "GAero successfully finished with ";
+    this->GAout << this->fitness->iPopulation <<
+            " function calls." << std::endl;
 }
 
 void GAclass::initPop()
@@ -156,7 +161,9 @@ void GAclass::calculatePopFitness()
 {
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
-        this->population[iPop].evaluateFitness();
+        //this->population[iPop].evaluateFitness();
+        this->population[iPop].fitness =
+            this->fitness->getFitness (this->population[iPop].genome);
     }
 }
 
@@ -164,7 +171,8 @@ void GAclass::calculateOldPopFitness()
 {
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
-        this->oldPopulation[iPop].evaluateFitness();
+        this->oldPopulation[iPop].fitness =
+            this->fitness->getFitness (this->oldPopulation[iPop].genome);
     }
 }
 
@@ -246,6 +254,42 @@ std::vector<double> GAclass::oldPopFitness2vec()
     return vec;
 }
 
+bool GAclass::checkConvergence()
+{
+    bool flag = false;
+    
+    if (this->iGeneration < this->GAsettings.minGenerations)
+    {
+        return flag;
+    }
+    
+    if (this->iGeneration >= this->GAsettings.minGenerations
+            &&
+        this->fitnessVariation() < EPSILON)
+    {
+        flag = true;
+        this->GAout << "Convergence reached in " << this->iGeneration
+                    << " generations." << std::endl;
+        return flag;
+    }
+    
+    // flag == true if convergence reached
+    return flag;
+}
+
+double GAclass::fitnessVariation()
+{
+    double fitness = 0;
+    for (int i=(int)(this->maxFitness.size()-1);
+                        i >= this->maxFitness.size()-4;
+                        i--)
+    {
+        fitness += this->maxFitness[i];
+    }
+    fitness /= (double)(4.);
+    return fabs((fitness - this->maxFitness[this->maxFitness.size()-1]))/
+                (this->maxFitness[this->maxFitness.size()-1]);
+}
 
 
 

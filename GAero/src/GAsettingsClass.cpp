@@ -37,6 +37,7 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
         this->mutationRate      = cfg->lookupFloat(scope, "mutationRate");
         this->nElitist          = cfg->lookupInt(scope, "nElitist");
         this->nCrossing         = cfg->lookupInt(scope, "nCrossing");
+        this->minGenerations    = cfg->lookupInt(scope, "minGenerations");
         cfg->destroy();
     }
     catch(const config4cpp::ConfigurationException & ex)
@@ -51,6 +52,7 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
     std::cout<<"     nElitist = "       <<this->nElitist<<std::endl;
     std::cout<<"     nCrossing = "      <<this->nCrossing<<std::endl;
     std::cout<<"     mutationRate = "   <<this->mutationRate<<std::endl;
+    std::cout<<"     minGenerations = " <<this->minGenerations<<std::endl;
     std::cout<<" "                      <<std::endl;
     
     std::cout<<"--Output Settings"<<std::endl;

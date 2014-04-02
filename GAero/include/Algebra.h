@@ -13,13 +13,16 @@
 #include <vector>
 
 extern "C" {
-    // LU decomoposition of a general matrix
+    //! LU decomoposition of a general matrix (LAPACK)
     void dgetrf_(int* M, int *N, double* A, int* lda, int* IPIV, int* INFO);
     
-    // generate inverse of a matrix given its LU decomposition
+    //! Generates inverse of a matrix given its LU decomposition (LAPACK)
     void dgetri_(int* N, double* A, int* lda, int* IPIV, double* WORK, int* lwork, int* INFO);
 }
 
+//! Inverse calculation by LAPACK wrapper.
+/** Wrapper for matrix inverse calculation
+    based on LAPACK GETRF and GETRI functions. */
 std::vector<double> invertMatrix(std::vector<double>& A)
 {
     int N = sqrt(A.size());
