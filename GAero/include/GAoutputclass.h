@@ -5,7 +5,7 @@
 //  Created by Alfonso Carre on 14/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
-
+//! Preprocessor guard
 #ifndef GAero_GAoutputclass_h
 #define GAero_GAoutputclass_h
 

@@ -5,7 +5,7 @@
 //  Created by Alfonso Carre on 13/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
-
+//! Preprocessor guard
 #ifndef GAero_utilities_h
 #define GAero_utilities_h
 

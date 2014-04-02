@@ -203,7 +203,8 @@ void GAclass::crossIndividuals()
             index2 = this->randomGen.roulette (weights);
         }
         
-        if ((index1==-1) || (index2==-1)) {this->GAout<<"ROULETTE ERROR"<<std::endl;}
+        if ((index1==-1) || (index2==-1))
+                {this->GAout<<"ROULETTE ERROR"<<std::endl;}
         
         double fitness1 = this->oldPopulation[index1].fitness;
         double fitness2 = this->oldPopulation[index2].fitness;
@@ -290,23 +291,3 @@ double GAclass::fitnessVariation()
     return fabs((fitness - this->maxFitness[this->maxFitness.size()-1]))/
                 (this->maxFitness[this->maxFitness.size()-1]);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

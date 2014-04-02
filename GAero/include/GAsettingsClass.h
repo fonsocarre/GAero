@@ -5,7 +5,7 @@
 //  Created by Alfonso Carre on 09/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
-
+//! Preprocessor guard
 #ifndef __GAsettingsClass__
 #define __GAsettingsClass__
 

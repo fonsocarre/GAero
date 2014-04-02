@@ -5,7 +5,7 @@
 //  Created by Alfonso Carre on 17/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
-
+//! Preprocessor guard
 #ifndef _Algebra_h
 #define _Algebra_h
 

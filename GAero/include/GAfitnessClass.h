@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
 #pragma once
+//! Preprocessor guard
 #ifndef GAero_GAfitnessClass_h
 #define GAero_GAfitnessClass_h
 
