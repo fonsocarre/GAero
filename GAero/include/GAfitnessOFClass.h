@@ -11,9 +11,13 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include "GAfitnessClass.h"
 #include "Configuration.h"
+#include "OFtopology.h"
+#include "constants.h"
+#include "charUtilities.h"
 
 
 //! OpenFOAM interface with GAero
@@ -29,14 +33,44 @@ class GAfitnessOFClass: public GAfitnessClass {
     /** This folder is emptied at every evaluation. */
     std::string tempCaseDir;
     
-    //! Name of the script in mainCaseDir that lauchs OF.
+    //! Route to the script in mainCaseDir that lauchs OF.
     std::string initScript;
     
-    //! Name of the script that cleans cases.
+    //! Route to the script that cleans cases.
     std::string cleanScript;
+    
+    //! Route to the script for duplicating cases.
+    std::string duplicateScript;
+    
+    //! Route to the script for deleting complete cases.
+    std::string deleteScript;
     
     //! Name of the optimised patch in the mesh.
     std::string shapePatch;
+    
+    //! Mesh data structure
+    OFtopology mesh;
+    
+    //! Strings containing points file header
+    std::vector<std::string> pointsHeader;
+    
+    // **********************METHODS*********************
+    
+    //! Method for reading SET file.
+    void readSETfile ();
+    
+    //! Method for reading faces file.
+    /** Special care: faces must be ordered!!! */
+    void readFacesFile ();
+    //! Parses faces lines
+    void parseFaceLine(std::string& buffer,
+                       std::vector<int>& connectivities);
+    
+    //! Method for reading points.
+    void readPointsFile ();
+    
+    //! Method for skipping header when reading OF files.
+    void skipHeader (std::istream& file);
 
 public:
     //! Similar to GAsettingsClass constructor.

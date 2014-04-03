@@ -269,7 +269,7 @@ bool GAclass::checkConvergence()
     
     if (this->iGeneration >= this->GAsettings.minGenerations
             &&
-        this->fitnessVariation() < EPSILON)
+        this->fitnessVariation() < constant::EPSILON)
     {
         flag = true;
         this->GAout << "Convergence reached in " << this->iGeneration
