@@ -26,8 +26,8 @@ public:
     virtual void getConfiguration (const char* settingsFile) = 0;
     //! Counter of population stored
     int iPopulation = 0;
-    //! Basic initiate function. Initially empty for basic class.
-    void initiate() {/* EMPTY */};
+    //! Virtual initiate function.
+    virtual void initialise() = 0;
     //! Virtual method for getFitness.
     virtual double getFitness (std::vector<double> genome) = 0;
 };

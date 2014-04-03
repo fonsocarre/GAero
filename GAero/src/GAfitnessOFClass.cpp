@@ -14,9 +14,9 @@ void GAfitnessOFClass::getConfiguration
     const char* scope = "GAeroFitness";
     
     Configuration* cfg = Configuration::create();
-    std::cout << "Parsing GAero fitness function \
-                  settings -----------------------";
-    std::cout << std::endl;
+    std::cout << "Parsing GAero fitness function"
+              << "settings -----------------------"
+              << std::endl;
     
     try
     {
@@ -42,11 +42,16 @@ void GAfitnessOFClass::getConfiguration
 
 void GAfitnessOFClass::initialise()
 {
-    
+    std::string command;
+    command = this->mainCaseDir+ "/" + this->initScript +
+                " " + this->mainCaseDir;
+    std::cout << "Calling OF for main case..." << std::endl;
+    std::system(command.c_str());
 }
 
+// TEMPORARY
 double GAfitnessOFClass::getFitness
                         (std::vector<double> genome)
 {
-    return 1.0;
+    return genome[0]*genome[1];
 }

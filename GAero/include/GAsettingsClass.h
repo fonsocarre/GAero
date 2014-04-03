@@ -22,6 +22,7 @@ class GAsettingsClass {
     int nElitist;
     int nCrossing;
     int minGenerations;
+    std::string fitnessSettingsFile;
     
     std::string logFile;
     std::string historyFile;

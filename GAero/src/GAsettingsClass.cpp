@@ -38,6 +38,8 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
         this->nElitist          = cfg->lookupInt(scope, "nElitist");
         this->nCrossing         = cfg->lookupInt(scope, "nCrossing");
         this->minGenerations    = cfg->lookupInt(scope, "minGenerations");
+        this->fitnessSettingsFile = cfg->lookupString
+                                    (scope, "fitnessSettingsFile");
         cfg->destroy();
     }
     catch(const config4cpp::ConfigurationException & ex)

@@ -42,7 +42,10 @@ GAclass::GAclass(const char* settingsFile)
         this->oldPopulation.at(i).genome.resize(this->GAsettings.genomeSize);
         this->oldPopulation.at(i).genomeLength = GAsettings.genomeSize;
     }
-    this->fitness = &(this->fitnessSample);
+    this->fitness = &this->fitnessOF;
+    this->fitness->getConfiguration
+                (this->GAsettings.fitnessSettingsFile.c_str());
+    this->fitness->initialise();
 }
 
 GAclass::GAclass(int nPop, int genomeSize)

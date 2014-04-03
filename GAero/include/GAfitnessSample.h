@@ -24,6 +24,7 @@ public:
     // Empty function, no need for configuration.
     void getConfiguration (const char* settingsFile)
                                         {/* EMPTY */};
+    void initialise() {/* EMPTY */};
 };
 
 #endif

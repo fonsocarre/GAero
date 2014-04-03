@@ -21,6 +21,7 @@
 #include "GAoutputclass.h"
 #include "utilities.h"
 #include "GAfitnessSample.h"
+#include "GAfitnessOFClass.h"
 
 //! The main Genetic Algorithm class.
 /*! This class implements all the necessary variables and functions
@@ -83,6 +84,7 @@ public:
     
     //! Standard OpenFOAM fitness function.
     GAfitnessSample fitnessSample;
+    GAfitnessOFClass fitnessOF;
     
     // public attributes
     
