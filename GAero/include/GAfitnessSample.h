@@ -21,6 +21,9 @@ class GAfitnessSample: public GAfitnessClass {
 public:
     //! New non-virtual function for fitness calculation. Specific for 2D genomes.
     double getFitness (std::vector<double> genome);
+    // Empty function, no need for configuration.
+    void getConfiguration (const char* settingsFile)
+                                        {/* EMPTY */};
 };
 
 #endif

@@ -22,6 +22,8 @@ protected:
     std::vector<populationSto::individual> population;
     
 public:
+    //! Virtual method for reading settings from file.
+    virtual void getConfiguration (const char* settingsFile) = 0;
     //! Counter of population stored
     int iPopulation = 0;
     //! Basic initiate function. Initially empty for basic class.

@@ -18,7 +18,7 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
 {
     using namespace config4cpp;
     
-    const char* scope="GAero";
+    const char* scope = "GAero";
     config4cpp::Configuration * cfg = config4cpp::Configuration::create();
     
     std::cout<<"Parsing GAero settings-----------------------------"<<std::endl;

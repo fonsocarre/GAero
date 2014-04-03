@@ -10,7 +10,10 @@
 #define GAero_GAfitnessOFClass_h
 
 #include <string>
+#include <iostream>
+#include <stdlib.h>
 #include "GAfitnessClass.h"
+#include "Configuration.h"
 
 
 //! OpenFOAM interface with GAero
@@ -25,9 +28,30 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Used directory for new calculations.
     /** This folder is emptied at every evaluation. */
     std::string tempCaseDir;
+    
+    //! Name of the script in mainCaseDir that lauchs OF.
+    std::string initScript;
+    
+    //! Name of the script that cleans cases.
+    std::string cleanScript;
+    
+    //! Name of the optimised patch in the mesh.
+    std::string shapePatch;
 
 public:
-    void initialise();
+    //! Similar to GAsettingsClass constructor.
+    /** Specific for this class.
+      * Settings are:
+      *     - mainCaseDir
+      *     - tempCaseDir
+      *     - initScript
+      *     - cleanScript
+      *     - shapePatch */
+    void getConfiguration (const char* settingsFile);
+    //! Calls shell script for running the basic OF case.
+    /** Also must read OF mesh and create topology */
+    void initialise ();
+    //! Creates temp case, runs and parse output.
     double getFitness (std::vector<double> genome);
 };
 
