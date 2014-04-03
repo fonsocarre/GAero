@@ -11,7 +11,7 @@
 
 #include <string>
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include "GAfitnessClass.h"
 #include "Configuration.h"
 

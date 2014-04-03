@@ -17,13 +17,13 @@ GAoutputclass::GAoutputclass()
 GAoutputclass::GAoutputclass(const GAoutputclass& other)
 {
     this->fileName = other.fileName;
-    this->hist.open(this->fileName);
+    this->hist.open(this->fileName.c_str());
 }
 
 GAoutputclass::GAoutputclass(std::string histName)
 {
     this->fileName = histName;
-    this->hist.open(histName);
+    this->hist.open(histName.c_str());
 }
 
 GAoutputclass::~GAoutputclass()
@@ -34,7 +34,7 @@ GAoutputclass::~GAoutputclass()
 GAoutputclass& GAoutputclass::operator=(const GAoutputclass& other)
 {
     this->fileName = other.fileName;
-    this->hist.open(this->fileName);
+    this->hist.open(this->fileName.c_str());
     return *this;
 }
 
