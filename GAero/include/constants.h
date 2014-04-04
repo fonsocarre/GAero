@@ -15,6 +15,9 @@ namespace constant {
     
     //! Number of lines in OpenFOAM header
     const int NHEADERLINES = 16;
+    
+    //! Dimension of the problem.
+    const int DIM = 3;
 }
 
 

@@ -63,14 +63,20 @@ class GAfitnessOFClass: public GAfitnessClass {
     /** Special care: faces must be ordered!!! */
     void readFacesFile ();
     //! Parses faces lines
-    void parseFaceLine(std::string& buffer,
-                       std::vector<int>& connectivities);
+    void parseFaceLine (std::string& buffer,
+                        std::vector<int>& connectivities);
     
     //! Method for reading points.
     void readPointsFile ();
+    void parsePointsLine (std::string& buffer,
+                          std::vector<double>& coord);
+
     
     //! Method for skipping header when reading OF files.
     void skipHeader (std::istream& file);
+    
+    //! Method for reading and storing points file header.
+    void readPointsHeader (std::istream& file);
 
 public:
     //! Similar to GAsettingsClass constructor.

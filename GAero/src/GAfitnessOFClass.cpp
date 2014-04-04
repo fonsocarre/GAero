@@ -59,6 +59,7 @@ void GAfitnessOFClass::initialise()
     // Mesh reading
     this->readSETfile();
     this->readFacesFile();
+    this->readPointsFile();
     
 }
 
@@ -176,18 +177,74 @@ void GAfitnessOFClass::parseFaceLine(std::string& buffer,
     int nextLimit;
     for (int i=0; i<nElems; i++)
     {
-        nextLimit = (int)(buffer.find(" "));
-        connectivities[i] = std::atoi(buffer.c_str());
+        nextLimit = (int)(buffer.find (" "));
+        connectivities[i] = std::atoi (buffer.c_str ());
         buffer = charUtils::trim (buffer.substr (nextLimit+1, buffer.size()));
     }
-    
-    
-    
 }
 
+void GAfitnessOFClass::readPointsFile()
+{
+    std::string buffer;
+    std::ifstream pointsFile;
+    
+    pointsFile.open (this->mainCaseDir + "/constant/polyMesh/points");
+    this->readPointsHeader (pointsFile);
+    
+    while(std::getline (pointsFile, buffer))
+    {
+        if (buffer.empty ()) continue;
+        if (!charUtils::anyNumbers (buffer)) continue;
+        this->mesh.nPoints = std::stoi (buffer);
+        break;
+    }
+    
+    // allocates points
+    this->mesh.points.resize (this->mesh.nPoints);
+    std::cout << "    " << this->mesh.nPoints
+              << " points allocated"
+              << std::endl;
 
+    std::cout << "Reading points file, may take a while..." << std::endl;
+    int counter = -1;
+    while (std::getline(pointsFile, buffer))
+    {
+        if (buffer.empty ()) continue;
+        if (buffer == "(")   continue;
 
+        counter++;
+        if (counter > this->mesh.nPoints-1) break;
+        this->parsePointsLine(buffer, this->mesh.points[counter].coords);
+        this->mesh.points[counter].iPoint = counter;
+    }
+}
 
+void GAfitnessOFClass::readPointsHeader (std::istream& file)
+{
+    this->pointsHeader.resize (constant::NHEADERLINES);
+    std::string buffer;
+    for (int iLine=0; iLine < constant::NHEADERLINES; iLine++)
+    {
+        std::getline (file, buffer);
+        this->pointsHeader[iLine] = buffer;
+    }
+}
+
+void GAfitnessOFClass::parsePointsLine (std::string& buffer,
+                                        std::vector<double>& coord)
+{
+    int limit;
+    limit = (int)(buffer.find ("("));
+    buffer = charUtils::trim (buffer.substr (limit+1, buffer.size ()));
+    
+    for (int iCoor=0; iCoor < constant::DIM; iCoor++)
+    {
+        limit = (int)(buffer.find(" "));
+        
+        coord.push_back (std::stod (buffer.substr (0, limit)));
+        buffer = charUtils::trim (buffer.substr (limit+1, buffer.size()));
+    }
+}
 
 
 

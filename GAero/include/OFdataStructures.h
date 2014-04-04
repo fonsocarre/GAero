@@ -29,7 +29,7 @@ public:
 class pointClass {
 public:
     int iPoint;
-    std::vector<int> coords;
+    std::vector<double> coords;
 };
 
 //bool faceClass::operator< (const faceClass& obj)
