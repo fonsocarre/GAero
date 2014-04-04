@@ -77,7 +77,9 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! Method for reading and storing points file header.
     void readPointsHeader (std::istream& file);
-
+    
+    //! Write points file with given coordinates vector
+    
 public:
     //! Similar to GAsettingsClass constructor.
     /** Specific for this class.
