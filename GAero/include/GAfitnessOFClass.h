@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <set>
 #include "GAfitnessClass.h"
 #include "Configuration.h"
 #include "OFtopology.h"
@@ -48,8 +49,20 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Name of the optimised patch in the mesh.
     std::string shapePatch;
     
-    //! Mesh data structure
-    OFtopology mesh;
+    //! Temporary mesh data structure
+    //OFtopology mesh;
+    
+    //! Point coordinates
+    std::valarray<double> points;
+    
+    //! Number of points
+    int nPoints;
+    
+    //! Valarray of points in shape patch
+    std::valarray<int> pointsInPatch;
+    
+    //! Number of points in patch
+    int nPointsInPatch;
     
     //! Strings containing points file header
     std::vector<std::string> pointsHeader;
@@ -57,17 +70,17 @@ class GAfitnessOFClass: public GAfitnessClass {
     // **********************METHODS*********************
     
     //! Method for reading SET file.
-    void readSETfile ();
+    void readSETfile (OFtopology& mesh);
     
     //! Method for reading faces file.
     /** Special care: faces must be ordered!!! */
-    void readFacesFile ();
+    void readFacesFile (OFtopology& mesh);
     //! Parses faces lines
     void parseFaceLine (std::string& buffer,
                         std::vector<int>& connectivities);
     
     //! Method for reading points.
-    void readPointsFile ();
+    void readPointsFile (OFtopology& mesh);
     void parsePointsLine (std::string& buffer,
                           std::vector<double>& coord);
 
@@ -78,7 +91,13 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Method for reading and storing points file header.
     void readPointsHeader (std::istream& file);
     
+    //! Method for creating the topology
+    void createTopology (OFtopology& mesh);
+    
     //! Write points file with given coordinates vector
+    void writePointsFile ();
+    
+    void writeTempPoints (OFtopology& mesh);
     
 public:
     //! Similar to GAsettingsClass constructor.

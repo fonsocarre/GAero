@@ -1,0 +1,5 @@
+OBJECTS = \
+$(OBJECTS_DIR)/extrudedTriangleCellShape.o\
+$(OBJECTS_DIR)/extrudedQuadCellShape.o\
+$(OBJECTS_DIR)/create3DCellShape.o\
+$(OBJECTS_DIR)/fluentMeshToFoam.o

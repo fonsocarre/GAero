@@ -56,11 +56,22 @@ void GAfitnessOFClass::initialise()
     command = this->initScript + " " + this->mainCaseDir;
     std::system (command.c_str());
     
-    // Mesh reading
-    this->readSETfile();
-    this->readFacesFile();
-    this->readPointsFile();
+    // new temporary mesh topology
+    OFtopology* mesh = new OFtopology;
     
+    // Mesh reading
+    // checked
+    this->readSETfile    (*mesh);
+    this->readFacesFile  (*mesh);
+    this->readPointsFile (*mesh);
+    
+    // Create topology
+    this->createTopology (*mesh);
+    
+    //this->writeTempPoints(*mesh);
+    
+    // deallocate mesh topology
+    delete mesh;
 }
 
 // TEMPORARY
@@ -71,7 +82,7 @@ double GAfitnessOFClass::getFitness
     return genome[0]*genome[1];
 }
 
-void GAfitnessOFClass::readSETfile ()
+void GAfitnessOFClass::readSETfile (OFtopology& mesh)
 {
     std::ifstream setFile;
     std::string buffer;
@@ -90,16 +101,15 @@ void GAfitnessOFClass::readSETfile ()
     this->skipHeader (setFile);
     
     // get number of faces
-    while(std::getline (setFile, buffer))
+    while (std::getline (setFile, buffer))
     {
-        if (buffer.empty ()) continue;
         if (!charUtils::anyNumbers (buffer)) continue;
-        this->mesh.nFacesInShape = std::stoi (buffer);
+        mesh.nFacesInShape = std::stoi (buffer);
         break;
     }
     // allocates faces
-    this->mesh.faces.resize (this->mesh.nFacesInShape);
-    std::cout << "    " << this->mesh.nFacesInShape
+    mesh.faces.resize (mesh.nFacesInShape);
+    std::cout << "    " << mesh.nFacesInShape
               << " faces allocated"
               << std::endl;
     
@@ -108,14 +118,14 @@ void GAfitnessOFClass::readSETfile ()
     {
         if (buffer.empty ()) continue;
         if (buffer.find ("(") != std::string::npos) continue;
-        if (buffer.find (")") != std::string::npos) break;
+        if (buffer == ")") break;
         counter++;
-        this->mesh.faces[counter].iFace = std::stoi (buffer);
+        mesh.faces[counter].iFace = std::stoi (buffer);
     }
 
-    setFile.close();
+    setFile.close ();
     
-    std::sort (this->mesh.faces.begin(), this->mesh.faces.end());
+    std::sort (mesh.faces.begin (), mesh.faces.end ());
 }
 
 void GAfitnessOFClass::skipHeader (std::istream& file)
@@ -128,7 +138,7 @@ void GAfitnessOFClass::skipHeader (std::istream& file)
     
 }
 
-void GAfitnessOFClass::readFacesFile()
+void GAfitnessOFClass::readFacesFile(OFtopology& mesh)
 {
     std::string buffer;
     std::ifstream facesFile;
@@ -136,54 +146,53 @@ void GAfitnessOFClass::readFacesFile()
     facesFile.open(this->mainCaseDir + "/constant/polyMesh/faces");
     
     this->skipHeader (facesFile);
-    while(std::getline (facesFile, buffer))
+    while (std::getline (facesFile, buffer))
     {
         if (buffer.empty ()) continue;
         if (!charUtils::anyNumbers (buffer)) continue;
-        this->mesh.nFaces = std::stoi (buffer);
+        mesh.nFaces = std::stoi (buffer);
         break;
     }
     
-    std::vector<int> temp;
     int counter = -1;
     int iFace = 0;
     while (std::getline(facesFile, buffer))
     {
         if (buffer.empty ()) continue;
-        if (buffer[0] == '(') continue;
+        if (buffer == "(") continue;
         
         counter++;
-        if (counter == this->mesh.faces[iFace].iFace)
+        if (counter == mesh.faces[iFace].iFace)
         {
-            this->parseFaceLine(buffer, temp);
+            this->parseFaceLine (buffer, mesh.faces[iFace].points);
             iFace++;
-            if (iFace >= this->mesh.nFacesInShape) break;
+            if (iFace == mesh.nFacesInShape) break;
         }
     }
-    
+    facesFile.close ();
 }
 
 
-void GAfitnessOFClass::parseFaceLine(std::string& buffer,
-                                     std::vector<int>& connectivities)
+void GAfitnessOFClass::parseFaceLine (std::string& buffer,
+                                      std::vector<int>& connectivities)
 {
     int firstLimit;
-    firstLimit = (int)(buffer.find("("));
-    int nElems = std::atoi((buffer.substr(0,1)).c_str());
-    connectivities.resize(nElems);
+    firstLimit = (int)(buffer.find ("("));
+    int nElems = std::atoi((buffer.substr (0,1)).c_str ());
+    connectivities.resize (nElems);
     
-    buffer = charUtils::trim (buffer.substr (firstLimit+1, buffer.size()));
+    buffer = charUtils::trim (buffer.substr (firstLimit+1, buffer.size ()));
     
     int nextLimit;
     for (int i=0; i<nElems; i++)
     {
         nextLimit = (int)(buffer.find (" "));
         connectivities[i] = std::atoi (buffer.c_str ());
-        buffer = charUtils::trim (buffer.substr (nextLimit+1, buffer.size()));
+        buffer = charUtils::trim (buffer.substr (nextLimit+1, buffer.size ()));
     }
 }
 
-void GAfitnessOFClass::readPointsFile()
+void GAfitnessOFClass::readPointsFile(OFtopology& mesh)
 {
     std::string buffer;
     std::ifstream pointsFile;
@@ -195,13 +204,13 @@ void GAfitnessOFClass::readPointsFile()
     {
         if (buffer.empty ()) continue;
         if (!charUtils::anyNumbers (buffer)) continue;
-        this->mesh.nPoints = std::stoi (buffer);
+        mesh.nPoints = std::stoi (buffer);
         break;
     }
     
     // allocates points
-    this->mesh.points.resize (this->mesh.nPoints);
-    std::cout << "    " << this->mesh.nPoints
+    mesh.points.resize (mesh.nPoints);
+    std::cout << "    " << mesh.nPoints
               << " points allocated"
               << std::endl;
 
@@ -213,10 +222,11 @@ void GAfitnessOFClass::readPointsFile()
         if (buffer == "(")   continue;
 
         counter++;
-        if (counter > this->mesh.nPoints-1) break;
-        this->parsePointsLine(buffer, this->mesh.points[counter].coords);
-        this->mesh.points[counter].iPoint = counter;
+        if (counter > mesh.nPoints-1) break;
+        parsePointsLine(buffer, mesh.points[counter].coords);
+        mesh.points[counter].iPoint = counter;
     }
+    pointsFile.close ();
 }
 
 void GAfitnessOFClass::readPointsHeader (std::istream& file)
@@ -239,7 +249,7 @@ void GAfitnessOFClass::parsePointsLine (std::string& buffer,
     
     for (int iCoor=0; iCoor < constant::DIM; iCoor++)
     {
-        limit = (int)(buffer.find(" "));
+        limit = (int)(buffer.find (" "));
         
         coord.push_back (std::stod (buffer.substr (0, limit)));
         buffer = charUtils::trim (buffer.substr (limit+1, buffer.size()));
@@ -247,6 +257,54 @@ void GAfitnessOFClass::parsePointsLine (std::string& buffer,
 }
 
 
+void GAfitnessOFClass::createTopology (OFtopology& mesh)
+{
+    std::set<int> pointsInPatch;
+    
+    for (int iFace = 0; iFace < mesh.nFacesInShape; iFace++)
+    {
+        for (int iPoint=0; iPoint<mesh.faces[iFace].points.size (); iPoint++)
+        {
+            pointsInPatch.insert (mesh.faces[iFace].points[iPoint]);
+        }
+    }
+    std::cout << "    Found " << pointsInPatch.size ()
+              << " points in patch "
+              << this->shapePatch
+              << std::endl;
+    
+    std::set<int>::iterator iter = pointsInPatch.begin();
+    
+    // Point of shape to valarray pointsInPatch
+    this->pointsInPatch.resize (pointsInPatch.size ());
+    for (int iPoint = 0; iPoint < pointsInPatch.size (); iPoint++, std::advance(iter, 1))
+    {
+        this->pointsInPatch[iPoint] = *iter;
+    }
+    
+    // Points of mesh to valarray points.
+    
+    
+    
+}
+
+void GAfitnessOFClass::writeTempPoints (OFtopology& mesh)
+{
+    std::ofstream file;
+    file.open(this->mainCaseDir + "/../../Output/temp.dat");
+    
+    for (int iFace=0; iFace<mesh.nFacesInShape; iFace++)
+    {
+        for (int iPoint=0; iPoint<mesh.faces[iFace].points.size (); iPoint++)
+        {
+            for (int iCoor=0; iCoor<constant::DIM; iCoor++)
+            {
+                file << mesh.points[mesh.faces[iFace].points[iPoint]].coords[iCoor] << "    ";
+            }
+            file << std::endl;
+        }
+    }
+}
 
 
 

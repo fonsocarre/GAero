@@ -1,0 +1,5 @@
+LOCAL_OBJECTS = \
+extrudedTriangleCellShape.o\
+extrudedQuadCellShape.o\
+create3DCellShape.o\
+fluentMeshToFoam.o
