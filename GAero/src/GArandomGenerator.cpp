@@ -10,21 +10,21 @@
 
 GArandom::GArandom():generator(0)
 {
-    this->seed = (int)time(0);
+    this->seed = static_cast<int> (time(0));
     
     static CRandomMersenne temp(seed);
     this->generator = temp;
     //std::cout<<"Init   "<<this->generator.Random()<<std::endl;
 }
 
-bool GArandom::flipCoin()
+bool GArandom::flipCoin ()
 {
     double num = this->generator.Random();
     if (num < 0.5) return true;
     else return false;
 }
 
-bool GArandom::flipPounderedCoin(double trueProb)
+bool GArandom::flipPounderedCoin (double trueProb)
 {
     double num = this->generator.Random();
     if (num < trueProb) return true;
@@ -36,11 +36,11 @@ int GArandom::chooseInt(int low, int high)
     return this->generator.IRandom(low, high);
 }
 
-int GArandom::roulette(std::vector<double> weights)
+int GArandom::roulette (std::vector<double> weights)
 {
     //normalize vector weights
     double sum = 0;
-    int nElements = (int)(weights.size());
+    int nElements = static_cast<int>(weights.size ());
     
     double min = weights[weights.size()-1];
 

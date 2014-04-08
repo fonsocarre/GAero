@@ -13,6 +13,7 @@
 
 //! Namespace containing population data structures for GAero
 namespace populationSto {
+    
     //! Structure for storing population data gathered while running GAero
     struct individual {
         //! Vector for genome (parameters) storage
@@ -20,6 +21,7 @@ namespace populationSto {
         //! Fitness value of the individual
         double fitness;
     };
+    
 }
 
 

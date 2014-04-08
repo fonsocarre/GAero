@@ -284,7 +284,7 @@ bool GAclass::checkConvergence()
 double GAclass::fitnessVariation()
 {
     double fitness = 0;
-    for (int i=(int)(this->maxFitness.size()-1);
+    for (int i=static_cast<int>(this->maxFitness.size()-1);
                         i >= this->maxFitness.size()-4;
                         i--)
     {

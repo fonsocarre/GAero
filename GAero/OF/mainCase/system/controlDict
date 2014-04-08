@@ -46,7 +46,7 @@ purgeWrite      0;
 //secondaryPurgeWrite      1;       // keep all but last dump
 
 
-writeFormat     binary;
+writeFormat   ascii;
 
 writePrecision  6;
 

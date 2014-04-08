@@ -54,6 +54,7 @@
 		198F58D718E9AB0200935C94 /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = GAero/src/userintf.cpp; sourceTree = SOURCE_ROOT; };
 		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
+		19BC62D018F3FB0900B9B5DB /* fileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fileUtils.h; path = include/fileUtils.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
 		19DB983718ABDC9F004433A0 /* GApopulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GApopulation.h; path = GAero/include/GApopulation.h; sourceTree = SOURCE_ROOT; };
@@ -125,6 +126,7 @@
 				192C3CCD18EDAE0D0045F1EE /* charUtilities.h */,
 				1993A59218AD26240036493B /* utilities.h */,
 				1944DB2518EC721B00409027 /* constants.h */,
+				19BC62D018F3FB0900B9B5DB /* fileUtils.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";

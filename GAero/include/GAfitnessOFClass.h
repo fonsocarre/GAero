@@ -19,6 +19,7 @@
 #include "OFtopology.h"
 #include "constants.h"
 #include "charUtilities.h"
+#include "fileUtils.h"
 
 
 //! OpenFOAM interface with GAero
@@ -53,7 +54,11 @@ class GAfitnessOFClass: public GAfitnessClass {
     //OFtopology mesh;
     
     //! Point coordinates
-    std::valarray<double> points;
+    /** will be stored first by coord, that is
+        points[iCoord][iPoint]. Like that,
+        it will be easier to access to whole vectors
+        when calling interpolate. */
+    std::valarray< std::valarray<double> > points;
     
     //! Number of points
     int nPoints;
@@ -94,9 +99,10 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Method for creating the topology
     void createTopology (OFtopology& mesh);
     
-    //! Write points file with given coordinates vector
+    //! Write points file in OF format
     void writePointsFile ();
     
+    //! Temporary function for writing mesh points
     void writeTempPoints (OFtopology& mesh);
     
 public:
