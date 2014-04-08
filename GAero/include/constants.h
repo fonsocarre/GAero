@@ -18,6 +18,9 @@ namespace constant {
     
     //! Dimension of the problem.
     const int DIM = 3;
+    
+    //! Output default precision
+    const int PRECISION = 8;
 }
 
 

@@ -52,37 +52,77 @@ void GAfitnessOFClass::initialise()
     // OF main case run
     std::cout << "Calling OF for main case..." << std::endl;
     command = this->cleanScript + " " + this->mainCaseDir;
-    std::system (command.c_str());
+    std::system (command.c_str ());
     command = this->initScript + " " + this->mainCaseDir;
-    std::system (command.c_str());
+    std::system (command.c_str ());
     
-    // new temporary mesh topology
-    OFtopology* mesh = new OFtopology;
-    
-    // Mesh reading
-    // checked
-    this->readSETfile    (*mesh);
-    this->readFacesFile  (*mesh);
-    this->readPointsFile (*mesh);
-    
-    // Create topology
-    this->createTopology (*mesh);
-    
-    //this->writeTempPoints(*mesh);
-    
-    // deallocate mesh topology
-    delete mesh;
-    
-    // TEMP
-    this-> writePointsFile ();
+    {
+        // new temporary mesh topology
+        OFtopology* mesh = new OFtopology;
+        
+        // Mesh reading
+        // checked
+        this->readSETfile    (*mesh);
+        this->readFacesFile  (*mesh);
+        this->readPointsFile (*mesh);
+        
+        // Create topology
+        this->createTopology (*mesh);
+        
+        // deallocate mesh topology
+        delete mesh;
+    }
 }
 
-// TEMPORARY
+
 double GAfitnessOFClass::getFitness
                         (std::vector<double> genome)
 {
-    //todo ANADIR LISTA DE INDIVIDUALS.
-    return genome[0]*genome[1];
+    double fitness;
+    std::string command;
+    
+    // Generates new OF case duplicating the main one
+    command = this->duplicateScript
+            + " " + this->mainCaseDir
+            + " " + this->tempCaseDir;
+    std::system (command.c_str ());
+    
+    // GET PROFILE POINTS
+    
+    // MORPH MESH
+    
+    // WRITE MESH
+    
+    // RUN CASE
+    
+    // EXTRACT FITNESS
+    
+    // Deletes temp case
+    command = this->duplicateScript
+            + " " + this->tempCaseDir;
+    std::system (command.c_str ());
+    
+    fitness = genome[0] + genome[1];
+    
+    std::vector<double> temp;
+    this->getForceCoeffs(temp);
+    
+    this->addIndividual(genome, fitness);
+    
+    return fitness;
+}
+
+
+void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs)
+{
+    std::string coeffsString;
+    std::string command;
+    
+    command = this->tempCaseDir
+            + "/postProcessing/forceCoeffs/0/forceCoeffs.dat";
+    command = "tail -1 " + command + " | head -1";
+    
+    coeffsString = utilities::exec(command.c_str ());
 }
 
 void GAfitnessOFClass::readSETfile (OFtopology& mesh)
@@ -93,18 +133,6 @@ void GAfitnessOFClass::readSETfile (OFtopology& mesh)
     fileUtils::openFile(setFile, this->mainCaseDir +
                                  "/constant/polyMesh/sets/" +
                         this->shapePatch);
-    
-    //setFile.open (this->mainCaseDir +
-    //              "/constant/polyMesh/sets/" +
-    //              this->shapePatch);
-    //if (setFile.is_open ())
-    //{
-    //    std::cout << "SET file successfully open" << std::endl;
-    //}
-    //else
-    //{
-    //    std::cerr << "Error opening set file" << std::endl;
-    //}
 
     this->skipHeader (setFile);
     
@@ -340,12 +368,46 @@ void GAfitnessOFClass::writePointsFile ()
     fileUtils::openFile(pointsFile, this->tempCaseDir +
                                     "/constant" +
                                     "/polyMesh/points");
-    
 
+    // Write header
+    for (int iLine=0; iLine<constant::NHEADERLINES; iLine++)
+    {
+        pointsFile << this->pointsHeader[iLine] << std::endl;
+    }
+    
+    pointsFile << std::endl;
+    pointsFile << std::endl;
+    
+    pointsFile << this->nPoints << std::endl;
+    pointsFile << "(" << std::endl;
+    
+    pointsFile.precision(constant::PRECISION);
+    
+    for (int iPoint=0; iPoint<this->nPoints; iPoint++)
+    {
+        pointsFile << "(";
+        for (int iCoor=0; iCoor<constant::DIM; iCoor++)
+        {
+            pointsFile << this->points[iCoor][iPoint]
+                       << " ";
+        }
+        pointsFile << ")" << std::endl;
+    }
+    pointsFile << ")" << std::endl;
+    
+    pointsFile.close ();
 }
 
-
-
+void GAfitnessOFClass::addIndividual (std::vector<double>& genome,
+                    double fitness)
+{
+    populationSto::individual temp;
+    temp.genome = genome;
+    temp.fitness = fitness;
+    
+    this->population.push_back (temp);
+    ++(this->nPopulation);
+}
 
 
 

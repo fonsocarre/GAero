@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 namespace fileUtils {
     //! Template function for handling IO files.
@@ -24,5 +25,14 @@ namespace fileUtils {
                       << route
                       << std::endl;
         }
+    }
+    
+    inline std::vector<double> parseForceCoeffsLine (std::string& buffer)
+    {
+        std::vector<double> result;
+        
+        
+        
+        return result;
     }
 }

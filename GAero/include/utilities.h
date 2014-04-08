@@ -5,9 +5,14 @@
 //  Created by Alfonso Carre on 13/02/14.
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
+#pragma once
 //! Preprocessor guard
 #ifndef GAero_utilities_h
 #define GAero_utilities_h
+
+#include <string>
+#include <iostream>
+#include <stdio.h>
 
 namespace utilities
 {
@@ -16,6 +21,20 @@ namespace utilities
         double sum = fit1+fit2;
         fit1 /= sum;
         fit2 /= sum;
+    }
+    
+    inline std::string exec(const char* cmd)
+    {
+        FILE* pipe = popen(cmd, "r");
+        if (!pipe) return "ERROR";
+        char buffer[128];
+        std::string result = "";
+        while(!feof(pipe)) {
+            if(fgets(buffer, 128, pipe) != NULL)
+                result += buffer;
+        }
+        pclose(pipe);
+        return result;
     }
 }
 

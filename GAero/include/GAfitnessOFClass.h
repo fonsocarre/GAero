@@ -20,6 +20,8 @@
 #include "constants.h"
 #include "charUtilities.h"
 #include "fileUtils.h"
+#include "populationStorage.h"
+#include "utilities.h"
 
 
 //! OpenFOAM interface with GAero
@@ -105,6 +107,13 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Temporary function for writing mesh points
     void writeTempPoints (OFtopology& mesh);
     
+    //! Add individual to population
+    void addIndividual (std::vector<double>& genome,
+                        double fitness);
+    
+    //! gets ForceCoeffs from forceCoeffs.dat file
+    void getForceCoeffs (std::vector<double>& forceCoeffs);
+    
 public:
     //! Similar to GAsettingsClass constructor.
     /** Specific for this class.
@@ -118,7 +127,7 @@ public:
     //! Calls shell script for running the basic OF case.
     /** Also must read OF mesh and create topology */
     void initialise ();
-    //! Creates temp case, runs and parse output.
+    //! Creates temp case, runs and parses output.
     double getFitness (std::vector<double> genome);
 };
 

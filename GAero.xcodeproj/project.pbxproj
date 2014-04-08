@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		192C3CB118ED4FCC0045F1EE /* GAfitnessOFClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192C3CB018ED4FCC0045F1EE /* GAfitnessOFClass.cpp */; };
-		192C3CCB18ED9E280045F1EE /* OFtopology.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192C3CCA18ED9E280045F1EE /* OFtopology.cpp */; };
 		192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */; };
 		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
 		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
@@ -42,7 +41,6 @@
 		192C3CAF18ED4FB80045F1EE /* GAfitnessOFClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAfitnessOFClass.h; path = GAero/include/GAfitnessOFClass.h; sourceTree = SOURCE_ROOT; };
 		192C3CB018ED4FCC0045F1EE /* GAfitnessOFClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAfitnessOFClass.cpp; path = GAero/src/GAfitnessOFClass.cpp; sourceTree = SOURCE_ROOT; };
 		192C3CC918ED9E170045F1EE /* OFtopology.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OFtopology.h; path = GAero/include/OFtopology.h; sourceTree = SOURCE_ROOT; };
-		192C3CCA18ED9E280045F1EE /* OFtopology.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OFtopology.cpp; path = GAero/src/OFtopology.cpp; sourceTree = SOURCE_ROOT; };
 		192C3CCC18ED9E6E0045F1EE /* OFdataStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OFdataStructures.h; path = GAero/include/OFdataStructures.h; sourceTree = SOURCE_ROOT; };
 		192C3CCD18EDAE0D0045F1EE /* charUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = charUtilities.h; path = include/charUtilities.h; sourceTree = "<group>"; };
 		192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAoutputclass.cpp; path = src/GAoutputclass.cpp; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				192C3CAF18ED4FB80045F1EE /* GAfitnessOFClass.h */,
 				192C3CB018ED4FCC0045F1EE /* GAfitnessOFClass.cpp */,
 				192C3CC918ED9E170045F1EE /* OFtopology.h */,
-				192C3CCA18ED9E280045F1EE /* OFtopology.cpp */,
 				192C3CCC18ED9E6E0045F1EE /* OFdataStructures.h */,
 			);
 			name = OpenFOAM;
@@ -313,7 +310,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19DB983C18ABDCF5004433A0 /* GAclass.cpp in Sources */,
-				192C3CCB18ED9E280045F1EE /* OFtopology.cpp in Sources */,
 				192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */,
 				198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */,
 				19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */,

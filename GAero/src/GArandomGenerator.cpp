@@ -62,11 +62,6 @@ int GArandom::roulette (std::vector<double> weights)
 
     double num = this->generator.Random();
     assert(num<=cummulative[cummulative.size()-1]);
-    //avoidance of num > max(cummulative)
-//    while (num>cummulative[cummulative.size()-1])
-//    {
-//        num = this->generator.Random();
-//    }
     
     for (int j=0; j<nElements; j++)
     {

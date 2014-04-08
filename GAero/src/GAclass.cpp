@@ -71,7 +71,7 @@ GAclass::~GAclass()
     this->nGenerations=0;
     this->nPopulation=0;
     this->GAout << "GAero successfully finished with ";
-    this->GAout << this->fitness->iPopulation <<
+    this->GAout << this->fitness->nPopulation <<
             " function calls." << std::endl;
 }
 
@@ -201,9 +201,12 @@ void GAclass::crossIndividuals()
         // roulette selection of the two parents
         int index1 = this->randomGen.roulette (weights);
         int index2 = this->randomGen.roulette (weights);
-        while (index1 == index2)
+        if (!(this->GAsettings.nCrossing == 1))
         {
-            index2 = this->randomGen.roulette (weights);
+            while (index1 == index2)
+            {
+                index2 = this->randomGen.roulette (weights);
+            }
         }
         
         if ((index1==-1) || (index2==-1))

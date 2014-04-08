@@ -25,7 +25,7 @@ double GAfitnessSample::getFitness (
     temp.genome = genome;
     temp.fitness = fitness;
     this->population.push_back (temp);
-    ++(this->iPopulation);
+    ++(this->nPopulation);
     
     return fitness;
 }

@@ -25,7 +25,7 @@ public:
     //! Virtual method for reading settings from file.
     virtual void getConfiguration (const char* settingsFile) = 0;
     //! Counter of population stored
-    int iPopulation = 0;
+    int nPopulation = 0;
     //! Virtual initiate function.
     virtual void initialise() = 0;
     //! Virtual method for getFitness.
