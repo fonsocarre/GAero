@@ -13,6 +13,9 @@ namespace constant {
     //! Epsilon definition for convergence check.
     const double EPSILON = 1e-4;
     
+    //! Epsilon definition for profile coordinates
+    const double EPSILON1 = 1e-5;
+    
     //! Number of lines in OpenFOAM header
     const int NHEADERLINES = 16;
     

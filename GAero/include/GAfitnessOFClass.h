@@ -14,6 +14,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <set>
+#include <math.h>
 #include "GAfitnessClass.h"
 #include "Configuration.h"
 #include "OFtopology.h"
@@ -22,6 +23,8 @@
 #include "fileUtils.h"
 #include "populationStorage.h"
 #include "utilities.h"
+#include "airfoil.h"
+#include "NACA4digits.h"
 
 
 //! OpenFOAM interface with GAero
@@ -73,6 +76,13 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! Strings containing points file header
     std::vector<std::string> pointsHeader;
+    
+    //! Polymorphic pointer to airfoil class for naca eqs.
+    //! Memory dynamically allocated, check DELETE
+    airfoil* NACA;
+    
+    //! NACA class for eqs.
+    //NACA4digits NACAeqs;
     
     // **********************METHODS*********************
     

@@ -56,6 +56,8 @@ void GAfitnessOFClass::initialise()
     command = this->initScript + " " + this->mainCaseDir;
     std::system (command.c_str ());
     
+    this->NACA = new NACA4digits;
+    
     {
         // new temporary mesh topology
         OFtopology* mesh = new OFtopology;
@@ -87,13 +89,31 @@ double GAfitnessOFClass::getFitness
             + " " + this->tempCaseDir;
     std::system (command.c_str ());
     
+    std::vector<double> temp;
+    genome[0] = 0.24;
+    genome[1] = 0.18;
     // GET PROFILE POINTS
+    std::ofstream tempFile;
+    tempFile.open("/Users/fonso/C++/GAero/GAero/tempFIle.txt");
+    for (int i = 0; i < 200; i++)
+    {
+        temp = this->NACA->operator() (genome, (i/199.));
+        for (int iCoor=0; iCoor < 2; iCoor++)
+        {
+            tempFile << i/199.<< " " << temp[iCoor] << std::endl;;
+        }
+        temp.clear ();
+        //tempFile << std::endl;
+    }
+    
     
     // MORPH MESH
     
     // WRITE MESH
     
     // RUN CASE
+    std::vector<double> temp1;
+    this->getForceCoeffs(temp1);
     
     // EXTRACT FITNESS
     
@@ -103,9 +123,6 @@ double GAfitnessOFClass::getFitness
     std::system (command.c_str ());
     
     fitness = genome[0] + genome[1];
-    
-    std::vector<double> temp;
-    this->getForceCoeffs(temp);
     
     this->addIndividual(genome, fitness);
     
@@ -122,7 +139,9 @@ void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs)
             + "/postProcessing/forceCoeffs/0/forceCoeffs.dat";
     command = "tail -1 " + command + " | head -1";
     
-    coeffsString = utilities::exec(command.c_str ());
+    coeffsString = utilities::exec (command.c_str ());
+    
+    forceCoeffs = fileUtils::parseForceCoeffsLine (coeffsString);
 }
 
 void GAfitnessOFClass::readSETfile (OFtopology& mesh)

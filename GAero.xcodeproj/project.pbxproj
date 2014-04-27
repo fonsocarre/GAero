@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		192C3CB118ED4FCC0045F1EE /* GAfitnessOFClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192C3CB018ED4FCC0045F1EE /* GAfitnessOFClass.cpp */; };
 		192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */; };
+		1949DFA118F4304000720303 /* NACA4digits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1949DFA018F4304000720303 /* NACA4digits.cpp */; };
 		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
 		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
 		19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */; };
@@ -46,6 +47,9 @@
 		192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAoutputclass.cpp; path = src/GAoutputclass.cpp; sourceTree = "<group>"; };
 		192CB75D18AE43A6001A5D6E /* GAoutputclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAoutputclass.h; path = include/GAoutputclass.h; sourceTree = "<group>"; };
 		1944DB2518EC721B00409027 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = constants.h; path = include/constants.h; sourceTree = "<group>"; };
+		1949DF9E18F42E3C00720303 /* airfoil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = airfoil.h; path = GAero/include/airfoil.h; sourceTree = SOURCE_ROOT; };
+		1949DF9F18F42F0900720303 /* NACA4digits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NACA4digits.h; path = GAero/include/NACA4digits.h; sourceTree = SOURCE_ROOT; };
+		1949DFA018F4304000720303 /* NACA4digits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NACA4digits.cpp; path = GAero/src/NACA4digits.cpp; sourceTree = SOURCE_ROOT; };
 		198F58D418E9AA2A00935C94 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = GAero/include/randomc.h; sourceTree = SOURCE_ROOT; };
 		198F58D518E9AA2A00935C94 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = GAero/include/sfmt.h; sourceTree = SOURCE_ROOT; };
 		198F58D618E9AB0200935C94 /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = GAero/src/mersenne.cpp; sourceTree = SOURCE_ROOT; };
@@ -100,6 +104,7 @@
 		192C3CAE18ED4F840045F1EE /* OpenFOAM */ = {
 			isa = PBXGroup;
 			children = (
+				1949DF9D18F42E1900720303 /* NACA */,
 				192C3CAF18ED4FB80045F1EE /* GAfitnessOFClass.h */,
 				192C3CB018ED4FCC0045F1EE /* GAfitnessOFClass.cpp */,
 				192C3CC918ED9E170045F1EE /* OFtopology.h */,
@@ -115,6 +120,16 @@
 				192CB75D18AE43A6001A5D6E /* GAoutputclass.h */,
 			);
 			name = GAoutput;
+			sourceTree = "<group>";
+		};
+		1949DF9D18F42E1900720303 /* NACA */ = {
+			isa = PBXGroup;
+			children = (
+				1949DF9E18F42E3C00720303 /* airfoil.h */,
+				1949DF9F18F42F0900720303 /* NACA4digits.h */,
+				1949DFA018F4304000720303 /* NACA4digits.cpp */,
+			);
+			name = NACA;
 			sourceTree = "<group>";
 		};
 		1993A59118AD260A0036493B /* Utilities */ = {
@@ -312,6 +327,7 @@
 				19DB983C18ABDCF5004433A0 /* GAclass.cpp in Sources */,
 				192CB75C18AE4397001A5D6E /* GAoutputclass.cpp in Sources */,
 				198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */,
+				1949DFA118F4304000720303 /* NACA4digits.cpp in Sources */,
 				19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */,
 				19F7C15B18EC1566005F1FD2 /* GAfitnessSample.cpp in Sources */,
 				198F58D918E9AB0200935C94 /* userintf.cpp in Sources */,

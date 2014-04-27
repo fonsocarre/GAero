@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "charUtilities.h"
 
 namespace fileUtils {
     //! Template function for handling IO files.
@@ -31,8 +32,14 @@ namespace fileUtils {
     {
         std::vector<double> result;
         
-        
-        
+        int limit;
+        while (true)
+        {
+            if (buffer.find ("\t") == std::string::npos) break;
+            limit = static_cast<int> (buffer.find("\t"));
+            result.push_back (std::stod ( buffer.substr (0, limit)));
+            buffer = charUtils::trim (buffer.substr (limit+1, buffer.size ()));
+        }
         return result;
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GAfitnessOFClass::initialise():GAfitnessOFClass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GAfitnessOFClass::createTopology(OFtopology&amp;):GAfitnessOFClass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GAfitnessOFClass::readSETfile(OFtopology&amp;):GAfitnessOFClass.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
