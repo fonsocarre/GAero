@@ -25,6 +25,7 @@
 #include "utilities.h"
 #include "airfoil.h"
 #include "NACA4digits.h"
+#include "interpolationKernelClass.h"
 
 
 //! OpenFOAM interface with GAero
@@ -67,6 +68,8 @@ class GAfitnessOFClass: public GAfitnessClass {
         when calling interpolate. */
     std::valarray< std::valarray<double> > points;
     
+    std::valarray< std::valarray<double> > sPoints;
+    
     //! Number of points
     int nPoints;
     
@@ -85,6 +88,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! NACA class for eqs.
     //NACA4digits NACAeqs;
+    
+    interpolationKernelClass interpolationKernel;
     
     // **********************METHODS*********************
     
@@ -141,6 +146,8 @@ public:
     void initialise ();
     //! Creates temp case, runs and parses output.
     double getFitness (std::vector<double> genome);
+    
+    GAfitnessOFClass () {};
 };
 
 #endif

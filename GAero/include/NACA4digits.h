@@ -52,12 +52,4 @@ public:
                               double& yPrevCoord,
                               double chordLength);
     
-    //! Basic return of coordinates given the genome and the x coordinate.
-    /** Genome must contain:
-        - genome[0] = 2 first numbers of NACA. i.e. 00 for NACA 0012
-        - genome[1] = 2 last numbers. i.e. 12 for NACA 0012.
-        It assumes chord length = 1 unit */
-    //std::vector<double> operator()
-    //                  (const std::vector<double>& genome,
-    //                   const double xCoor);
 };

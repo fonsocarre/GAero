@@ -76,6 +76,21 @@ void GAfitnessOFClass::initialise()
         // deallocate mesh topology
         delete mesh;
     }
+    
+    this->interpolationKernel.init(this->RBFsetting);
+    
+    // s points to std::vector
+    std::vector< std::vector<double>> sPoints; // [iCoor][iPoint]
+    this->sPoints.resize (constant::DIM);
+    for (int iCoor=0; iCoor<constant::DIM; iCoor++)
+    {
+        this->sPoints[iCoor].resize (this->nPointsInPatch);
+        for (int iPoint=0; iPoint<this->nPointsInPatch; iPoint++)
+        {
+            this->sPoints[iCoor][iPoint] =
+            this->points[iCoor][this->pointsInPatch[iPoint]];
+        }
+    }
 }
 
 
@@ -99,8 +114,6 @@ double GAfitnessOFClass::getFitness
     genome[0] = 0.24;
     genome[1] = 0.18;
     // GET PROFILE POINTS
-    //std::ofstream tempFile;
-    //tempFile.open("/Users/fonso/C++/GAero/GAero/tempFIle.txt");
     for (int i = 0; i < this->nPointsInPatch; i++)
     {
         int iPoint = this->pointsInPatch[i];
@@ -109,10 +122,15 @@ double GAfitnessOFClass::getFitness
         
         newZ[i] = this->NACA->eval (genome, xTemp, zTemp, 1.);
         deltaZ[i] = newZ[i] - zTemp;
-        //tempFile << xTemp << " " << newZ[i] << std::endl;;
     }
     
     // MORPH MESH
+    std::vector<double> deltaZa;
+    this->interpolationKernel.interpolate(deltaZ,
+                                          this->sPoints,
+                                          deltaZa,
+                                          this->points);
+    
     
     // WRITE MESH
     

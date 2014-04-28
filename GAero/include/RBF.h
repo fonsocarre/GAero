@@ -28,7 +28,7 @@ inline double dist (std::vector<double>& coord1,
 }
 
 /* Wendland C2 */
-double wendlandC2 (std::vector<double>& coord1,
+static double wendlandC2 (std::vector<double>& coord1,
                    std::vector<double>& coord2,
                    double rho)
 {
