@@ -55,6 +55,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Name of the optimised patch in the mesh.
     std::string shapePatch;
     
+    std::string RBFsetting;
+    
     //! Temporary mesh data structure
     //OFtopology mesh;
     

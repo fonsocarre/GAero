@@ -16,12 +16,16 @@ NACA4digits::NACA4digits ()
     this->coeffVector[2] = -0.3516;
     this->coeffVector[3] =  0.2843;
     this->coeffVector[4] = -0.1036;
+    
+    this->m_ = 00;
+    this->p_ = 12;
 }
 
-std::vector<double> NACA4digits::eval
+double NACA4digits::eval
                 (const std::vector<double>& genome,
-                 double xCoor,
-                 double chordLength)
+                 double& xCoor,
+                 double& yPrevCoord,
+                 double chordLength = 1.)
 {
     std::vector<double> yCoorVec;
 
@@ -42,7 +46,15 @@ std::vector<double> NACA4digits::eval
     // Negative Solution
     yCoorVec.push_back (yCamber - yThick*cos (theta));
     
-    return yCoorVec;
+    if (yPrevCoord < 0.0)
+    {
+        return yCoorVec[0];
+    } else if (yPrevCoord > 0.0)
+    {
+        return yCoorVec[1];
+    }
+    
+    return 0.0;
 }
 
 double NACA4digits::NACAdiffY (double xCoor,
@@ -116,9 +128,9 @@ double NACA4digits::NACAthick (double xCoor,
 }
 
 
-std::vector<double> NACA4digits::operator()
-                        (const std::vector<double>& genome,
-                         const double xCoor)
-{
-    return (this->eval(genome, xCoor));
-}
+//std::vector<double> NACA4digits::operator()
+//                        (const std::vector<double>& genome,
+//                         const double xCoor)
+//{
+    //return (this->eval(genome, xCoor));
+    //}

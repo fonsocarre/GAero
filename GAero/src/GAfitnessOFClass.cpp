@@ -33,10 +33,12 @@ void GAfitnessOFClass::getConfiguration
                                 (scope, "cleanScript");
         this->duplicateScript = cfg->lookupString
                                 (scope, "duplicateScript");
-        this->deleteScript = cfg->lookupString
+        this->deleteScript= cfg->lookupString
                                 (scope, "deleteScript");
         this->shapePatch  = cfg->lookupString
                                 (scope, "shapePatch");
+        this->RBFsetting  = cfg->lookupString
+                                (scope, "RBF");
         cfg->destroy();
     }
     catch (const ConfigurationException& ex)
@@ -83,29 +85,32 @@ double GAfitnessOFClass::getFitness
     double fitness;
     std::string command;
     
+    std::vector<double> newZ (this->nPointsInPatch);
+    
     // Generates new OF case duplicating the main one
     command = this->duplicateScript
             + " " + this->mainCaseDir
             + " " + this->tempCaseDir;
     std::system (command.c_str ());
     
-    std::vector<double> temp;
+    double xTemp;
+    double zTemp;
+    std::vector<double> deltaZ (this->nPointsInPatch);
     genome[0] = 0.24;
     genome[1] = 0.18;
     // GET PROFILE POINTS
-    std::ofstream tempFile;
-    tempFile.open("/Users/fonso/C++/GAero/GAero/tempFIle.txt");
-    for (int i = 0; i < 200; i++)
+    //std::ofstream tempFile;
+    //tempFile.open("/Users/fonso/C++/GAero/GAero/tempFIle.txt");
+    for (int i = 0; i < this->nPointsInPatch; i++)
     {
-        temp = this->NACA->operator() (genome, (i/199.));
-        for (int iCoor=0; iCoor < 2; iCoor++)
-        {
-            tempFile << i/199.<< " " << temp[iCoor] << std::endl;;
-        }
-        temp.clear ();
-        //tempFile << std::endl;
+        int iPoint = this->pointsInPatch[i];
+        xTemp = this->points[0][iPoint];
+        zTemp = this->points[2][iPoint];
+        
+        newZ[i] = this->NACA->eval (genome, xTemp, zTemp, 1.);
+        deltaZ[i] = newZ[i] - zTemp;
+        //tempFile << xTemp << " " << newZ[i] << std::endl;;
     }
-    
     
     // MORPH MESH
     
@@ -125,6 +130,9 @@ double GAfitnessOFClass::getFitness
     fitness = genome[0] + genome[1];
     
     this->addIndividual(genome, fitness);
+    
+    newZ.clear ();
+    //tempFile.close ();
     
     return fitness;
 }

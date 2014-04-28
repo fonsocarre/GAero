@@ -12,6 +12,7 @@
 		1949DFA118F4304000720303 /* NACA4digits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1949DFA018F4304000720303 /* NACA4digits.cpp */; };
 		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
 		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
+		199FB073190E5C950012927C /* interpolationKernelClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199FB072190E5C950012927C /* interpolationKernelClass.cpp */; };
 		19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */; };
 		19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */; };
 		19DB983618ABDBAC004433A0 /* GAero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93B18A80B0B001675E6 /* GAero.cpp */; };
@@ -56,6 +57,9 @@
 		198F58D718E9AB0200935C94 /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = GAero/src/userintf.cpp; sourceTree = SOURCE_ROOT; };
 		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
+		199FB072190E5C950012927C /* interpolationKernelClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interpolationKernelClass.cpp; path = src/interpolationKernelClass.cpp; sourceTree = "<group>"; };
+		199FB074190E5CAB0012927C /* interpolationKernelClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationKernelClass.h; path = include/interpolationKernelClass.h; sourceTree = "<group>"; };
+		199FB075190E5E100012927C /* RBF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RBF.h; path = include/RBF.h; sourceTree = "<group>"; };
 		19BC62D018F3FB0900B9B5DB /* fileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fileUtils.h; path = include/fileUtils.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
@@ -152,6 +156,16 @@
 			name = randomGenerators;
 			sourceTree = "<group>";
 		};
+		199FB071190E5C7C0012927C /* Interpolation */ = {
+			isa = PBXGroup;
+			children = (
+				199FB072190E5C950012927C /* interpolationKernelClass.cpp */,
+				199FB074190E5CAB0012927C /* interpolationKernelClass.h */,
+				199FB075190E5E100012927C /* RBF.h */,
+			);
+			name = Interpolation;
+			sourceTree = "<group>";
+		};
 		19CC98DC18A9491C00DF9A76 /* randomc */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +207,7 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
+				199FB071190E5C7C0012927C /* Interpolation */,
 				19E9C03B18B283A0004442E6 /* Algebra */,
 				192CB75A18AE437C001A5D6E /* GAoutput */,
 				1993A59118AD260A0036493B /* Utilities */,
@@ -334,6 +349,7 @@
 				19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */,
 				19DB983A18ABDCD4004433A0 /* GApopulation.cpp in Sources */,
 				19DB983618ABDBAC004433A0 /* GAero.cpp in Sources */,
+				199FB073190E5C950012927C /* interpolationKernelClass.cpp in Sources */,
 				19F7C15718EC11AF005F1FD2 /* GAfitnessClass.cpp in Sources */,
 				192C3CB118ED4FCC0045F1EE /* GAfitnessOFClass.cpp in Sources */,
 			);

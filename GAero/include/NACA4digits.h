@@ -19,9 +19,6 @@
 class NACA4digits: public airfoil {
     
     std::vector<double> coeffVector;
-    std::vector<double> eval (const std::vector<double>& genome,
-                               double xCoor,
-                               double chordLength = 1.);
     
     double NACAthick (double xCoor,
                       double genome,
@@ -36,17 +33,31 @@ class NACA4digits: public airfoil {
                       double m,
                       double p,
                       double chordLength = 1.);
+    double m_;
+    double p_;
 
 public:
-    //! Gives a value to the coefficients.
+    //! Gives a value to the coefficients and takes NACA0012 as the default one.
     NACA4digits ();
+    
+    //! Basic return of coordinates given the genome and the x coordinate.
+    /** Genome must contain:
+     - genome[0] = 2 first numbers of NACA. i.e. 00 for NACA 0012
+     - genome[1] = 2 last numbers. i.e. 12 for NACA 0012.
+     It assumes chord length = 1 unit.
+     yPrevCoor is used to figure out which of the two solutions 
+     should be used. */
+    double eval (const std::vector<double>& genome,
+                              double& xCoor,
+                              double& yPrevCoord,
+                              double chordLength);
     
     //! Basic return of coordinates given the genome and the x coordinate.
     /** Genome must contain:
         - genome[0] = 2 first numbers of NACA. i.e. 00 for NACA 0012
         - genome[1] = 2 last numbers. i.e. 12 for NACA 0012.
         It assumes chord length = 1 unit */
-    std::vector<double> operator()
-                      (const std::vector<double>& genome,
-                       const double xCoor);
+    //std::vector<double> operator()
+    //                  (const std::vector<double>& genome,
+    //                   const double xCoor);
 };

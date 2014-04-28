@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "418727745.414948"
+            timestampString = "420373799.473639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/NACA4digits.cpp"
-            timestampString = "418729512.798552"
+            timestampString = "420370296.71619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "NACA4digits::eval (const std::vector&lt;double&gt;&amp; genome, double xCoor, double chordLength)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "NACA4digits::eval (const std::vector&lt;double&gt;&amp; genome, double&amp; xCoor, double&amp; yPrevCoord, double chordLength = 1.)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/NACA4digits.cpp"
-            timestampString = "418731580.303019"
+            timestampString = "420370296.71619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "NACA4digits::NACAthick (double xCoor, double genome, double chordLength)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "418731806.406258"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

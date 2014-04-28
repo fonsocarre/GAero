@@ -12,7 +12,13 @@
 class airfoil {
 
 public:
-    virtual std::vector<double>
-        operator() (const std::vector<double>& genome,
-                    double xCoord) = 0;
+    //virtual std::vector<double>
+    //    operator() (const std::vector<double>& genome,
+    //                double xCoord) = 0;
+    
+    virtual double
+            eval (const std::vector<double>& genome,
+                  double& xCoor,
+                  double& yPrevCoord,
+                  double chordLength) = 0;
 };
