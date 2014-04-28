@@ -11,6 +11,8 @@
 
 #include <cmath>
 #include <vector>
+#include <cassert>
+#include "cblas.h"
 
 extern "C" {
     //! LU decomoposition of a general matrix (LAPACK)
@@ -18,27 +20,75 @@ extern "C" {
     
     //! Generates inverse of a matrix given its LU decomposition (LAPACK)
     void dgetri_(int* N, double* A, int* lda, int* IPIV, double* WORK, int* lwork, int* INFO);
+
 }
 
 //! Inverse calculation by LAPACK wrapper.
 /** Wrapper for matrix inverse calculation
-    based on LAPACK GETRF and GETRI functions. */
+ based on LAPACK GETRF and GETRI functions. */
 std::vector<double> invertMatrix(std::vector<double>& A)
 {
     int N = sqrt(A.size());
-    std::vector<double> mat(N*N);
+    std::vector<double> mat = A;
     
     int *IPIV = new int[N+1];
     int LWORK = N*N;
     double *WORK = new double[LWORK];
     int INFO;
     
-        dgetrf_(&N, &N, &(mat[0]), &N, IPIV, &INFO);
-        dgetri_(&N,&(mat[0]),&N,IPIV,WORK,&LWORK,&INFO);
+    dgetrf_(&N, &N, &(mat[0]), &N, IPIV, &INFO);
+    if (INFO != 0)
+    {
+        std::cerr << "LAPACK ERROR. INFO = " << INFO << std::endl;
+    }
+    
+    dgetri_(&N,&(mat[0]),&N,IPIV,WORK,&LWORK,&INFO);
+    
+    if (INFO != 0)
+    {
+        std::cerr << "LAPACK ERROR. INFO = " << INFO << std::endl;
+    }
     
     delete[] IPIV;
     delete[] WORK;
     return mat;
 }
+
+//! Basic general matrix matmul.
+/** Wrapper for matrix-matrix product
+ calculation based on DGEMM BLAS
+ function */
+std::vector<double> matmul (const int Arows,
+                            std::vector<double>& A,
+                            const int Bcols,
+                            std::vector<double>& B)
+{
+    
+    const int Acols = static_cast<int> (A.size ())/Arows;
+    const int Brows = static_cast<int> (B.size ())/Bcols;
+    assert (Brows == Acols);
+    
+    std::vector<double> C (Arows * Bcols);
+    cblas_dgemm (CblasRowMajor, CblasNoTrans, CblasNoTrans, Arows, Bcols,
+                 Acols, 1., &(A[0]),
+                 Arows, &(B[0]), Brows,
+                 0.0, &(C[0]), Arows);
+    
+    return C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif

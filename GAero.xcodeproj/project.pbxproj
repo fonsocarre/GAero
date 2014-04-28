@@ -60,6 +60,7 @@
 		199FB072190E5C950012927C /* interpolationKernelClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interpolationKernelClass.cpp; path = src/interpolationKernelClass.cpp; sourceTree = "<group>"; };
 		199FB074190E5CAB0012927C /* interpolationKernelClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationKernelClass.h; path = include/interpolationKernelClass.h; sourceTree = "<group>"; };
 		199FB075190E5E100012927C /* RBF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RBF.h; path = include/RBF.h; sourceTree = "<group>"; };
+		199FB077190E7CCA0012927C /* cblas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cblas.h; path = include/cblas.h; sourceTree = "<group>"; };
 		19BC62D018F3FB0900B9B5DB /* fileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fileUtils.h; path = include/fileUtils.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		19E9C03B18B283A0004442E6 /* Algebra */ = {
 			isa = PBXGroup;
 			children = (
+				199FB077190E7CCA0012927C /* cblas.h */,
 				19E9C03C18B283AB004442E6 /* Algebra.h */,
 			);
 			name = Algebra;
