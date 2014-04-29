@@ -26,10 +26,11 @@ extern "C" {
 //! Inverse calculation by LAPACK wrapper.
 /** Wrapper for matrix inverse calculation
  based on LAPACK GETRF and GETRI functions. */
-std::vector<double> invertMatrix(std::vector<double>& A)
+template <typename T>
+T invertMatrix(T& A)
 {
     int N = sqrt(A.size());
-    std::vector<double> mat = A;
+    T mat = A;
     
     int *IPIV = new int[N+1];
     int LWORK = N*N;
@@ -58,16 +59,17 @@ std::vector<double> invertMatrix(std::vector<double>& A)
 /** Wrapper for matrix-matrix product
  calculation based on DGEMM BLAS
  function */
-std::vector<double> matmul (const int Arows,
-                            std::vector<double>& A,
-                            const int Bcols,
-                            std::vector<double>& B)
+template <typename T>
+T matmul (const int Arows,
+          T& A,
+          const int Bcols,
+          T& B)
 {
     const int Acols = static_cast<int> (A.size ())/Arows;
     const int Brows = static_cast<int> (B.size ())/Bcols;
     assert (Brows == Acols);
     
-    std::vector<double> C (Arows * Bcols);
+    T C (Arows * Bcols);
     cblas_dgemm (CblasRowMajor,   //TODO: check if RowMajor is correct
                  CblasNoTrans,
                  CblasNoTrans,
@@ -89,14 +91,15 @@ std::vector<double> matmul (const int Arows,
 //! Basic general matrix - vector multiplication.
 /** Wrapper for matrix-vector product
     calculation based on GEMV (BLAS)*/
-std::vector<double> matvecmul (const int Arows,
-                               const int Acols,
-                               std::vector<double>& A,
-                               std::vector<double>& X)
+template <typename T>
+T matvecmul (const int Arows,
+             const int Acols,
+             T& A,
+             T& X)
 {
     assert (Acols == X.size ());
     
-    std::vector<double> result (X.size ());
+    T result (X.size ());
     cblas_dgemv (CblasRowMajor,
                  CblasNoTrans,
                  Arows,
