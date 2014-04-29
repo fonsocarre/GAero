@@ -80,15 +80,15 @@ void GAfitnessOFClass::initialise()
     this->interpolationKernel.init(this->RBFsetting);
     
     // s points to std::vector
-    std::vector< std::vector<double>> sPoints; // [iCoor][iPoint]
-    this->sPoints.resize (constant::DIM);
-    for (int iCoor=0; iCoor<constant::DIM; iCoor++)
+    //std::vector< std::vector<double>> sPoints; // [iPoint][iCoor]
+    this->sPoints.resize (this->nPointsInPatch);
+    for (int iPoint=0; iPoint<this->nPointsInPatch; iPoint++)
     {
-        this->sPoints[iCoor].resize (this->nPointsInPatch);
-        for (int iPoint=0; iPoint<this->nPointsInPatch; iPoint++)
+        this->sPoints[iPoint].resize (constant::DIM);
+        for (int iCoor=0; iCoor<constant::DIM; iCoor++)
         {
-            this->sPoints[iCoor][iPoint] =
-            this->points[iCoor][this->pointsInPatch[iPoint]];
+            this->sPoints[iPoint][iCoor] =
+            this->points[this->pointsInPatch[iPoint]][iCoor];
         }
     }
 }
@@ -376,13 +376,13 @@ void GAfitnessOFClass::createTopology (OFtopology& mesh)
     
     // Points of mesh to valarray points.
     this->nPoints = mesh.nPoints;
-    this->points.resize (constant::DIM);
-    for (int iCoor = 0; iCoor < constant::DIM; iCoor++)
+    this->points.resize (mesh.nPoints);
+    for (int iPoint = 0; iPoint < this->nPoints; iPoint++)
     {
-        this->points[iCoor].resize (mesh.nPoints);
-        for (int iPoint = 0; iPoint < mesh.nPoints; iPoint++)
+        this->points[iPoint].resize (constant::DIM);
+        for (int iCoor = 0; iCoor < constant::DIM; iCoor++)
         {
-             this->points[iCoor][iPoint] = mesh.points[iPoint].coords[iCoor];
+             this->points[iPoint][iCoor] = mesh.points[iPoint].coords[iCoor];
         }
     }
     std::cout << "  ... DONE" << std::endl;

@@ -62,10 +62,7 @@ class GAfitnessOFClass: public GAfitnessClass {
     //OFtopology mesh;
     
     //! Point coordinates
-    /** will be stored first by coord, that is
-        points[iCoord][iPoint]. Like that,
-        it will be easier to access to whole vectors
-        when calling interpolate. */
+    /**  */
     std::valarray< std::valarray<double> > points;
     
     std::valarray< std::valarray<double> > sPoints;
