@@ -63,18 +63,53 @@ std::vector<double> matmul (const int Arows,
                             const int Bcols,
                             std::vector<double>& B)
 {
-    
     const int Acols = static_cast<int> (A.size ())/Arows;
     const int Brows = static_cast<int> (B.size ())/Bcols;
     assert (Brows == Acols);
     
     std::vector<double> C (Arows * Bcols);
-    cblas_dgemm (CblasRowMajor, CblasNoTrans, CblasNoTrans, Arows, Bcols,
-                 Acols, 1., &(A[0]),
-                 Arows, &(B[0]), Brows,
-                 0.0, &(C[0]), Arows);
+    cblas_dgemm (CblasRowMajor,   //TODO: check if RowMajor is correct
+                 CblasNoTrans,
+                 CblasNoTrans,
+                 Arows,
+                 Bcols,
+                 Acols,
+                 1.,
+                 &(A[0]),
+                 Arows,
+                 &(B[0]),
+                 Brows,
+                 0.0,
+                 &(C[0]),
+                 Arows);
     
     return C;
+}
+
+//! Basic general matrix - vector multiplication.
+/** Wrapper for matrix-vector product
+    calculation based on GEMV (BLAS)*/
+std::vector<double> matvecmul (const int Arows,
+                               const int Acols,
+                               std::vector<double>& A,
+                               std::vector<double>& X)
+{
+    assert (Acols == X.size ());
+    
+    std::vector<double> result (X.size ());
+    cblas_dgemv (CblasRowMajor,
+                 CblasNoTrans,
+                 Arows,
+                 Acols,
+                 1.0,
+                 &(A[0]),
+                 Arows,
+                 &(X[0]),
+                 1,
+                 0.0,
+                 &(result[0]),
+                 1);
+    return result;
 }
 
 
