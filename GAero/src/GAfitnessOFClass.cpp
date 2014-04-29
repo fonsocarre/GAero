@@ -111,14 +111,14 @@ double GAfitnessOFClass::getFitness
     double xTemp;
     double zTemp;
     std::vector<double> deltaZ (this->nPointsInPatch);
-    genome[0] = 0.24;
-    genome[1] = 0.18;
+    //genome[0] = 0.24;
+    //genome[1] = 0.18;
     // GET PROFILE POINTS
     for (int i = 0; i < this->nPointsInPatch; i++)
     {
         int iPoint = this->pointsInPatch[i];
-        xTemp = this->points[0][iPoint];
-        zTemp = this->points[2][iPoint];
+        xTemp = this->points[iPoint][0];
+        zTemp = this->points[iPoint][2];
         
         newZ[i] = this->NACA->eval (genome, xTemp, zTemp, 1.);
         deltaZ[i] = newZ[i] - zTemp;

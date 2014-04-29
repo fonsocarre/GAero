@@ -66,12 +66,12 @@ void interpolationKernelClass::getCssInv
         Css[i*(Ns + 1)] = 1.0;
     }
     // next rows & cols
-    for (int iRow=1; iRow<Ns+1; iRow++)
+    for (int iRow=1; iRow <= Ns; iRow++)
     {
-        for (int iCol=0; iCol<Ns+1; iCol++)
+        for (int iCol=1; iCol <= Ns; iCol++)
         {
-            Css[iRow*(Ns + 1) + iCol] = this->RBF (sCoor[iRow],
-                                                   sCoor[iCol],
+            Css[iRow*(Ns + 1) + iCol] = this->RBF (sCoor[iRow - 1],
+                                                   sCoor[iCol - 1],
                                                    this->rho_);
             Css[iCol*(Ns + 1) + iRow] = Css[iRow*(Ns + 1) + iCol];
         }

@@ -17,7 +17,8 @@ inline double dist (std::valarray<double>& coord1,
                     double rho)
 {
     // Vector size check omitted for speed
-    
+    //std::cout << coord1.size () << std::endl;
+    //std::cout << coord2.size () << std::endl;
     double dist = 0.0;
     for (int i=0; i<coord1.size (); i++)
     {
