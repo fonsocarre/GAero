@@ -37,5 +37,5 @@ static double wendlandC2 (std::valarray<double>& coord1,
     double distance = dist(coord1, coord2, 1.);
     result = pow ((1. - distance/rho), 4);
     result *= 4.*distance + 1.;
-    return distance;
+    return result;
 }

@@ -77,6 +77,7 @@ void interpolationKernelClass::getCssInv
         }
     }
     
+    this->CssInv = algebra::invertMatrix(Css);
 }
 
 

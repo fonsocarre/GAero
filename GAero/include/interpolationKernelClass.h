@@ -13,6 +13,7 @@
 #include <iostream>
 #include <valarray>
 #include "RBF.h"
+#include "Algebra.h"
 
 class interpolationKernelClass {
     
