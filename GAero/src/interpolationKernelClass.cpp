@@ -68,7 +68,7 @@ void interpolationKernelClass::getCssInv
     // next rows & cols
     for (int iRow=1; iRow <= Ns; iRow++)
     {
-        for (int iCol=1; iCol <= Ns; iCol++)
+        for (int iCol=1; iCol <= iRow; iCol++)
         {
             Css[iRow*(Ns + 1) + iCol] = this->RBF (sCoor[iRow - 1],
                                                    sCoor[iCol - 1],
@@ -76,6 +76,7 @@ void interpolationKernelClass::getCssInv
             Css[iCol*(Ns + 1) + iRow] = Css[iRow*(Ns + 1) + iCol];
         }
     }
+    
 }
 
 
