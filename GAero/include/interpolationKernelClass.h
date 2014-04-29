@@ -16,15 +16,28 @@
 
 class interpolationKernelClass {
     
-    double (*RBF) (std::vector<double>& coord1,
-                   std::vector<double>& coord2,
+    double (*RBF) (std::valarray<double>& coord1,
+                   std::valarray<double>& coord2,
                    double rho);
+    
+    bool firstCall;
+    
+    double rho_;
+    
+    std::valarray<double> CssInv;
+    
+    // ***********   METHODS   *******
+    
+    void getCssInv (std::valarray< std::valarray<double> >& sCoor);
+    
+    
+    
 public:
     //! Basic constructor
     interpolationKernelClass () {};
     
     //! Initiates the class, pointing to the right RBF function.
-    void init (std::string RBF);
+    void init (std::string RBF, double rho);
     
     //! Main function for interpolation
     void interpolate (std::vector<double>& hs,

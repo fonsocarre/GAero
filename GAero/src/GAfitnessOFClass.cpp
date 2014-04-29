@@ -77,7 +77,7 @@ void GAfitnessOFClass::initialise()
         delete mesh;
     }
     
-    this->interpolationKernel.init(this->RBFsetting);
+    this->interpolationKernel.init(this->RBFsetting, 2.5*this->getRho());
     
     // s points to std::vector
     //std::vector< std::vector<double>> sPoints; // [iPoint][iCoor]
@@ -374,6 +374,15 @@ void GAfitnessOFClass::createTopology (OFtopology& mesh)
     // deallocate set of points
     pointsInPatch.clear ();
     
+    this->xyzmin.resize (constant::DIM);
+    this->xyzmax.resize (constant::DIM);
+    
+    for (int iCoor = 0; iCoor<constant::DIM; iCoor++)
+    {
+        this->xyzmin[iCoor] =  1e10;
+        this->xyzmax[iCoor] = -1e10;
+    }
+    
     // Points of mesh to valarray points.
     this->nPoints = mesh.nPoints;
     this->points.resize (mesh.nPoints);
@@ -382,9 +391,33 @@ void GAfitnessOFClass::createTopology (OFtopology& mesh)
         this->points[iPoint].resize (constant::DIM);
         for (int iCoor = 0; iCoor < constant::DIM; iCoor++)
         {
-             this->points[iPoint][iCoor] = mesh.points[iPoint].coords[iCoor];
+            this->points[iPoint][iCoor] = mesh.points[iPoint].coords[iCoor];
+            if (this->points[iPoint][iCoor] < this->xyzmin[iCoor])
+            {
+                this->xyzmin[iCoor] = this->points[iPoint][iCoor];
+            }
+            else if (this->points[iPoint][iCoor] > this->xyzmax[iCoor])
+            {
+                this->xyzmax[iCoor] = this->points[iPoint][iCoor];
+            }
         }
     }
+    std::cout << "    Bounding box:" << std::endl;
+    std::cout << "       [";
+    for (int iCoor = 0; iCoor<constant::DIM; iCoor++)
+    {
+        std::cout << this->xyzmin[iCoor];
+        if (iCoor < constant::DIM-1) {std::cout << ", ";}
+    }
+    std::cout << "]" << std::endl;
+    std::cout << "       [";
+    for (int iCoor = 0; iCoor<constant::DIM; iCoor++)
+    {
+        std::cout << this->xyzmax[iCoor];
+        if (iCoor < constant::DIM-1) {std::cout << ", ";}
+    }
+    std::cout << "]" << std::endl;
+    
     std::cout << "  ... DONE" << std::endl;
 }
 
@@ -452,6 +485,19 @@ void GAfitnessOFClass::addIndividual (std::vector<double>& genome,
     
     this->population.push_back (temp);
     ++(this->nPopulation);
+}
+
+double GAfitnessOFClass::getRho ()
+{
+    double rho = 0.0;
+    
+    for (int iCoor=0; iCoor<constant::DIM; iCoor++)
+    {
+        rho += (this->xyzmax[iCoor] - this->xyzmin[iCoor])*
+               (this->xyzmax[iCoor] - this->xyzmin[iCoor]);
+    }
+    rho = sqrt(rho);
+    return rho;
 }
 
 

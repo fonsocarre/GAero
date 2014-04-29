@@ -79,6 +79,10 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Strings containing points file header
     std::vector<std::string> pointsHeader;
     
+    //! Bounding box of mesh for rho calculation
+    std::vector<double> xyzmin;
+    std::vector<double> xyzmax;
+    
     //! Polymorphic pointer to airfoil class for naca eqs.
     //! Memory dynamically allocated, check DELETE
     airfoil* NACA;
@@ -127,6 +131,9 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! gets ForceCoeffs from forceCoeffs.dat file
     void getForceCoeffs (std::vector<double>& forceCoeffs);
+    
+    //! Calculates rho with bounding box
+    double getRho ();
     
 public:
     //! Similar to GAsettingsClass constructor.

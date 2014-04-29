@@ -12,8 +12,8 @@
 
 
 /* Standard euclidean distance */
-inline double dist (std::vector<double>& coord1,
-                    std::vector<double>& coord2,
+inline double dist (std::valarray<double>& coord1,
+                    std::valarray<double>& coord2,
                     double rho)
 {
     // Vector size check omitted for speed
@@ -28,8 +28,8 @@ inline double dist (std::vector<double>& coord1,
 }
 
 /* Wendland C2 */
-static double wendlandC2 (std::vector<double>& coord1,
-                   std::vector<double>& coord2,
+static double wendlandC2 (std::valarray<double>& coord1,
+                   std::valarray<double>& coord2,
                    double rho)
 {
     double result = 0.0;
