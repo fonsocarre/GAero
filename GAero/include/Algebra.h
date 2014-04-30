@@ -143,4 +143,32 @@ namespace algebra
                      1);
         return result;
     }
+    
+    
+    //! Basic general matrix - vector multiplication.
+    /** Wrapper for matrix-vector product
+     calculation based on GEMV (BLAS)*/
+    template <typename T, typename U>
+    U matvecmul (const int Arows,
+                 const int Acols,
+                 T& A,
+                 U& X)
+    {
+        assert (Acols == X.size ());
+        
+        U result (X.size ());
+        cblas_dgemv (CblasRowMajor,
+                     CblasNoTrans,
+                     Acols,
+                     Arows,
+                     1.0,
+                     &(A[0]),
+                     Arows,
+                     &(X[0]),
+                     1,
+                     0.0,
+                     &(result[0]),
+                     1);
+        return result;
+    }
 }

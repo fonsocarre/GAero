@@ -57,14 +57,23 @@ void interpolationKernelClass::interpolate (std::vector<double>& hs,
         // Some care must be taken because
         // vector*matrix = matrix^T*vector
         // the second way is the one BLAS accepts
+        this->G_.resize ((Ns+1)*(Na));
+        for (int iRow=0; iRow<Na; iRow++)
+        {
+            auto temp = this->getAasRow (sCoor, aCoor, iRow);
+            this->G_[std::slice (iRow*(Ns+1), Ns+1, 1)] =
+                                            algebra::Tmatvecmul(Ns+1,
+                                                                Ns+1,
+                                                                CssInv,
+                                                                temp);
+        }
         
         this->firstCall = false;
     }
-    
-    
-    
-    //!!!!
-    std::valarray<double> temp = this->getAasRow(sCoor, aCoor, 0);
+    hs.insert (hs.begin(), 0.0);
+    std::cout << *(std::end(this->G_)-1) << std::endl;
+    ha = algebra::matvecmul(Na, Ns+1, this->G_, hs);
+    hs.erase (hs.begin ());
 }
 
 std::valarray<double> interpolationKernelClass::getCssInv
