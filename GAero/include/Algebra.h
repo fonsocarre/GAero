@@ -122,9 +122,9 @@ namespace algebra
      calculation based on GEMV (BLAS)*/
     template <typename T>
     T Tmatvecmul (const int Arows,
-                 const int Acols,
-                 T& A,
-                 T& X)
+                  const int Acols,
+                  T& A,
+                  T& X)
     {
         assert (Acols == X.size ());
         

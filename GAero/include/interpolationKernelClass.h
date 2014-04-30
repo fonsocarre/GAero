@@ -17,20 +17,30 @@
 
 class interpolationKernelClass {
     
+    //! Pointer to RBF function, these can be found in RBF.h
     double (*RBF) (std::valarray<double>& coord1,
                    std::valarray<double>& coord2,
                    double rho);
     
+    //! Flag for creating G only on the first call
     bool firstCall;
     
+    //! Rho to be used in the RBF
     double rho_;
     
-    std::valarray<double> CssInv;
+    //! G storage
+    std::valarray<double> G_;
     
     // ***********   METHODS   *******
     
-    void getCssInv (std::valarray< std::valarray<double> >& sCoor);
+    //!
+    std::valarray<double> getCssInv
+            (std::valarray< std::valarray<double> >& sCoor);
     
+    std::valarray<double> getAasRow
+                (std::valarray<std::valarray<double>>& sCoor,
+                 std::valarray<std::valarray<double>>& aCoor,
+                 int nRow);
     
     
 public:

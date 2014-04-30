@@ -111,8 +111,7 @@ double GAfitnessOFClass::getFitness
     double xTemp;
     double zTemp;
     std::vector<double> deltaZ (this->nPointsInPatch);
-    //genome[0] = 0.24;
-    //genome[1] = 0.18;
+    
     // GET PROFILE POINTS
     for (int i = 0; i < this->nPointsInPatch; i++)
     {
@@ -130,6 +129,7 @@ double GAfitnessOFClass::getFitness
                                           this->sPoints,
                                           deltaZa,
                                           this->points);
+    
     
     
     // WRITE MESH

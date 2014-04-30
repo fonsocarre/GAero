@@ -44,18 +44,34 @@ void interpolationKernelClass::interpolate (std::vector<double>& hs,
                   std::vector<double>& ha,
                   std::valarray< std::valarray<double> >& aCoor)
 {
+    int Na = static_cast<int>(aCoor.size ());
+    int Ns = static_cast<int>(sCoor.size ());
+    
     if (this->firstCall)
     {
-        this->getCssInv(sCoor);
+        // CssInv calculation
+        std::valarray<double> CssInv ((Ns + 1)*(Ns + 1));
+        CssInv = this->getCssInv(sCoor);
+        
+        // Aas*CssInv product
+        // Some care must be taken because
+        // vector*matrix = matrix^T*vector
+        // the second way is the one BLAS accepts
+        
         this->firstCall = false;
     }
+    
+    
+    
+    //!!!!
+    std::valarray<double> temp = this->getAasRow(sCoor, aCoor, 0);
 }
 
-void interpolationKernelClass::getCssInv
+std::valarray<double> interpolationKernelClass::getCssInv
         (std::valarray< std::valarray<double> >& sCoor)
 {
     int Ns = static_cast<int> (sCoor.size ());
-    this->CssInv.resize((Ns + 1)*(Ns + 1));
+    //CssInv.resize((Ns + 1)*(Ns + 1));
     
     std::valarray<double> Css ((Ns + 1)*(Ns + 1));
     
@@ -77,7 +93,30 @@ void interpolationKernelClass::getCssInv
         }
     }
     
-    this->CssInv = algebra::invertMatrix(Css);
+    return algebra::invertMatrix(Css);
+}
+
+std::valarray<double> interpolationKernelClass::getAasRow
+            (std::valarray<std::valarray<double>>& sCoor,
+             std::valarray<std::valarray<double>>& aCoor,
+             int nRow)
+{
+    int Ns = static_cast<int>(sCoor.size ());
+    //int Na = static_cast<int>(aCoor.size ());
+    
+    std::valarray<double> AasRow (Ns+1);
+    
+    AasRow[0] = 1.0;
+    for (int i=1; i<Ns+1; i++)
+    {
+        AasRow[i] = this->RBF (aCoor[nRow],
+                               sCoor[i-1],
+                               this->rho_);
+        //std::cout << i << std::endl;
+        //std::cout << AasRow[i] << std::endl;
+    }
+    
+    return AasRow;
 }
 
 
