@@ -51,5 +51,97 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/interpolationKernelClass.cpp"
+            timestampString = "420547324.668447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "interpolationKernelClass::getAasRow (std::valarray&lt;std::valarray&lt;double&gt;&gt;&amp; sCoor, std::valarray&lt;std::valarray&lt;double&gt;&gt;&amp; aCoor, int nRow)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "420547838.450079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/interpolationKernelClass.cpp"
+            timestampString = "420547901.918819"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "interpolationKernelClass::interpolate (std::vector&lt;double&gt;&amp; hs, std::valarray&lt; std::valarray&lt;double&gt; &gt;&amp; sCoor, std::vector&lt;double&gt;&amp; ha, std::valarray&lt; std::valarray&lt;double&gt; &gt;&amp; aCoor)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "interpolationKernelClass::interpolate(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/interpolationKernelClass.cpp"
+                  timestampString = "420585259.665236"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1707">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "interpolationKernelClass::interpolate(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/interpolationKernelClass.cpp"
+                  timestampString = "420585259.665634"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1821">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "interpolationKernelClass::interpolate(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/interpolationKernelClass.cpp"
+                  timestampString = "420585259.665888"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1890">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

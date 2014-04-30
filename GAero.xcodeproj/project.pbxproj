@@ -26,6 +26,27 @@
 		19F7C15B18EC1566005F1FD2 /* GAfitnessSample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C15A18EC1566005F1FD2 /* GAfitnessSample.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		19BA3C33191197FC00266295 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.fortran;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		1955413E19111AAD003679FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1955413319111AAC003679FA;
+			remoteInfo = InterpolationLib;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		19EFD92318A80A6F001675E6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -51,6 +72,7 @@
 		1949DF9E18F42E3C00720303 /* airfoil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = airfoil.h; path = GAero/include/airfoil.h; sourceTree = SOURCE_ROOT; };
 		1949DF9F18F42F0900720303 /* NACA4digits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NACA4digits.h; path = GAero/include/NACA4digits.h; sourceTree = SOURCE_ROOT; };
 		1949DFA018F4304000720303 /* NACA4digits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NACA4digits.cpp; path = GAero/src/NACA4digits.cpp; sourceTree = SOURCE_ROOT; };
+		1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = InterpolationLib.xcodeproj; path = InterpolationLib/InterpolationLib.xcodeproj; sourceTree = "<group>"; };
 		198F58D418E9AA2A00935C94 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = GAero/include/randomc.h; sourceTree = SOURCE_ROOT; };
 		198F58D518E9AA2A00935C94 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = GAero/include/sfmt.h; sourceTree = SOURCE_ROOT; };
 		198F58D618E9AB0200935C94 /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = GAero/src/mersenne.cpp; sourceTree = SOURCE_ROOT; };
@@ -137,11 +159,12 @@
 			name = NACA;
 			sourceTree = "<group>";
 		};
-		1979034F1910FFF4004EA355 /* Others */ = {
+		1955413B19111AAC003679FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				1955413F19111AAD003679FA /* libInterpolationLib.a */,
 			);
-			name = Others;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		1993A59118AD260A0036493B /* Utilities */ = {
@@ -197,6 +220,7 @@
 		19EFD91C18A80A6F001675E6 = {
 			isa = PBXGroup;
 			children = (
+				1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */,
 				19E9C03D18B283B6004442E6 /* Accelerate.framework */,
 				19DB983D18ABDDB1004433A0 /* libamac64o.a */,
 				19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */,
@@ -216,7 +240,6 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
-				1979034F1910FFF4004EA355 /* Others */,
 				199FB071190E5C7C0012927C /* Interpolation */,
 				19E9C03B18B283A0004442E6 /* Algebra */,
 				192CB75A18AE437C001A5D6E /* GAoutput */,
@@ -310,6 +333,7 @@
 				19EFD92318A80A6F001675E6 /* CopyFiles */,
 			);
 			buildRules = (
+				19BA3C33191197FC00266295 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -337,12 +361,28 @@
 			mainGroup = 19EFD91C18A80A6F001675E6;
 			productRefGroup = 19EFD92618A80A6F001675E6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1955413B19111AAC003679FA /* Products */;
+					ProjectRef = 1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				19EFD92418A80A6F001675E6 /* GAero */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1955413F19111AAD003679FA /* libInterpolationLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libInterpolationLib.a;
+			remoteRef = 1955413E19111AAD003679FA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		19EFD92118A80A6F001675E6 /* Sources */ = {

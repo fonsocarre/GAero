@@ -1,0 +1,251 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19BA3C30191197D000266295 /* InterpolationKernel.f90 in Sources */ = {isa = PBXBuildFile; fileRef = 19BA3C2E191197D000266295 /* InterpolationKernel.f90 */; };
+		19BA3C31191197D000266295 /* precisionMod.f90 in Sources */ = {isa = PBXBuildFile; fileRef = 19BA3C2F191197D000266295 /* precisionMod.f90 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		1955FDA919119FBB003A1CA1 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.intel.compilers.ifort.14_0_0;
+			fileType = sourcecode.fortran;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXFileReference section */
+		1955413319111AAC003679FA /* libInterpolationLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInterpolationLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		19BA3C2E191197D000266295 /* InterpolationKernel.f90 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran.f90; name = InterpolationKernel.f90; path = src/InterpolationKernel.f90; sourceTree = "<group>"; };
+		19BA3C2F191197D000266295 /* precisionMod.f90 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran.f90; name = precisionMod.f90; path = src/precisionMod.f90; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1955413019111AAC003679FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1955412A19111AAC003679FA = {
+			isa = PBXGroup;
+			children = (
+				1955414019111AB2003679FA /* src */,
+				1955413419111AAC003679FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1955413419111AAC003679FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1955413319111AAC003679FA /* libInterpolationLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1955414019111AB2003679FA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				19BA3C2E191197D000266295 /* InterpolationKernel.f90 */,
+				19BA3C2F191197D000266295 /* precisionMod.f90 */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1955413119111AAC003679FA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1955413219111AAC003679FA /* InterpolationLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1955413719111AAC003679FA /* Build configuration list for PBXNativeTarget "InterpolationLib" */;
+			buildPhases = (
+				1955412F19111AAC003679FA /* Sources */,
+				1955413019111AAC003679FA /* Frameworks */,
+				1955413119111AAC003679FA /* Headers */,
+			);
+			buildRules = (
+				1955FDA919119FBB003A1CA1 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = InterpolationLib;
+			productName = InterpolationLib;
+			productReference = 1955413319111AAC003679FA /* libInterpolationLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1955412B19111AAC003679FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Alfonso Carre";
+			};
+			buildConfigurationList = 1955412E19111AAC003679FA /* Build configuration list for PBXProject "InterpolationLib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1955412A19111AAC003679FA;
+			productRefGroup = 1955413419111AAC003679FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1955413219111AAC003679FA /* InterpolationLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1955412F19111AAC003679FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19BA3C30191197D000266295 /* InterpolationKernel.f90 in Sources */,
+				19BA3C31191197D000266295 /* precisionMod.f90 in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1955413519111AAC003679FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1955413619111AAC003679FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1955413819111AAC003679FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				IFORT_F2003_SEMANTICS = YES;
+				IFORT_MKL = threaded;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1955413919111AAC003679FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				IFORT_F2003_SEMANTICS = YES;
+				IFORT_MKL = threaded;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1955412E19111AAC003679FA /* Build configuration list for PBXProject "InterpolationLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1955413519111AAC003679FA /* Debug */,
+				1955413619111AAC003679FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1955413719111AAC003679FA /* Build configuration list for PBXNativeTarget "InterpolationLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1955413819111AAC003679FA /* Debug */,
+				1955413919111AAC003679FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1955412B19111AAC003679FA /* Project object */;
+}
