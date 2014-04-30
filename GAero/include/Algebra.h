@@ -116,4 +116,31 @@ namespace algebra
                      1);
         return result;
     }
+    
+    //! Basic general transposed matrix - vector multiplication.
+    /** Wrapper for transposed matrix-vector product
+     calculation based on GEMV (BLAS)*/
+    template <typename T>
+    T Tmatvecmul (const int Arows,
+                 const int Acols,
+                 T& A,
+                 T& X)
+    {
+        assert (Acols == X.size ());
+        
+        T result (X.size ());
+        cblas_dgemv (CblasRowMajor,
+                     CblasTrans,
+                     Arows,
+                     Acols,
+                     1.0,
+                     &(A[0]),
+                     Arows,
+                     &(X[0]),
+                     1,
+                     0.0,
+                     &(result[0]),
+                     1);
+        return result;
+    }
 }
