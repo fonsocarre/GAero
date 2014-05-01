@@ -24,12 +24,14 @@ contains
     !
     !   Es necesario linkar LAPACK y BLAS, ambas con la interfaz
     !       de Fortran95
+    !    _interpolationkernel_MP_interpolationorder0_
     !--------------------------------------------------------------
-    subroutine interpolationOrder0(coorS, coorA, hS, hA, RBF) bind(c)
+    subroutine interpolationOrder0(coorS, coorA, hS, hA, RBF, rho)! bind(c)
         real(wp), intent(IN)        :: coorS(:,:)
         real(wp), intent(IN)        :: coorA(:,:)
         real(wp), intent(IN)        :: hS(:,:)
         character(c_char), intent(IN):: RBF
+        real(wp), intent(IN)        :: rho
         real(wp), intent(OUT)       :: hA(:,:)
         
         real(wp), pointer           :: Css(:,:)
@@ -54,7 +56,7 @@ contains
         Na = size(coorA(:,1))
         nCol = size(hS(1,:))
 
-        call createCss(coorS, Ns+1, Css)
+        call createCss(coorS, Ns+1, Css, RBF, rho)
 
         ! LAPACK CALL ******************************************************
         info = 0
@@ -76,7 +78,7 @@ contains
         call gemm(Css, hStemp, Ch)
 
         do ia=1, Na
-            call gemm(createAas(coorS, coorA, Na, Ns, ia), Ch, hA(ia:ia,:))
+            call gemm(createAas(coorS, coorA, Na, Ns, ia, RBF, rho), Ch, hA(ia:ia,:))
         end do
 
         deallocate(Css)
@@ -101,33 +103,60 @@ contains
         CssOut(:,1) = 1.0_wp
         CssOut(1,:) = 1.0_wp
         CssOut(1,1) = 0.0_wp
-        
-        do i=1,Ns
-            do j=1,i
-                CssOut(i+1,j+1) = d(coorS(i,:), coorS(j,:))
-                CssOut(j+1,i+1) = CssOut(i+1,j+1)
+
+        select case (RBF)
+        case ('S') ! Spline interpolation
+            do i=1,Ns
+                do j=1,i
+                    CssOut(i+1,j+1) = d(coorS(i,:), coorS(j,:))
+                    CssOut(j+1,i+1) = CssOut(i+1,j+1)
+                end do
             end do
-        end do
+        case ('W') ! Wendland C2 interpolation
+            do i=1,Ns
+                do j=1,i
+                    CssOut(i+1,j+1) = wendlandC2(coorS(i,:), coorS(j,:), rho)
+                    CssOut(j+1,i+1) = CssOut(i+1,j+1)
+                end do
+            end do
+        case default
+            print*, "ERROR: Interpolation RBF ", RBF, " is not implemented in "&
+                    &,"this library."
+            stop
+        end select
     end subroutine createCss
-    
-    function createAas(coorS, coorA, Na, Ns, ia) result(Aas)
+
+    function createAas(coorS, coorA, Na, Ns, ia, RBF, rho) result(Aas)
         real(wp), intent(IN)        :: coorS(:,:)
         real(wp), intent(IN)        :: coorA(:,:)
         real(wp)                    :: Aas(1, Ns+1)
         integer(ip), intent(IN)     :: Na
         integer(ip), intent(IN)     :: Ns
         integer(ip), intent(IN)     :: ia
+        character(c_char), intent(IN):: RBF
+        real(wp), intent(IN)        :: rho
 
         integer(ip)                 :: j
 
 
         Aas(1,1) = 1.0_wp
+        select case (RBF)
+        case ('S')
+            do j=1,Ns
+                Aas(1,j+1) = d(coorA(ia,:), coorS(j,:))
+            end do
+        case ('W')
+            do j=1,Ns
+                Aas(1,j+1) = wendlandC2(coorA(ia,:), coorS(j,:), rho)
+            end do
+        case default
+            print*, "ERROR: Interpolation RBF ", RBF, " is not implemented in "&
+                    & ,"this library."
+            stop
+        end select
 
-        do j=1,Ns
-            Aas(1,j+1) = d(coorA(ia,:), coorS(j,:))
-        end do
     end function createAas
-    
+
     pure function d(v1,v2)
         real(wp), intent(IN)        :: v1(:)
         real(wp), intent(IN)        :: v2(:)

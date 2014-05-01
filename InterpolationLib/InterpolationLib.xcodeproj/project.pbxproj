@@ -210,6 +210,7 @@
 				EXECUTABLE_PREFIX = lib;
 				IFORT_F2003_SEMANTICS = YES;
 				IFORT_MKL = threaded;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -220,6 +221,7 @@
 				EXECUTABLE_PREFIX = lib;
 				IFORT_F2003_SEMANTICS = YES;
 				IFORT_MKL = threaded;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
