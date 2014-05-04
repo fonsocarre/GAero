@@ -61,7 +61,6 @@ void interpolationKernelClass::interpolate (std::vector<double>& hs,
     this->valarray2f90(aCoor, aCoorT);
     
     //    std::cout <<  << std::endl;
-    
     //test (3, begin(sCoor[0]));
     
     std::cout << sCoorT[0][Ns-1] << ", " << sCoorT[1][Ns-1] << ", "<< sCoorT[2][Ns-1] << std::endl;
