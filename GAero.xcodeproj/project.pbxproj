@@ -13,6 +13,7 @@
 		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
 		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
 		199FB073190E5C950012927C /* interpolationKernelClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199FB072190E5C950012927C /* interpolationKernelClass.cpp */; };
+		19D72C5319166DF50023F2A5 /* libInterpolationLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1955413F19111AAD003679FA /* libInterpolationLib.a */; };
 		19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */; };
 		19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */; };
 		19DB983618ABDBAC004433A0 /* GAero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD93B18A80B0B001675E6 /* GAero.cpp */; };
@@ -20,10 +21,14 @@
 		19DB983C18ABDCF5004433A0 /* GAclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB983B18ABDCF5004433A0 /* GAclass.cpp */; };
 		19DB983F18ABDDB1004433A0 /* libamac64o.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DB983D18ABDDB1004433A0 /* libamac64o.a */; };
 		19DB984018ABDDB1004433A0 /* libconfig4cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */; };
-		19E9C03E18B283B6004442E6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E9C03D18B283B6004442E6 /* Accelerate.framework */; };
 		19EFD92B18A80A6F001675E6 /* GAero.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 19EFD92A18A80A6F001675E6 /* GAero.1 */; };
 		19F7C15718EC11AF005F1FD2 /* GAfitnessClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C15618EC11AF005F1FD2 /* GAfitnessClass.cpp */; };
 		19F7C15B18EC1566005F1FD2 /* GAfitnessSample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F7C15A18EC1566005F1FD2 /* GAfitnessSample.cpp */; };
+		19F9B8821916712000587C13 /* libmkl_blas95_lp64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1952AF4619166BF700A11724 /* libmkl_blas95_lp64.a */; };
+		19F9B8831916712000587C13 /* libmkl_lapack95_lp64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1952AF4A19166BF700A11724 /* libmkl_lapack95_lp64.a */; };
+		19F9B8871916712000587C13 /* libmkl_core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F9B8841916712000587C13 /* libmkl_core.dylib */; };
+		19F9B8881916712000587C13 /* libmkl_intel_lp64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F9B8851916712000587C13 /* libmkl_intel_lp64.dylib */; };
+		19F9B8891916712000587C13 /* libmkl_intel_thread.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F9B8861916712000587C13 /* libmkl_intel_thread.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -72,6 +77,8 @@
 		1949DF9E18F42E3C00720303 /* airfoil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = airfoil.h; path = GAero/include/airfoil.h; sourceTree = SOURCE_ROOT; };
 		1949DF9F18F42F0900720303 /* NACA4digits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NACA4digits.h; path = GAero/include/NACA4digits.h; sourceTree = SOURCE_ROOT; };
 		1949DFA018F4304000720303 /* NACA4digits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NACA4digits.cpp; path = GAero/src/NACA4digits.cpp; sourceTree = SOURCE_ROOT; };
+		1952AF4619166BF700A11724 /* libmkl_blas95_lp64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmkl_blas95_lp64.a; path = ../../../../opt/intel/composer_xe_2013_sp1.2.139/mkl/lib/libmkl_blas95_lp64.a; sourceTree = "<group>"; };
+		1952AF4A19166BF700A11724 /* libmkl_lapack95_lp64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmkl_lapack95_lp64.a; path = ../../../../opt/intel/composer_xe_2013_sp1.2.139/mkl/lib/libmkl_lapack95_lp64.a; sourceTree = "<group>"; };
 		1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = InterpolationLib.xcodeproj; path = InterpolationLib/InterpolationLib.xcodeproj; sourceTree = "<group>"; };
 		198F58D418E9AA2A00935C94 /* randomc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomc.h; path = GAero/include/randomc.h; sourceTree = SOURCE_ROOT; };
 		198F58D518E9AA2A00935C94 /* sfmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sfmt.h; path = GAero/include/sfmt.h; sourceTree = SOURCE_ROOT; };
@@ -82,7 +89,6 @@
 		199FB072190E5C950012927C /* interpolationKernelClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interpolationKernelClass.cpp; path = src/interpolationKernelClass.cpp; sourceTree = "<group>"; };
 		199FB074190E5CAB0012927C /* interpolationKernelClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationKernelClass.h; path = include/interpolationKernelClass.h; sourceTree = "<group>"; };
 		199FB075190E5E100012927C /* RBF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RBF.h; path = include/RBF.h; sourceTree = "<group>"; };
-		199FB077190E7CCA0012927C /* cblas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cblas.h; path = include/cblas.h; sourceTree = "<group>"; };
 		19BC62D018F3FB0900B9B5DB /* fileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fileUtils.h; path = include/fileUtils.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
@@ -92,8 +98,7 @@
 		19DB983B18ABDCF5004433A0 /* GAclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAclass.cpp; path = GAero/src/GAclass.cpp; sourceTree = SOURCE_ROOT; };
 		19DB983D18ABDDB1004433A0 /* libamac64o.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamac64o.a; path = GAero/lib/libamac64o.a; sourceTree = "<group>"; };
 		19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libconfig4cpp.a; path = GAero/lib/libconfig4cpp.a; sourceTree = "<group>"; };
-		19E9C03C18B283AB004442E6 /* Algebra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algebra.h; path = include/Algebra.h; sourceTree = "<group>"; };
-		19E9C03D18B283B6004442E6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		19E57A6119150C6C00967D66 /* interpolationInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationInterface.h; path = include/interpolationInterface.h; sourceTree = "<group>"; };
 		19EFD92518A80A6F001675E6 /* GAero */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GAero; sourceTree = BUILT_PRODUCTS_DIR; };
 		19EFD92A18A80A6F001675E6 /* GAero.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GAero.1; sourceTree = "<group>"; };
 		19EFD93B18A80B0B001675E6 /* GAero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAero.cpp; path = src/GAero.cpp; sourceTree = "<group>"; };
@@ -112,6 +117,9 @@
 		19F7C15818EC1436005F1FD2 /* populationStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = populationStorage.h; path = GAero/include/populationStorage.h; sourceTree = SOURCE_ROOT; };
 		19F7C15918EC1553005F1FD2 /* GAfitnessSample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAfitnessSample.h; path = GAero/include/GAfitnessSample.h; sourceTree = SOURCE_ROOT; };
 		19F7C15A18EC1566005F1FD2 /* GAfitnessSample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAfitnessSample.cpp; path = GAero/src/GAfitnessSample.cpp; sourceTree = SOURCE_ROOT; };
+		19F9B8841916712000587C13 /* libmkl_core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmkl_core.dylib; path = ../../../../opt/intel/composer_xe_2013_sp1.2.139/mkl/lib/libmkl_core.dylib; sourceTree = "<group>"; };
+		19F9B8851916712000587C13 /* libmkl_intel_lp64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmkl_intel_lp64.dylib; path = ../../../../opt/intel/composer_xe_2013_sp1.2.139/mkl/lib/libmkl_intel_lp64.dylib; sourceTree = "<group>"; };
+		19F9B8861916712000587C13 /* libmkl_intel_thread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmkl_intel_thread.dylib; path = ../../../../opt/intel/composer_xe_2013_sp1.2.139/mkl/lib/libmkl_intel_thread.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +127,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19E9C03E18B283B6004442E6 /* Accelerate.framework in Frameworks */,
+				19F9B8821916712000587C13 /* libmkl_blas95_lp64.a in Frameworks */,
+				19F9B8831916712000587C13 /* libmkl_lapack95_lp64.a in Frameworks */,
+				19F9B8871916712000587C13 /* libmkl_core.dylib in Frameworks */,
+				19F9B8881916712000587C13 /* libmkl_intel_lp64.dylib in Frameworks */,
+				19F9B8891916712000587C13 /* libmkl_intel_thread.dylib in Frameworks */,
+				19D72C5319166DF50023F2A5 /* libInterpolationLib.a in Frameworks */,
 				19DB983F18ABDDB1004433A0 /* libamac64o.a in Frameworks */,
 				19DB984018ABDDB1004433A0 /* libconfig4cpp.a in Frameworks */,
 			);
@@ -193,6 +206,7 @@
 				199FB072190E5C950012927C /* interpolationKernelClass.cpp */,
 				199FB074190E5CAB0012927C /* interpolationKernelClass.h */,
 				199FB075190E5E100012927C /* RBF.h */,
+				19E57A6119150C6C00967D66 /* interpolationInterface.h */,
 			);
 			name = Interpolation;
 			sourceTree = "<group>";
@@ -211,8 +225,6 @@
 		19E9C03B18B283A0004442E6 /* Algebra */ = {
 			isa = PBXGroup;
 			children = (
-				199FB077190E7CCA0012927C /* cblas.h */,
-				19E9C03C18B283AB004442E6 /* Algebra.h */,
 			);
 			name = Algebra;
 			sourceTree = "<group>";
@@ -220,8 +232,12 @@
 		19EFD91C18A80A6F001675E6 = {
 			isa = PBXGroup;
 			children = (
+				19F9B8841916712000587C13 /* libmkl_core.dylib */,
+				19F9B8851916712000587C13 /* libmkl_intel_lp64.dylib */,
+				19F9B8861916712000587C13 /* libmkl_intel_thread.dylib */,
+				1952AF4619166BF700A11724 /* libmkl_blas95_lp64.a */,
+				1952AF4A19166BF700A11724 /* libmkl_lapack95_lp64.a */,
 				1955413A19111AAC003679FA /* InterpolationLib.xcodeproj */,
-				19E9C03D18B283B6004442E6 /* Accelerate.framework */,
 				19DB983D18ABDDB1004433A0 /* libamac64o.a */,
 				19DB983E18ABDDB1004433A0 /* libconfig4cpp.a */,
 				19EFD92718A80A6F001675E6 /* GAero */,
@@ -481,11 +497,18 @@
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				LD_DYLIB_INSTALL_NAME = "";
+				LD_RUNPATH_SEARCH_PATHS = /opt/intel/mkl/lib;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fonso/C++/GAero/GAero/lib",
+					"/Users/fonso/C++/GAero/InterpolationLib/build/Release",
+					"/Users/fonso/C++/GAero/InterpolationLib/build/Debug",
+					/opt/intel/composer_xe_2013_sp1.2.139/mkl/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -493,12 +516,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				LD_DYLIB_INSTALL_NAME = "";
+				LD_RUNPATH_SEARCH_PATHS = /opt/intel/mkl/lib;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/fonso/C++/GAero/GAero/lib",
+					"/Users/fonso/C++/GAero/InterpolationLib/build/Release",
+					"/Users/fonso/C++/GAero/InterpolationLib/build/Debug",
+					/opt/intel/composer_xe_2013_sp1.2.139/mkl/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};

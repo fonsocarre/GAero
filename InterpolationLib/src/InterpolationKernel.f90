@@ -1,16 +1,23 @@
 module InterpolationKernel
     use precisionMod
-    !use utilities
     use mkl95_lapack
     use mkl95_blas
+    use utilities
     implicit none
     
     character(len=*), parameter        :: MODname = 'InterpolationKernel'
     
     private
-    public :: interpolationOrder0
+    public :: interpolationOrder0, test
     
 contains
+
+subroutine test(Ns, a) bind(C, name="test")
+    integer, value, intent(IN) :: Ns
+    real(wp), intent(IN)     :: a(Ns)
+
+    write(*,*) "FROM test", a
+end subroutine test
 
     !**************************************************************
     ! INTERPOLATIONORDER0
@@ -24,15 +31,19 @@ contains
     !
     !   Es necesario linkar LAPACK y BLAS, ambas con la interfaz
     !       de Fortran95
-    !    _interpolationkernel_MP_interpolationorder0_
+    !    _interpolationorder0
     !--------------------------------------------------------------
-    subroutine interpolationOrder0(coorS, coorA, hS, hA, RBF, rho)! bind(c)
-        real(wp), intent(IN)        :: coorS(:,:)
-        real(wp), intent(IN)        :: coorA(:,:)
-        real(wp), intent(IN)        :: hS(:,:)
-        character(c_char), intent(IN):: RBF
-        real(wp), intent(IN)        :: rho
-        real(wp), intent(OUT)       :: hA(:,:)
+    subroutine interpolationOrder0(Ns, Na, DIM, coorS, coorA, hS, hA, RBF, rho)&
+                    bind(c, name = 'interpolationorder0')
+        integer(ip), value, intent(IN)     :: Ns
+        integer(ip), value, intent(IN)     :: Na
+        integer(ip), value, intent(IN)     :: DIM
+        real(wp), intent(IN)        :: coorS(Ns,DIM)
+        real(wp), intent(IN)        :: coorA(Na,DIM)
+        real(wp), intent(IN)        :: hS(Ns,1)
+        character(c_char), value, intent(IN):: RBF
+        real(wp), value, intent(IN)        :: rho
+        real(wp), intent(OUT)       :: hA(Na,1)
         
         real(wp), pointer           :: Css(:,:)
         real(wp), pointer           :: Aas(:,:)
@@ -45,18 +56,26 @@ contains
         integer(ip)                 :: info
         integer(ip)                 :: iPiv(size(coorS(:,1)) + 1)
         
-        integer(ip)                 :: Ns
-        integer(ip)                 :: Na
+        integer(ip)                 :: NsT
+        integer(ip)                 :: NaT
         integer(ip)                 :: nCol
         integer(ip)                 :: iCol
         
         real(wp), allocatable       :: temp(:)
 
-        Ns = size(coorS(:,1))
-        Na = size(coorA(:,1))
+        NsT = size(coorS(:,1))
+        NaT = size(coorA(:,1))
         nCol = size(hS(1,:))
 
+        write(*,*) 'Check: Ns = ', Ns
+        write(*,*) '       NsT= ', NsT
+
+
+        write(*,*) 'Check: Na = ', Na
+        write(*,*) '       NaT= ', NaT
+
         call createCss(coorS, Ns+1, Css, RBF, rho)
+        !write(*,*) Css(:,2)
 
         ! LAPACK CALL ******************************************************
         info = 0
@@ -68,7 +87,8 @@ contains
         call getri(Css, iPiv)
         if (info /= 0) call reportError(MODname//'LAPACK GETRI ERROR ')
         !*******************************************************************
-
+        write(*,*) "******************************"
+         write(*,*) Css(:,2)
         allocate(hStemp(Ns+1, nCol))
         allocate(Ch(Ns+1, nCol))
 
@@ -116,7 +136,10 @@ contains
             do i=1,Ns
                 do j=1,i
                     CssOut(i+1,j+1) = wendlandC2(coorS(i,:), coorS(j,:), rho)
+                    !write(*,*) coorS(i,:)
+                    !write(*,*) coorS(j,:)
                     CssOut(j+1,i+1) = CssOut(i+1,j+1)
+                    !write(*,*) CssOut(j+1,i+1)
                 end do
             end do
         case default

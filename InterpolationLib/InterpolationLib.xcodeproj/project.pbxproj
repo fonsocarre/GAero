@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1952AF4319166A7E00A11724 /* utilities.f90 in Sources */ = {isa = PBXBuildFile; fileRef = 1952AF4219166A7E00A11724 /* utilities.f90 */; };
 		19BA3C30191197D000266295 /* InterpolationKernel.f90 in Sources */ = {isa = PBXBuildFile; fileRef = 19BA3C2E191197D000266295 /* InterpolationKernel.f90 */; };
 		19BA3C31191197D000266295 /* precisionMod.f90 in Sources */ = {isa = PBXBuildFile; fileRef = 19BA3C2F191197D000266295 /* precisionMod.f90 */; };
 /* End PBXBuildFile section */
@@ -23,6 +24,7 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
+		1952AF4219166A7E00A11724 /* utilities.f90 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran.f90; name = utilities.f90; path = src/utilities.f90; sourceTree = "<group>"; };
 		1955413319111AAC003679FA /* libInterpolationLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInterpolationLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BA3C2E191197D000266295 /* InterpolationKernel.f90 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran.f90; name = InterpolationKernel.f90; path = src/InterpolationKernel.f90; sourceTree = "<group>"; };
 		19BA3C2F191197D000266295 /* precisionMod.f90 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.fortran.f90; name = precisionMod.f90; path = src/precisionMod.f90; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				19BA3C2E191197D000266295 /* InterpolationKernel.f90 */,
 				19BA3C2F191197D000266295 /* precisionMod.f90 */,
+				1952AF4219166A7E00A11724 /* utilities.f90 */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -126,8 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19BA3C30191197D000266295 /* InterpolationKernel.f90 in Sources */,
+				1952AF4319166A7E00A11724 /* utilities.f90 in Sources */,
 				19BA3C31191197D000266295 /* precisionMod.f90 in Sources */,
+				19BA3C30191197D000266295 /* InterpolationKernel.f90 in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,10 +212,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				IFORT_DEBUG = YES;
+				IFORT_EX_APPEND_UNDERSCORE = YES;
 				IFORT_F2003_SEMANTICS = YES;
+				IFORT_INCLUDEDIR = "/opt/intel/mkl/include/lp64 /opt/intel/mkl/include";
+				IFORT_LANG_OPENMP = parallel;
 				IFORT_MKL = threaded;
+				IFORT_OPT_LEVEL = none;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/intel/composer_xe_2013_sp1.2.139/mkl/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -219,10 +233,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				IFORT_DEBUG = YES;
+				IFORT_EX_APPEND_UNDERSCORE = YES;
 				IFORT_F2003_SEMANTICS = YES;
+				IFORT_INCLUDEDIR = "/opt/intel/mkl/include/lp64 /opt/intel/mkl/include";
+				IFORT_LANG_OPENMP = parallel;
 				IFORT_MKL = threaded;
+				IFORT_OPT_LEVEL = none;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/intel/composer_xe_2013_sp1.2.139/mkl/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};

@@ -13,7 +13,10 @@
 #include <iostream>
 #include <valarray>
 #include "RBF.h"
-#include "Algebra.h"
+#include "constants.h"
+#include "utilities.h"
+//#include "Algebra.h"
+#include "interpolationInterface.h"
 
 class interpolationKernelClass {
     
@@ -32,15 +35,18 @@ class interpolationKernelClass {
     std::valarray<double> G_;
     
     // ***********   METHODS   *******
+    void valarray2f90
+            (std::valarray< std::valarray<double>>& val,
+             double**& vec);
     
     //!
-    std::valarray<double> getCssInv
-            (std::valarray< std::valarray<double> >& sCoor);
+    //std::valarray<double> getCssInv
+    //        (std::valarray< std::valarray<double> >& sCoor);
     
-    std::valarray<double> getAasRow
-                (std::valarray<std::valarray<double>>& sCoor,
-                 std::valarray<std::valarray<double>>& aCoor,
-                 int nRow);
+    //std::valarray<double> getAasRow
+    //            (std::valarray<std::valarray<double>>& sCoor,
+    //             std::valarray<std::valarray<double>>& aCoor,
+    //             int nRow);
     
     
 public:

@@ -11,5 +11,16 @@
       <ContextState
          contextName = "GAfitnessOFClass::readSETfile(OFtopology&amp;):GAfitnessOFClass.cpp">
       </ContextState>
+      <ContextState
+         contextName = "interpolationKernelClass::interpolate(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;):interpolationKernelClass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "interpolationKernelClass::valarray2f90(std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, double**):interpolationKernelClass.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "vec[iCoor][iPoint]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
