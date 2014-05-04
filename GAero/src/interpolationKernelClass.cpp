@@ -52,17 +52,11 @@ void interpolationKernelClass::interpolate (std::vector<double>& hs,
     
     ha.resize (Na);
     
-    std::cout << begin(sCoor) << std::endl;
-    
     double** sCoorT = nullptr;
     double** aCoorT = nullptr;
     
     this->valarray2f90(sCoor, sCoorT);
     this->valarray2f90(aCoor, aCoorT);
-    
-    //    std::cout <<  << std::endl;
-    
-    //test (3, begin(sCoor[0]));
     
     std::cout << sCoorT[0][Ns-1] << ", " << sCoorT[1][Ns-1] << ", "<< sCoorT[2][Ns-1] << std::endl;
     std::cout << sCoor[Ns-1][0] << ", " << sCoor[Ns-1][1] << ", "<< sCoor[Ns-1][2] << std::endl;
