@@ -1,6 +1,6 @@
 #!/bin/sh
-rm -r processor*
-rm -r post*
-rm -r foam.log*
-rm -r 0
-rm -r *00
+rm -rf processor*
+rm -rf post*
+rm -rf foam.log*
+rm -rf 0
+rm -rf *00

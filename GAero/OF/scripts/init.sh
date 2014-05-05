@@ -5,7 +5,11 @@
 # $1 - absolute case dir
 #------------------------------
 
-source ~/.bashrc
+# MACOSX
+source ~/.profile
+
+#linux
+#source ~/.bashrc
 of230
 cd $1
 cd 0.org/include

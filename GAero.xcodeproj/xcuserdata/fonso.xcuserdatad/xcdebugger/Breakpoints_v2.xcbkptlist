@@ -54,22 +54,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "420547838.450079"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -115,13 +99,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GAero/src/interpolationKernelClass.cpp"
-            timestampString = "420982968.047029"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "420985250.61351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "interpolationKernelClass::interpolate (std::vector&lt;double&gt;&amp; hs, std::valarray&lt; std::valarray&lt;double&gt; &gt;&amp; sCoor, std::vector&lt;double&gt;&amp; ha, std::valarray&lt; std::valarray&lt;double&gt; &gt;&amp; aCoor)"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "420985250.626893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "9300">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "420985250.627149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "9356">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "420984978.645751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

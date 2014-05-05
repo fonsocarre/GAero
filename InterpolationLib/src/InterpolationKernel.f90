@@ -31,7 +31,7 @@ end subroutine test
     !
     !   Es necesario linkar LAPACK y BLAS, ambas con la interfaz
     !       de Fortran95
-    !    _interpolationorder0
+    !    interpolationorder0
     !--------------------------------------------------------------
     subroutine interpolationOrder0(Ns, Na, DIM, coorS, coorA, hS, hA, RBF, rho)&
                     bind(c, name = 'interpolationorder0')

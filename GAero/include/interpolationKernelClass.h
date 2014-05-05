@@ -27,32 +27,18 @@ class interpolationKernelClass {
                    double rho);
     
     //! Flag for creating G only on the first call
-    bool firstCall;
+    //bool firstCall;
     
     //! Rho to be used in the RBF
     double rho_;
     
     //! G storage
-    std::valarray<double> G_;
+    //std::valarray<double> G_;
     
     // ***********   METHODS   *******
     void valarray2f90
             (std::valarray< std::valarray<double>>& val,
              double*& vec);
-    
-    void Tvalarray2f90
-            (std::valarray< std::valarray<double>>& val,
-             double**& vec);
-    
-    //!
-    //std::valarray<double> getCssInv
-    //        (std::valarray< std::valarray<double> >& sCoor);
-    
-    //std::valarray<double> getAasRow
-    //            (std::valarray<std::valarray<double>>& sCoor,
-    //             std::valarray<std::valarray<double>>& aCoor,
-    //             int nRow);
-    
     
 public:
     //! Basic constructor

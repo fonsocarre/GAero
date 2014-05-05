@@ -120,7 +120,7 @@ class GAfitnessOFClass: public GAfitnessClass {
     void createTopology (OFtopology& mesh);
     
     //! Write points file in OF format
-    void writePointsFile ();
+    void writePointsFile (int iDim, std::vector<double>& delta);
     
     //! Temporary function for writing mesh points
     void writeTempPoints (OFtopology& mesh);

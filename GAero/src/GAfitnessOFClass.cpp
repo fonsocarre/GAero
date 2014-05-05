@@ -131,26 +131,31 @@ double GAfitnessOFClass::getFitness
                                           this->points);
     
     
-    
     // WRITE MESH
+    this->writePointsFile(2, deltaZa);
     
     // RUN CASE
-    std::vector<double> temp1;
-    this->getForceCoeffs(temp1);
+    // OF temp case run
+    std::cout << "Calling OF for temp case... genome=";
+    std::cout << "[" << genome[0] << "] [" << genome[1] << "]"<< std::endl;
+    command = this->cleanScript + " " + this->tempCaseDir;
+    std::system (command.c_str ());
+    command = this->initScript + " " + this->tempCaseDir;
+    std::system (command.c_str ());
+    std::vector<double> forceCoeffs;
+    this->getForceCoeffs(forceCoeffs);
     
     // EXTRACT FITNESS
+    fitness = forceCoeffs[3]/forceCoeffs[2]; // Cl / Cd
     
     // Deletes temp case
-    command = this->duplicateScript
+    command = this->deleteScript
             + " " + this->tempCaseDir;
     std::system (command.c_str ());
-    
-    fitness = genome[0] + genome[1];
     
     this->addIndividual(genome, fitness);
     
     newZ.clear ();
-    //tempFile.close ();
     
     return fitness;
 }
@@ -439,7 +444,9 @@ void GAfitnessOFClass::writeTempPoints (OFtopology& mesh)
     }
 }
 
-void GAfitnessOFClass::writePointsFile ()
+void GAfitnessOFClass::writePointsFile
+                           (int iDim,
+                            std::vector<double>& delta)
 {
     std::ofstream pointsFile;
     
@@ -466,8 +473,16 @@ void GAfitnessOFClass::writePointsFile ()
         pointsFile << "(";
         for (int iCoor=0; iCoor<constant::DIM; iCoor++)
         {
-            pointsFile << this->points[iCoor][iPoint]
-                       << " ";
+            if (iCoor == iDim)
+            {
+                pointsFile << this->points[iPoint][iCoor] - delta[iPoint]
+                           << " ";
+            }
+            else
+            {
+                pointsFile << this->points[iPoint][iCoor]
+                           << " ";
+            }
         }
         pointsFile << ")" << std::endl;
     }

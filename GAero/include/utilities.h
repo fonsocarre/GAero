@@ -36,19 +36,6 @@ namespace utilities
         pclose(pipe);
         return result;
     }
-    
-//    //! Deallocates 2D array of the shape: array[N1][N2]
-//    template <typename T>
-//    inline void deallocateArray (T*& array, int N1)
-//    {
-//        for (int i1=0; i1<N1; i1++)
-//        {
-//            delete [] array[i1];
-//            array[i1] = nullptr;
-//        }
-//        delete [] array;
-//        array = nullptr;
-//    }
 }
 
 #endif
