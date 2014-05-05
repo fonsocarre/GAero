@@ -63,16 +63,18 @@ end subroutine test
         
         real(wp), allocatable       :: temp(:)
 
+        !integer     :: unit
+
         NsT = size(coorS(:,1))
         NaT = size(coorA(:,1))
         nCol = size(hS(1,:))
 
-        write(*,*) 'Check: Ns = ', Ns
-        write(*,*) '       NsT= ', NsT
-
-
-        write(*,*) 'Check: Na = ', Na
-        write(*,*) '       NaT= ', NaT
+        !write(*,*) 'From Fortran:'
+        !unit = 14
+        !open(unit, file='tempFortran.txt', action='write')
+        !do i=1, Ns
+        !    write(unit,*) coorS(i,:)
+        !end do
 
         call createCss(coorS, Ns+1, Css, RBF, rho)
         !write(*,*) Css(:,2)
@@ -87,8 +89,8 @@ end subroutine test
         call getri(Css, iPiv)
         if (info /= 0) call reportError(MODname//'LAPACK GETRI ERROR ')
         !*******************************************************************
-        write(*,*) "******************************"
-         write(*,*) Css(:,2)
+        !write(*,*) "******************************"
+         !write(*,*) Css(:,2)
         allocate(hStemp(Ns+1, nCol))
         allocate(Ch(Ns+1, nCol))
 

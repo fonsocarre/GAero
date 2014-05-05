@@ -8,7 +8,6 @@
 
 #include "interpolationKernelClass.h"
 
-//interpolationKernelClass::interpolationKernelClass
 void interpolationKernelClass::init (std::string RBF, double rho)
 {
     // Spline
@@ -52,52 +51,77 @@ void interpolationKernelClass::interpolate (std::vector<double>& hs,
     
     ha.resize (Na);
     
-    double** sCoorT = nullptr;
-    double** aCoorT = nullptr;
+    double* sCoorT = nullptr;
+    double* aCoorT = nullptr;
     
     this->valarray2f90(sCoor, sCoorT);
     this->valarray2f90(aCoor, aCoorT);
     
-    std::cout << sCoorT[0][Ns-1] << ", " << sCoorT[1][Ns-1] << ", "<< sCoorT[2][Ns-1] << std::endl;
-    std::cout << sCoor[Ns-1][0] << ", " << sCoor[Ns-1][1] << ", "<< sCoor[Ns-1][2] << std::endl;
+    //std::cout << "From C++:" << std::endl;
+    //std::cout << sCoorT[0][Ns-1] << ", " << sCoorT[1][Ns-1] << ", "<< sCoorT[2][Ns-1] << std::endl;
+    //std::cout << sCoor[Ns-1][0] << ", " << sCoor[Ns-1][1] << ", "<< sCoor[Ns-1][2] << std::endl;
+    
+//    std::ofstream temp;
+//    temp.open("outputC++.txt");
+//    
+//    for (int i=0; i<Ns; i++)
+//    {
+//        temp << sCoorT[i] << " " << sCoorT[i + Ns] << " "<< sCoorT[i + 2*Ns];
+//        temp << std::endl;
+//    }
     
     interpolationorder0(Ns,
                         Na,
                         inputDIM,
-                        sCoorT,
-                        aCoorT,
+                        &(sCoorT[0]),
+                        &(aCoorT[0]),
                         &(hs[0]),
                         &(ha[0]),
                         RBFchar,
                         (this->rho_));
     
-    utilities::deallocateArray(sCoorT, constant::DIM);
-    utilities::deallocateArray(aCoorT, constant::DIM);
+    delete [] sCoorT;
+    delete [] aCoorT;
 }
 
 
 void interpolationKernelClass::valarray2f90
                    (std::valarray< std::valarray<double>>& val,
-                    double**& vec)
+                    double*& vec)
 {
     int nPoints = static_cast<int> (val.size ());
     int nCoor = static_cast<int> (val[0].size ());
     // allocation
-    vec = new double*[nCoor];
-    for (int iCoor=0; iCoor<nCoor; iCoor++)
-    {
-        vec[iCoor] = new double[nPoints];
-    }
+    vec = new double[nCoor*nPoints];
     
     // Filling the array
     for (int iCoor=0; iCoor<nCoor; iCoor++)
     {
         for (int iPoint=0; iPoint<nPoints; iPoint++)
         {
-            vec[iCoor][iPoint] = val[iPoint][iCoor];
+            vec[iCoor*nPoints + iPoint] = val[iPoint][iCoor];
         }
     }
 }
+
+//void interpolationKernelClass::Tvalarray2f90
+//            (std::valarray< std::valarray<double>>& val,
+//             double*& vec)
+//{
+//    int nPoints = static_cast<int> (val.size ());
+//    int nCoor = static_cast<int> (val[0].size ());
+//    // allocation
+//    vec = new double*[nPoints * nCoor];
+//    
+//    // Filling the array
+//    for (int iCoor=0; iCoor<nCoor; iCoor++)
+//    {
+//        for (int iPoint=0; iPoint<nPoints; iPoint++)
+//        {
+//            vec[iCoor*nCoor + Point] = val[iPoint][iCoor];
+//        }
+//    }
+//}
 
 
 

@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <valarray>
 #include "RBF.h"
 #include "constants.h"
@@ -36,6 +37,10 @@ class interpolationKernelClass {
     
     // ***********   METHODS   *******
     void valarray2f90
+            (std::valarray< std::valarray<double>>& val,
+             double*& vec);
+    
+    void Tvalarray2f90
             (std::valarray< std::valarray<double>>& val,
              double**& vec);
     
