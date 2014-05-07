@@ -9,6 +9,9 @@
 #pragma once
 
 #include <vector>
+#include <string>
+#include <sstream>
+#include <iostream>
 #include <cmath>
 #include "airfoil.h"
 #include "constants.h"
@@ -51,5 +54,9 @@ public:
                               double& xCoor,
                               double& yPrevCoord,
                               double chordLength);
+    
+    //! Translate the genome vector into a string
+    std::string genome2string
+            (const std::vector<double>& genome);
     
 };

@@ -28,18 +28,16 @@ double NACA4digits::eval
                  double chordLength = 1.)
 {
     std::vector<double> yCoorVec;
-
-    double yThick = this->NACAthick(xCoor, genome[1]);
     
-    double digit1;
-    double digit2;
+    double A = static_cast<int>(genome[0]*10)/100.; // [0,1]
+    double B = static_cast<int>(genome[1]*10)/10.; // [0,1]
+    double thickness = static_cast<int>(genome[2]*100)/100. ; // [0,1]
     
-    digit2 = round (10.*modf(10.*genome[0], &digit1));
+    double yThick = this->NACAthick(xCoor, thickness);
     
-    double yCamber = this->NACAcamber(xCoor, digit1/100., digit2/10.);
+    double yCamber = this->NACAcamber(xCoor, A, B);
     
-    
-    double theta = atan (this->NACAdiffY(xCoor, digit1/100., digit2/10.));
+    double theta = atan (this->NACAdiffY(xCoor, A, B));
     
     // Positive solution
     yCoorVec.push_back (yCamber + yThick*cos (theta));
@@ -48,10 +46,10 @@ double NACA4digits::eval
     
     if (yPrevCoord < 0.0)
     {
-        return yCoorVec[0];
+        return yCoorVec[1];
     } else if (yPrevCoord > 0.0)
     {
-        return yCoorVec[1];
+        return yCoorVec[0];
     }
     
     return 0.0;
@@ -96,7 +94,7 @@ double NACA4digits::NACAcamber (double xCoor,
                 (1. + xCoor - 2.*p);
     }
     
-    return yCamber;
+    return yCamber*chordLength;
 
 }
 
@@ -107,12 +105,12 @@ double NACA4digits::NACAthick (double xCoor,
 {
     double yThick;
     
-    if (fabs(xCoor) < constant::EPSILON1
-        ||
-        fabs(xCoor - 1.) < constant::EPSILON1)
-    {
-        return 0.0;
-    }
+//    if (fabs(xCoor) < constant::EPSILON1
+//        ||
+//        fabs(xCoor - 1.) < constant::EPSILON1)
+//    {
+//        return 0.0;
+//    }
     
     yThick = 0.0;
     
@@ -128,9 +126,15 @@ double NACA4digits::NACAthick (double xCoor,
 }
 
 
-//std::vector<double> NACA4digits::operator()
-//                        (const std::vector<double>& genome,
-//                         const double xCoor)
-//{
-    //return (this->eval(genome, xCoor));
-    //}
+std::string NACA4digits::genome2string
+                (const std::vector<double>& genome)
+{
+    std::string result = "NACA";
+    
+    result += std::to_string(static_cast<int> (genome[0]*10));
+    result += std::to_string(static_cast<int> (genome[1]*10));
+    if (genome[2] < 0.1) result += "0";
+    result += std::to_string(static_cast<int> (genome[2]*100));
+    
+    return result;
+}

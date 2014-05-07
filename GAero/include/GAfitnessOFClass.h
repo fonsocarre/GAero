@@ -56,6 +56,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Name of the optimised patch in the mesh.
     std::string shapePatch;
     
+    std::string checkScript;
+    
     std::string RBFsetting;
     
     //! Temporary mesh data structure
@@ -66,6 +68,10 @@ class GAfitnessOFClass: public GAfitnessClass {
     std::valarray< std::valarray<double> > points;
     
     std::valarray< std::valarray<double> > sPoints;
+    
+    int maxIter;
+    
+    int maxThickness;
     
     //! Number of points
     int nPoints;
@@ -134,6 +140,9 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! Calculates rho with bounding box
     double getRho ();
+    
+    //! Checks the OF mesh with checkMesh
+    bool checkMesh ();
     
 public:
     //! Similar to GAsettingsClass constructor.

@@ -20,6 +20,7 @@ class GApopulation {
     std::vector<double> genome;
     int generation;
     int genomeLength;
+    bool isFitnessCalculated;
     //GAfitnessClass fitnessClass;
     
 public:

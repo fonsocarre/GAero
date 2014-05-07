@@ -3,10 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "GAfitnessOFClass::initialise():GAfitnessOFClass.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "GAfitnessOFClass::createTopology(OFtopology&amp;):GAfitnessOFClass.cpp">
+         contextName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;):GAfitnessOFClass.cpp">
       </ContextState>
       <ContextState
          contextName = "GAfitnessOFClass::readSETfile(OFtopology&amp;):GAfitnessOFClass.cpp">
@@ -15,12 +12,44 @@
          contextName = "interpolationKernelClass::interpolate(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;):interpolationKernelClass.cpp">
       </ContextState>
       <ContextState
+         contextName = "GAfitnessOFClass::createTopology(OFtopology&amp;):GAfitnessOFClass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "NACA4digits::genome2string(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;):NACA4digits.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GAfitnessOFClass::initialise():GAfitnessOFClass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "NACA4digits::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double):NACA4digits.cpp">
+      </ContextState>
+      <ContextState
          contextName = "interpolationKernelClass::valarray2f90(std::__1::valarray&lt;std::__1::valarray&lt;double&gt; &gt;&amp;, double**):interpolationKernelClass.cpp">
          <PersistentStrings>
             <PersistentString
                value = "vec[iCoor][iPoint]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GAclass::GAclass(char const*):GAclass.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "NACA4digits::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double):ostream">
+      </ContextState>
+      <ContextState
+         contextName = "GAclass::calculateOldPopFitness():GAclass.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "this.oldPopulation[0].isFitnessCalculated">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:GAero.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "GAclass::initPop():GAclass.cpp">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

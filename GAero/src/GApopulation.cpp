@@ -15,6 +15,7 @@ GApopulation::GApopulation()
     this->fitness = 0.;
     this->generation = 0;
     this->genomeLength = 0;
+    this->isFitnessCalculated = false;
 }
 
 GApopulation::GApopulation(int length)
@@ -23,6 +24,7 @@ GApopulation::GApopulation(int length)
     this->genome.resize(this->genomeLength);
     this->fitness = 0.;
     this->generation = 0;
+    this->isFitnessCalculated = false;
 }
 
 GApopulation::~GApopulation()

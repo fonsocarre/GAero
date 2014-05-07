@@ -16,6 +16,7 @@ int main(int argc, const char * argv[])
     
     GA.initPop();
     
+    std::cout << GA.nGenerations << std::endl;
     for (GA.iGeneration=0; GA.iGeneration<GA.nGenerations; GA.iGeneration++)
     {
         GA.evolve();

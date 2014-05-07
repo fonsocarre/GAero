@@ -39,6 +39,12 @@ void GAfitnessOFClass::getConfiguration
                                 (scope, "shapePatch");
         this->RBFsetting  = cfg->lookupString
                                 (scope, "RBF");
+        this->maxIter     = cfg->lookupInt
+                                (scope, "maxIter");
+        this->maxThickness= cfg->lookupInt
+                                (scope, "maxThickness");
+        this->checkScript = cfg->lookupString
+                                (scope, "checkScript");
         cfg->destroy();
     }
     catch (const ConfigurationException& ex)
@@ -52,11 +58,12 @@ void GAfitnessOFClass::initialise()
     std::string command;
     
     // OF main case run
-    std::cout << "Calling OF for main case..." << std::endl;
-    command = this->cleanScript + " " + this->mainCaseDir;
-    std::system (command.c_str ());
-    command = this->initScript + " " + this->mainCaseDir;
-    std::system (command.c_str ());
+    
+//    std::cout << "Calling OF for main case..." << std::endl;
+//    command = this->cleanScript + " " + this->mainCaseDir;
+//    std::system (command.c_str ());
+//    command = this->initScript + " " + this->mainCaseDir;
+//    std::system (command.c_str ());
     
     this->NACA = new NACA4digits;
     
@@ -102,6 +109,12 @@ double GAfitnessOFClass::getFitness
     
     std::vector<double> newZ (this->nPointsInPatch);
     
+    //std::cout << genome[2] << std::endl;
+    
+    genome[2] = genome[2] * static_cast<double> (this->maxThickness)/100.;
+    
+    //std::cout << genome[2] << std::endl;
+    
     // Generates new OF case duplicating the main one
     command = this->duplicateScript
             + " " + this->mainCaseDir
@@ -124,11 +137,16 @@ double GAfitnessOFClass::getFitness
     }
     
     // MORPH MESH
+    char RBF = '0';
+    if (this->RBFsetting == "Spline") RBF = 'S';
+    else if (this->RBFsetting == "wC2") RBF = 'W';
+    
     std::vector<double> deltaZa;
     this->interpolationKernel.interpolate(deltaZ,
                                           this->sPoints,
                                           deltaZa,
-                                          this->points);
+                                          this->points,
+                                          RBF);
     
     
     // WRITE MESH
@@ -136,8 +154,15 @@ double GAfitnessOFClass::getFitness
     
     // RUN CASE
     // OF temp case run
-    std::cout << "Calling OF for temp case... genome=";
-    std::cout << "[" << genome[0] << "] [" << genome[1] << "]"<< std::endl;
+    if (!this->checkMesh())
+    {
+        std::cout << this->NACA->genome2string(genome) << std::endl;
+        std::cout << "    Mesh not good." << std::endl;
+        return 0.0;
+    }
+    std::cout << "Calling OF for temp case... ";
+    std::cout << this->NACA->genome2string(genome)
+              << std::endl;
     command = this->cleanScript + " " + this->tempCaseDir;
     std::system (command.c_str ());
     command = this->initScript + " " + this->tempCaseDir;
@@ -147,15 +172,26 @@ double GAfitnessOFClass::getFitness
     
     // EXTRACT FITNESS
     fitness = forceCoeffs[3]/forceCoeffs[2]; // Cl / Cd
+    std::cout << "    fitness = " << fitness << std::endl;
     
     // Deletes temp case
     command = this->deleteScript
             + " " + this->tempCaseDir;
     std::system (command.c_str ());
     
-    this->addIndividual(genome, fitness);
+    if (forceCoeffs[0] < maxIter)
+    {
+        this->addIndividual(genome, fitness);
+    }
     
     newZ.clear ();
+    
+    std::cout << "---------------------------------------" << std::endl;
+    
+    if (static_cast<int> (genome[2]*100) > this->maxThickness)
+    {
+        return -(fabs (fitness * 3.));
+    }
     
     return fitness;
 }
@@ -475,7 +511,7 @@ void GAfitnessOFClass::writePointsFile
         {
             if (iCoor == iDim)
             {
-                pointsFile << this->points[iPoint][iCoor] - delta[iPoint]
+                pointsFile << this->points[iPoint][iCoor] + delta[iPoint]
                            << " ";
             }
             else
@@ -516,7 +552,18 @@ double GAfitnessOFClass::getRho ()
 }
 
 
-
+bool GAfitnessOFClass::checkMesh ()
+{
+    std::string result;
+    std::string command;
+    
+    command = this->checkScript + " " + this->tempCaseDir;
+    result = utilities::exec(command.c_str ());
+    
+    if (result.find("Mesh OK") != std::string::npos) return true;
+    
+    return false;
+}
 
 
 

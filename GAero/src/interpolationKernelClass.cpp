@@ -42,9 +42,10 @@ void interpolationKernelClass::init (std::string RBF, double rho)
 void interpolationKernelClass::interpolate (std::vector<double>& hs,
                   std::valarray< std::valarray<double> >& sCoor,
                   std::vector<double>& ha,
-                  std::valarray< std::valarray<double> >& aCoor)
+                  std::valarray< std::valarray<double> >& aCoor,
+                  char RBFchar)
 {
-    char RBFchar = 'S';
+    //char RBFchar = 'S';
     int inputDIM = constant::DIM;
     int Ns = static_cast<int> (hs.size ());
     int Na = static_cast<int> (aCoor.size ());

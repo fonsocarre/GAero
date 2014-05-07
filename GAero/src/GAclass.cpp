@@ -153,6 +153,7 @@ void GAclass::getPopFitness()
     this->GAout<<"    min Fitness = "<<minFitness<<std::endl;
     this->GAout<<"    avg Fitness = "<<avgFitness<<std::endl;
     this->GAout<<"    best indiv.: ";
+    this->GAout<<std::flush;
     for (int i=0; i<this->GAsettings.genomeSize; i++)
     {
         this->GAout<<this->population[0].genome[i]<<" ";
@@ -165,8 +166,12 @@ void GAclass::calculatePopFitness()
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
         //this->population[iPop].evaluateFitness();
-        this->population[iPop].fitness =
+        std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
+        if (!this->population[iPop].isFitnessCalculated)
+        {
+            this->population[iPop].fitness =
             this->fitness->getFitness (this->population[iPop].genome);
+        }
     }
 }
 
@@ -174,6 +179,7 @@ void GAclass::calculateOldPopFitness()
 {
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
+        std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
         this->oldPopulation[iPop].fitness =
             this->fitness->getFitness (this->oldPopulation[iPop].genome);
     }
@@ -183,8 +189,11 @@ void GAclass::evolveElitists()
 {
     for (int iPop=0; iPop<this->GAsettings.nElitist; iPop++)
     {
-        this->population[iPop] = this->oldPopulation[iPop];
+        this->population[iPop].genome = this->oldPopulation[iPop].genome;
+        this->population[iPop].genomeLength = this->oldPopulation[iPop].genomeLength;
         this->population[iPop].generation = this->iGeneration;
+        this->population[iPop].isFitnessCalculated = true;
+        this->population[iPop].fitness = this->oldPopulation[iPop].fitness;
         this->usedPopulation += 1;
     }
 }
@@ -226,6 +235,7 @@ void GAclass::crossIndividuals()
         // other attributes
         this->population[iNewPop].generation = this->iGeneration;
         this->population[iNewPop].genomeLength = this->GAsettings.genomeSize;
+        this->population[iNewPop].isFitnessCalculated = false;
     }
     this->usedPopulation += this->GAsettings.nCrossing;
 }
@@ -244,6 +254,7 @@ void GAclass::createNewIndividuals()
             this->population[i].genome[iGen] =
                             this->randomGen.randDouble();
         }
+        this->population[i].isFitnessCalculated = false;
     }
     this->usedPopulation += nNew;
 }

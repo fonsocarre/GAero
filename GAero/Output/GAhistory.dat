@@ -1,0 +1,33 @@
+EVOLVING......................0
+    Selecting elite...DONE
+    Crossing individuals...DONE
+    Creating new individuals...DONE
+    max Fitness = 103.753
+    min Fitness = 32.8828
+    avg Fitness = 75.767
+    best indiv.: 0.688025 0.534244 0.53096 
+EVOLVING......................1
+    Selecting elite...DONE
+    Crossing individuals...DONE
+    Creating new individuals...DONE
+    max Fitness = 103.753
+    min Fitness = 9.58689
+    avg Fitness = 81.1577
+    best indiv.: 0.688025 0.534244 0.53096 
+EVOLVING......................2
+    Selecting elite...DONE
+    Crossing individuals...DONE
+    Creating new individuals...DONE
+    max Fitness = 103.753
+    min Fitness = 34.7627
+    avg Fitness = 81.6811
+    best indiv.: 0.688025 0.534244 0.53096 
+EVOLVING......................3
+    Selecting elite...DONE
+    Crossing individuals...DONE
+    Creating new individuals...DONE
+    max Fitness = 111.633
+    min Fitness = 57.3092
+    avg Fitness = 96.1517
+    best indiv.: 0.843888 0.371897 0.334527 
+GAero successfully finished with 18 function calls.

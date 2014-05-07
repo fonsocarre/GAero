@@ -29,13 +29,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         30000;
+endTime         3000;
 
 deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   1000;
 
 purgeWrite      0;
 
@@ -61,7 +61,7 @@ runTimeModifiable true;
 functions
 {
     #include "forceCoeffs"
-    #include "wallBoundedStreamLines"
+    //#include "wallBoundedStreamLines"
 }
 
 

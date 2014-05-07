@@ -29,7 +29,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         30000;
+endTime         1500;
 
 deltaT          1;
 
@@ -61,7 +61,7 @@ runTimeModifiable true;
 functions
 {
     #include "forceCoeffs"
-    #include "wallBoundedStreamLines"
+    //#include "wallBoundedStreamLines"
 }
 
 

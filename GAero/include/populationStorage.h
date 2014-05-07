@@ -20,6 +20,8 @@ namespace populationSto {
         std::vector<double> genome;
         //! Fitness value of the individual
         double fitness;
+        //! Flag for not duplicate calculations
+        bool isFitnessCalculated;
     };
     
 }

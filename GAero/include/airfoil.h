@@ -21,4 +21,7 @@ public:
                   double& xCoor,
                   double& yPrevCoord,
                   double chordLength) = 0;
+    
+    virtual std::string genome2string
+            (const std::vector<double>& genome) = 0;
 };
