@@ -130,11 +130,22 @@ std::string NACA4digits::genome2string
                 (const std::vector<double>& genome)
 {
     std::string result = "NACA";
-    
-    result += std::to_string(static_cast<int> (genome[0]*10));
-    result += std::to_string(static_cast<int> (genome[1]*10));
+    std::stringstream ss;
+
+    ss.precision (0);
+
+    ss <<static_cast<int> (genome[0]*10)<<static_cast<int> (genome[1]*10);
+
+    result += ss.str ();
+
+    //result += std::to_string(static_cast<long double> (static_cast<int> (genome[0]*10)));
+    //result += std::to_string(static_cast<long double> (static_cast<int> (genome[1]*10)));
     if (genome[2] < 0.1) result += "0";
-    result += std::to_string(static_cast<int> (genome[2]*100));
-    
+    //result += std::to_string(static_cast<long double> (static_cast<int> (genome[2]*100)));
+    ss.str(std::string());
+    ss <<static_cast<int> (genome[2]*100);
+
+    result += ss.str ();   
+
     return result;
 }

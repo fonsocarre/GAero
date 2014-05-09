@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421167270.499789"
+            timestampString = "421326451.585228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
             <Locations>
@@ -208,11 +208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421166692.991371"
+            timestampString = "421326451.585228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
@@ -236,7 +236,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAero.cpp"
@@ -317,11 +317,11 @@
                   symbolName = "GAclass::calculatePopFitness()"
                   moduleName = "GAero"
                   urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421167072.218685"
+                  timestampString = "421326936.010542"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
                   offsetFromSymbolStart = "58">
                </Location>
                <Location
@@ -331,11 +331,11 @@
                   symbolName = "GAclass::calculatePopFitness()"
                   moduleName = "GAero"
                   urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421167072.218969"
+                  timestampString = "421326936.010816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
                   offsetFromSymbolStart = "104">
                </Location>
             </Locations>
@@ -364,43 +364,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421167270.499789"
+            timestampString = "421326449.04218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "557"
-            endingLineNumber = "557"
-            landmarkName = "GAfitnessOFClass::checkMesh ()"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAfitnessOFClass::checkMesh()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
-                  timestampString = "421167072.219292"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "555"
-                  endingLineNumber = "555"
-                  offsetFromSymbolStart = "438">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAfitnessOFClass::checkMesh()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
-                  timestampString = "421167072.219564"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "555"
-                  endingLineNumber = "555"
-                  offsetFromSymbolStart = "2216">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "421326664.011425"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
