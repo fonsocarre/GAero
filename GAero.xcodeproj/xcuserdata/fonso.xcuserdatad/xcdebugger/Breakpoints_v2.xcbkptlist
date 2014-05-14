@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421326451.585228"
+            timestampString = "421675369.683629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
             <Locations>
@@ -208,11 +208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421326451.585228"
+            timestampString = "421675369.683629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
@@ -317,12 +317,12 @@
                   symbolName = "GAclass::calculatePopFitness()"
                   moduleName = "GAero"
                   urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421326936.010542"
+                  timestampString = "421752002.052795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "58">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "42">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -331,12 +331,12 @@
                   symbolName = "GAclass::calculatePopFitness()"
                   moduleName = "GAero"
                   urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421326936.010816"
+                  timestampString = "421752002.053091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "104">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "85">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -364,11 +364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421326449.04218"
+            timestampString = "421675369.683629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>
@@ -380,11 +380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421326664.011425"
+            timestampString = "421675369.683629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
             landmarkType = "5">
          </BreakpointContent>

@@ -158,7 +158,7 @@ public:
     /** Also must read OF mesh and create topology */
     void initialise ();
     //! Creates temp case, runs and parses output.
-    double getFitness (std::vector<double> genome);
+    double getFitness (const std::vector<double>& genome);
     
     GAfitnessOFClass () {};
 };

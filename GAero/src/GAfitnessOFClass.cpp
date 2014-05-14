@@ -102,17 +102,23 @@ void GAfitnessOFClass::initialise()
 
 
 double GAfitnessOFClass::getFitness
-                        (std::vector<double> genome)
+                        (const std::vector<double>& genome)
 {
     double fitness;
     std::string command;
     
     std::vector<double> newZ (this->nPointsInPatch);
     
+    std::vector<double> tempGenome {genome};
+    
     //std::cout << genome[2] << std::endl;
     
-    genome[2] = genome[2] * static_cast<double> (this->maxThickness)/100.;
+
     
+    tempGenome[2] = genome[2] * static_cast<double> (this->maxThickness)/100.;
+//    genome[0] = 0.8;
+//    genome[1] = 0.2;
+//    genome[2] = 0.01;
     //std::cout << genome[2] << std::endl;
     
     // Generates new OF case duplicating the main one
@@ -125,6 +131,12 @@ double GAfitnessOFClass::getFitness
     double zTemp;
     std::vector<double> deltaZ (this->nPointsInPatch);
     
+    //***************************
+//    std::ofstream oFile;
+//    oFile.open ("hz.dat");
+//    oFile << "#\"iPoint\"" << "  \t" << "\"hz\"" << std::endl;
+//    oFile << "# iPoint empieza en 1" << std::endl;
+//    oFile << "#" << this->NACA->genome2string(genome) << std::endl;
     // GET PROFILE POINTS
     for (int i = 0; i < this->nPointsInPatch; i++)
     {
@@ -132,8 +144,9 @@ double GAfitnessOFClass::getFitness
         xTemp = this->points[iPoint][0];
         zTemp = this->points[iPoint][2];
         
-        newZ[i] = this->NACA->eval (genome, xTemp, zTemp, 1.);
+        newZ[i] = this->NACA->eval (tempGenome, xTemp, zTemp, 1.);
         deltaZ[i] = newZ[i] - zTemp;
+        //oFile << iPoint+1 << "  \t" << deltaZ[i] << std::endl;
     }
     
     // MORPH MESH
@@ -156,12 +169,12 @@ double GAfitnessOFClass::getFitness
     // OF temp case run
     if (!this->checkMesh())
     {
-        std::cout << this->NACA->genome2string(genome) << std::endl;
+        std::cout << this->NACA->genome2string(tempGenome) << std::endl;
         std::cout << "    Mesh not good." << std::endl;
         return 0.0;
     }
     std::cout << "Calling OF for temp case... ";
-    std::cout << this->NACA->genome2string(genome)
+    std::cout << this->NACA->genome2string(tempGenome)
               << std::endl;
     command = this->cleanScript + " " + this->tempCaseDir;
     std::system (command.c_str ());
@@ -181,7 +194,7 @@ double GAfitnessOFClass::getFitness
     
     if (forceCoeffs[0] < maxIter)
     {
-        this->addIndividual(genome, fitness);
+        this->addIndividual(tempGenome, fitness);
     }
     
     newZ.clear ();

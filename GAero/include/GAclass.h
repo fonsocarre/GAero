@@ -83,7 +83,7 @@ public:
     ~GAclass();
     
     //! Standard OpenFOAM fitness function.
-    GAfitnessSample fitnessSample;
+    //GAfitnessSample fitnessSample;
     GAfitnessOFClass fitnessOF;
     
     // public attributes

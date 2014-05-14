@@ -163,10 +163,11 @@ void GAclass::getPopFitness()
 
 void GAclass::calculatePopFitness()
 {
+    // multithreading should be included HERE
     for (int iPop=0; iPop<this->nPopulation; iPop++)
     {
         //this->population[iPop].evaluateFitness();
-        std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
+        //std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
         if (!this->population[iPop].isFitnessCalculated)
         {
             this->population[iPop].fitness =
