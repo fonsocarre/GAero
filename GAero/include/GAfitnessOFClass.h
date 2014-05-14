@@ -15,6 +15,8 @@
 #include <cstdlib>
 #include <set>
 #include <math.h>
+#include <thread>
+
 #include "GAfitnessClass.h"
 #include "Configuration.h"
 #include "OFtopology.h"
@@ -73,6 +75,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     int maxThickness;
     
+    int nThreads;
+    
     //! Number of points
     int nPoints;
     
@@ -92,6 +96,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     //! Polymorphic pointer to airfoil class for naca eqs.
     //! Memory dynamically allocated, check DELETE
     airfoil* NACA;
+    
+    std::mutex lock_mutex;
     
     //! NACA class for eqs.
     //NACA4digits NACAeqs;
@@ -126,7 +132,8 @@ class GAfitnessOFClass: public GAfitnessClass {
     void createTopology (OFtopology& mesh);
     
     //! Write points file in OF format
-    void writePointsFile (int iDim, std::vector<double>& delta);
+    void writePointsFile (int iDim, std::vector<double>& delta,
+                          std::string caseDir);
     
     //! Temporary function for writing mesh points
     void writeTempPoints (OFtopology& mesh);
@@ -136,13 +143,14 @@ class GAfitnessOFClass: public GAfitnessClass {
                         double fitness);
     
     //! gets ForceCoeffs from forceCoeffs.dat file
-    void getForceCoeffs (std::vector<double>& forceCoeffs);
+    void getForceCoeffs (std::vector<double>& forceCoeffs,
+                         std::string caseDir);
     
     //! Calculates rho with bounding box
     double getRho ();
     
     //! Checks the OF mesh with checkMesh
-    bool checkMesh ();
+    bool checkMesh (std::string caseDir);
     
 public:
     //! Similar to GAsettingsClass constructor.
@@ -158,7 +166,11 @@ public:
     /** Also must read OF mesh and create topology */
     void initialise ();
     //! Creates temp case, runs and parses output.
-    double getFitness (const std::vector<double>& genome);
+    void getFitness (const std::vector<double>& genome,
+                       const int nThread,
+                       double& fitness);
+    
+    int getnThreads () {return this->nThreads;};
     
     GAfitnessOFClass () {};
 };

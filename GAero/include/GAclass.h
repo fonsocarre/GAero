@@ -14,6 +14,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
@@ -61,6 +62,9 @@ class GAclass {
     
     double fitnessVariation();
     
+    void fitnessWrapper (std::vector<double> genome,
+                         const int iThread,
+                         double& fitness);
     
 
 public:

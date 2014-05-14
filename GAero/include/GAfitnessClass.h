@@ -29,7 +29,9 @@ public:
     //! Virtual initiate function.
     virtual void initialise() = 0;
     //! Virtual method for getFitness.
-    virtual double getFitness (const std::vector<double>& genome) = 0;
+    virtual void getFitness (const std::vector<double>& genome,
+                               const int nThread,
+                               double& fitness) = 0;
     //! Empty constructor
     GAfitnessClass () { };
 };

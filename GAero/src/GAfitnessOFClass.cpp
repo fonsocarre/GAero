@@ -45,6 +45,8 @@ void GAfitnessOFClass::getConfiguration
                                 (scope, "maxThickness");
         this->checkScript = cfg->lookupString
                                 (scope, "checkScript");
+        this->nThreads    = cfg->lookupInt
+                                (scope, "nThreads");
         cfg->destroy();
     }
     catch (const ConfigurationException& ex)
@@ -101,11 +103,16 @@ void GAfitnessOFClass::initialise()
 }
 
 
-double GAfitnessOFClass::getFitness
-                        (const std::vector<double>& genome)
+void GAfitnessOFClass::getFitness
+                        (const std::vector<double>& genome,
+                         const int nThread,
+                         double& fitness)
 {
-    double fitness;
+    //double fitness;
     std::string command;
+    
+    std::string caseDir;
+    caseDir = this->tempCaseDir + std::to_string(nThread);
     
     std::vector<double> newZ (this->nPointsInPatch);
     
@@ -124,7 +131,7 @@ double GAfitnessOFClass::getFitness
     // Generates new OF case duplicating the main one
     command = this->duplicateScript
             + " " + this->mainCaseDir
-            + " " + this->tempCaseDir;
+            + " " + caseDir;
     std::system (command.c_str ());
     
     double xTemp;
@@ -155,33 +162,42 @@ double GAfitnessOFClass::getFitness
     else if (this->RBFsetting == "wC2") RBF = 'W';
     
     std::vector<double> deltaZa;
+    std::mutex lock;
+    lock.lock();
     this->interpolationKernel.interpolate(deltaZ,
                                           this->sPoints,
                                           deltaZa,
                                           this->points,
                                           RBF);
+    lock.unlock();
     
     
     // WRITE MESH
-    this->writePointsFile(2, deltaZa);
+    this->writePointsFile(2, deltaZa, caseDir);
     
     // RUN CASE
     // OF temp case run
-    if (!this->checkMesh())
+    std::cout << "Calling checkMesh from " + std::to_string(nThread) << std::endl;
+    if (!this->checkMesh(caseDir))
     {
         std::cout << this->NACA->genome2string(tempGenome) << std::endl;
         std::cout << "    Mesh not good." << std::endl;
-        return 0.0;
+        fitness = 0.0;
+        return;
     }
     std::cout << "Calling OF for temp case... ";
     std::cout << this->NACA->genome2string(tempGenome)
               << std::endl;
-    command = this->cleanScript + " " + this->tempCaseDir;
+    command = this->cleanScript + " " + caseDir;
+    std::cout << "Calling clean from " + std::to_string(nThread) << std::endl;
     std::system (command.c_str ());
-    command = this->initScript + " " + this->tempCaseDir;
-    std::system (command.c_str ());
+    command = this->initScript + " " + caseDir;
+    std::cout << "Calling init from " + std::to_string(nThread) << std::endl;
+    //std::system (command.c_str ());
+    utilities::paralellExec(command.c_str ());
     std::vector<double> forceCoeffs;
-    this->getForceCoeffs(forceCoeffs);
+    std::cout << "Calling fCoeffs from " + std::to_string(nThread) << std::endl;
+    this->getForceCoeffs(forceCoeffs, caseDir);
     
     // EXTRACT FITNESS
     fitness = forceCoeffs[3]/forceCoeffs[2]; // Cl / Cd
@@ -189,7 +205,8 @@ double GAfitnessOFClass::getFitness
     
     // Deletes temp case
     command = this->deleteScript
-            + " " + this->tempCaseDir;
+            + " " + caseDir;
+    std::cout << "Calling delete from " + std::to_string(nThread) << std::endl;
     std::system (command.c_str ());
     
     if (forceCoeffs[0] < maxIter)
@@ -203,19 +220,21 @@ double GAfitnessOFClass::getFitness
     
     if (static_cast<int> (genome[2]*100) > this->maxThickness)
     {
-        return -(fabs (fitness * 3.));
+        fitness = -(fabs (fitness * 3.));
+        return;
     }
     
-    return fitness;
+    return;
 }
 
 
-void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs)
+void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs,
+                                       std::string caseDir)
 {
     std::string coeffsString;
     std::string command;
     
-    command = this->tempCaseDir
+    command = caseDir
             + "/postProcessing/forceCoeffs/0/forceCoeffs.dat";
     command = "tail -1 " + command + " | head -1";
     
@@ -495,11 +514,15 @@ void GAfitnessOFClass::writeTempPoints (OFtopology& mesh)
 
 void GAfitnessOFClass::writePointsFile
                            (int iDim,
-                            std::vector<double>& delta)
+                            std::vector<double>& delta,
+                            std::string caseDir)
 {
     std::ofstream pointsFile;
     
-    fileUtils::openFile(pointsFile, this->tempCaseDir +
+    std::mutex lock;
+    std::lock_guard<std::mutex> l(lock);
+    
+    fileUtils::openFile(pointsFile, caseDir +
                                     "/constant" +
                                     "/polyMesh/points");
 
@@ -543,6 +566,8 @@ void GAfitnessOFClass::writePointsFile
 void GAfitnessOFClass::addIndividual (std::vector<double>& genome,
                     double fitness)
 {
+    
+    std::lock_guard<std::mutex> lock(this->lock_mutex);
     populationSto::individual temp;
     temp.genome = genome;
     temp.fitness = fitness;
@@ -565,13 +590,14 @@ double GAfitnessOFClass::getRho ()
 }
 
 
-bool GAfitnessOFClass::checkMesh ()
+bool GAfitnessOFClass::checkMesh (std::string caseDir)
 {
     std::string result;
     std::string command;
     
-    command = this->checkScript + " " + this->tempCaseDir;
-    result = utilities::exec(command.c_str ());
+    command = this->checkScript + " " + caseDir;
+    // CAMBIADO
+    result = utilities::execSys(command.c_str ());
     
     if (result.find("Mesh OK") != std::string::npos) return true;
     
