@@ -85,6 +85,7 @@
 		198F58D618E9AB0200935C94 /* mersenne.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mersenne.cpp; path = GAero/src/mersenne.cpp; sourceTree = SOURCE_ROOT; };
 		198F58D718E9AB0200935C94 /* userintf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = userintf.cpp; path = GAero/src/userintf.cpp; sourceTree = SOURCE_ROOT; };
 		1993A59218AD26240036493B /* utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = include/utilities.h; sourceTree = "<group>"; };
+		19993917192A2EED00BB14CF /* spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spline.h; sourceTree = "<group>"; };
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
 		199FB072190E5C950012927C /* interpolationKernelClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interpolationKernelClass.cpp; path = src/interpolationKernelClass.cpp; sourceTree = "<group>"; };
 		199FB074190E5CAB0012927C /* interpolationKernelClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationKernelClass.h; path = include/interpolationKernelClass.h; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 		199FB071190E5C7C0012927C /* Interpolation */ = {
 			isa = PBXGroup;
 			children = (
+				19993917192A2EED00BB14CF /* spline.h */,
 				199FB072190E5C950012927C /* interpolationKernelClass.cpp */,
 				199FB074190E5CAB0012927C /* interpolationKernelClass.h */,
 				199FB075190E5E100012927C /* RBF.h */,
