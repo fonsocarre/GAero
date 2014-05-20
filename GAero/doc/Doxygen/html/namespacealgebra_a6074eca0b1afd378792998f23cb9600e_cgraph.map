@@ -1,0 +1,4 @@
+<map id="algebra::invertMatrix" name="algebra::invertMatrix">
+<area shape="rect" id="node2" href="$_algebra_8h.html#a9ade98d71580bb70e0ddf663d30e4bb4" title="Preprocessor guard. " alt="" coords="197,5,261,32"/>
+<area shape="rect" id="node3" href="$_algebra_8h.html#af83709f5dcd4b9fbff71c3623b64fa21" title="Generates inverse of a matrix given its LU decomposition (LAPACK) " alt="" coords="198,56,261,83"/>
+</map>

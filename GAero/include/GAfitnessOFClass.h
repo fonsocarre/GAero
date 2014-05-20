@@ -95,7 +95,7 @@ class GAfitnessOFClass: public GAfitnessClass {
     
     //! Polymorphic pointer to airfoil class for naca eqs.
     //! Memory dynamically allocated, check DELETE
-    airfoil* NACA;
+    airfoil* profile;
     
     std::mutex lock_mutex;
     
@@ -173,6 +173,7 @@ public:
     int getnThreads () {return this->nThreads;};
     
     GAfitnessOFClass () {};
+    ~GAfitnessOFClass () {delete this->profile;};
 };
 
 #endif

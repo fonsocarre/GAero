@@ -13,6 +13,7 @@
 		198F58D818E9AB0200935C94 /* mersenne.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D618E9AB0200935C94 /* mersenne.cpp */; };
 		198F58D918E9AB0200935C94 /* userintf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 198F58D718E9AB0200935C94 /* userintf.cpp */; };
 		199FB073190E5C950012927C /* interpolationKernelClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 199FB072190E5C950012927C /* interpolationKernelClass.cpp */; };
+		19A53ACD192B5D2B00D1989B /* phiAirfoil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A53ACC192B5D2B00D1989B /* phiAirfoil.cpp */; };
 		19D72C5319166DF50023F2A5 /* libInterpolationLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1955413F19111AAD003679FA /* libInterpolationLib.a */; };
 		19DB983018ABDB96004433A0 /* GArandomGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */; };
 		19DB983318ABDBA0004433A0 /* GAsettingsClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EFD94D18A80BEE001675E6 /* GAsettingsClass.cpp */; };
@@ -89,7 +90,9 @@
 		199F030A18AA3B39004358E2 /* GArandomGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GArandomGenerator.h; path = include/GArandomGenerator.h; sourceTree = "<group>"; };
 		199FB072190E5C950012927C /* interpolationKernelClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interpolationKernelClass.cpp; path = src/interpolationKernelClass.cpp; sourceTree = "<group>"; };
 		199FB074190E5CAB0012927C /* interpolationKernelClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = interpolationKernelClass.h; path = include/interpolationKernelClass.h; sourceTree = "<group>"; };
-		199FB075190E5E100012927C /* RBF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RBF.h; path = include/RBF.h; sourceTree = "<group>"; };
+		19A53AC9192B587300D1989B /* IOfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IOfile.h; path = include/IOfile.h; sourceTree = "<group>"; };
+		19A53ACB192B5D1700D1989B /* phiAirfoil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = phiAirfoil.h; path = GAero/include/phiAirfoil.h; sourceTree = SOURCE_ROOT; };
+		19A53ACC192B5D2B00D1989B /* phiAirfoil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = phiAirfoil.cpp; path = GAero/src/phiAirfoil.cpp; sourceTree = SOURCE_ROOT; };
 		19BC62D018F3FB0900B9B5DB /* fileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fileUtils.h; path = include/fileUtils.h; sourceTree = "<group>"; };
 		19D2A67318DDF57A00117876 /* fitnessFunction.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fitnessFunction.cfg; sourceTree = "<group>"; };
 		19DB982E18ABD8B9004433A0 /* GArandomGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GArandomGenerator.cpp; path = src/GArandomGenerator.cpp; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				1949DF9E18F42E3C00720303 /* airfoil.h */,
 				1949DF9F18F42F0900720303 /* NACA4digits.h */,
 				1949DFA018F4304000720303 /* NACA4digits.cpp */,
+				19A53ACB192B5D1700D1989B /* phiAirfoil.h */,
+				19A53ACC192B5D2B00D1989B /* phiAirfoil.cpp */,
 			);
 			name = NACA;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				1993A59218AD26240036493B /* utilities.h */,
 				1944DB2518EC721B00409027 /* constants.h */,
 				19BC62D018F3FB0900B9B5DB /* fileUtils.h */,
+				19A53AC9192B587300D1989B /* IOfile.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -207,7 +213,6 @@
 				19993917192A2EED00BB14CF /* spline.h */,
 				199FB072190E5C950012927C /* interpolationKernelClass.cpp */,
 				199FB074190E5CAB0012927C /* interpolationKernelClass.h */,
-				199FB075190E5E100012927C /* RBF.h */,
 				19E57A6119150C6C00967D66 /* interpolationInterface.h */,
 			);
 			name = Interpolation;
@@ -419,6 +424,7 @@
 				19DB983618ABDBAC004433A0 /* GAero.cpp in Sources */,
 				199FB073190E5C950012927C /* interpolationKernelClass.cpp in Sources */,
 				19F7C15718EC11AF005F1FD2 /* GAfitnessClass.cpp in Sources */,
+				19A53ACD192B5D2B00D1989B /* phiAirfoil.cpp in Sources */,
 				192C3CB118ED4FCC0045F1EE /* GAfitnessOFClass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

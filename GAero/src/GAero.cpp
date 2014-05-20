@@ -7,6 +7,7 @@
 //
 
 #include "GAclass.h"
+#include "IOfile.h"
 
 int main(int argc, const char * argv[])
 {

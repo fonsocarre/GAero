@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+forceCoeffs
+{
+  #include "../0.org/include/initialConditions"
+//    type        forceCoeffs;
+    type        forces;
+
+    functionObjectLibs ( "libforces.so" );
+
+    outputControl   timeStep;
+    timeInterval    30;
+
+    log         yes;
+
+    patches     ( "PROFILE" );
+    pName       p;
+    UName       U;
+    rhoName     rhoInf;      // Indicates incompressible
+    log         true;
+    rhoInf      1;           // Redundant for incompressible
+    liftDir     $liftVector;
+    dragDir     $dragVector;
+    CofR        (0.25 0 0);  // Axle midpoint on ground
+    pitchAxis   $pitchVector;
+    magUInf     $velocityMag;
+    lRef        1.0;        // Wheelbase length
+    Aref        1.0;        // Estimated
+
+    //binData
+    //{
+    //    nBin        20;          // output data into 20 bins
+    //    direction   (1 0 0);     // bin direction
+    //    cumulative  yes;
+    //}
+}
+
+forceCoeffs
+{
+    #include "../0.org/include/initialConditions"
+    type                forceCoeffs;
+    functionObjectLibs  ( "libforces.so" );
+    outputControl       timeStep;
+    outputInterval      1;
+ 
+    patches             ( "PROFILE" );
+    pName               p;
+    UName               U;
+    rhoName             rhoInf;
+    log                 true;
+     
+    liftDir             $liftVector;
+    dragDir             $dragVector;
+    CofR                (0.25 0 0);
+    pitchAxis           $pitchVector;
+     
+    magUInf             $velocityMag;
+    rhoInf              1;
+    lRef                1;
+    Aref                1;
+}
+
+
+// ************************************************************************* //
