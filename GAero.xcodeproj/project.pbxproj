@@ -74,6 +74,7 @@
 		192C3CCD18EDAE0D0045F1EE /* charUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = charUtilities.h; path = include/charUtilities.h; sourceTree = "<group>"; };
 		192CB75B18AE4397001A5D6E /* GAoutputclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GAoutputclass.cpp; path = src/GAoutputclass.cpp; sourceTree = "<group>"; };
 		192CB75D18AE43A6001A5D6E /* GAoutputclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAoutputclass.h; path = include/GAoutputclass.h; sourceTree = "<group>"; };
+		193D0E1E192DF9CE0034DF53 /* Makefile_icpc_parallel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile_icpc_parallel; path = Make/Makefile_icpc_parallel; sourceTree = "<group>"; };
 		1944DB2518EC721B00409027 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = constants.h; path = include/constants.h; sourceTree = "<group>"; };
 		1949DF9E18F42E3C00720303 /* airfoil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = airfoil.h; path = GAero/include/airfoil.h; sourceTree = SOURCE_ROOT; };
 		1949DF9F18F42F0900720303 /* NACA4digits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NACA4digits.h; path = GAero/include/NACA4digits.h; sourceTree = SOURCE_ROOT; };
@@ -164,6 +165,14 @@
 				192CB75D18AE43A6001A5D6E /* GAoutputclass.h */,
 			);
 			name = GAoutput;
+			sourceTree = "<group>";
+		};
+		193D0E1C192DF97B0034DF53 /* Make */ = {
+			isa = PBXGroup;
+			children = (
+				193D0E1E192DF9CE0034DF53 /* Makefile_icpc_parallel */,
+			);
+			name = Make;
 			sourceTree = "<group>";
 		};
 		1949DF9D18F42E1900720303 /* NACA */ = {
@@ -263,6 +272,7 @@
 		19EFD92718A80A6F001675E6 /* GAero */ = {
 			isa = PBXGroup;
 			children = (
+				193D0E1C192DF97B0034DF53 /* Make */,
 				199FB071190E5C7C0012927C /* Interpolation */,
 				19E9C03B18B283A0004442E6 /* Algebra */,
 				192CB75A18AE437C001A5D6E /* GAoutput */,
