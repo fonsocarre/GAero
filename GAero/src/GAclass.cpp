@@ -193,7 +193,7 @@ void GAclass::calculatePopFitness()
                                       iThread,
                                       std::ref (this->population[iPop].fitness));
                 //                this->fitness->getFitness (this->population[iPop].genome, iThread, this->population[iPop].fitness)
-                //std::cout << "Antes del join () tarea " << iThread << std::endl;
+                std::cout << "Antes del join () tarea " << iThread << std::endl;
             }
             
         }
