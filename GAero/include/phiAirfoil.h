@@ -23,6 +23,7 @@ class phiAirfoilClass: public airfoil
     
     std::vector<double> genome2coord
                 (const std::vector<double>& genome);
+    double x2phi (double x);
     
 public:
     //! Sets the max and min values of genome. They will be mapped.

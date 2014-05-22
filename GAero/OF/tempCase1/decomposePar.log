@@ -7,11 +7,11 @@
 \*---------------------------------------------------------------------------*/
 Build  : 2.3.0-f5222ca19ce6
 Exec   : decomposePar
-Date   : May 20 2014
-Time   : 11:50:28
+Date   : May 14 2014
+Time   : 13:12:19
 Host   : "Alfonsos-MacBook-Pro.local"
-PID    : 13940
-Case   : /Users/fonso/C++/GAero/GAero/OF/tempCase1
+PID    : 16359
+Case   : /Users/fonso/C++/GAero/GAero/OF/NACABCN
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster
@@ -29,7 +29,7 @@ Create mesh
 Calculating distribution of cells
 Selecting decompositionMethod scotch
 
-Finished decomposition in 0.06 s
+Finished decomposition in 0.05 s
 
 Calculating original mesh data
 

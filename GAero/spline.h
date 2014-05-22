@@ -23,10 +23,10 @@
  *
  */
 /*
- #include <cstdio>
- #include <cstdlib>
- #include <vector>
- #include "spline.h"
+ //#include <cstdio>
+ //#include <cstdlib>
+ //#include <vector>
+ //#include "spline.h"
  
  int main(int argc, char** argv) {
  
@@ -48,7 +48,7 @@
  $ ./demo
  spline at 1.500000 is 0.915345*/
 
-
+#pragma once
 #ifndef _tk_spline_h
 #define _tk_spline_h
 
@@ -361,7 +361,7 @@ std::vector<double> spline::operator()(const std::vector<double>& xVec) const
 
 } // namespace
 
-void splineInterpolation (std::vector<double>& xPointsIn,
+static void splineInterpolation (std::vector<double>& xPointsIn,
                           std::vector<double>& yPointsIn,
                           std::vector<double>& xPointsOut,
                           std::vector<double>& yPointsOut)

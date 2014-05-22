@@ -21,7 +21,7 @@
 #include "GArandomGenerator.h"
 #include "GAoutputclass.h"
 #include "utilities.h"
-#include "GAfitnessSample.h"
+//#include "GAfitnessSample.h"
 #include "GAfitnessOFClass.h"
 
 //! The main Genetic Algorithm class.

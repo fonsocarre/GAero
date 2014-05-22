@@ -27,6 +27,7 @@
 #include "utilities.h"
 #include "airfoil.h"
 #include "NACA4digits.h"
+#include "phiAirfoil.h"
 #include "interpolationKernelClass.h"
 
 

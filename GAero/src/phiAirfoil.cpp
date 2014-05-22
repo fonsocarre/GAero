@@ -13,11 +13,11 @@ phiAirfoilClass::phiAirfoilClass()
     this->xlim.resize (2);
     this->zlim.resize (2);
     
-    this->xlim[0] = 0.1;
-    this->xlim[1] = 0.9;
+    this->xlim[0] = 0.2;
+    this->xlim[1] = 0.6;
     
-    this->zlim[0] = 0.05;
-    this->zlim[1] = 0.20;
+    this->zlim[0] = 0.03;
+    this->zlim[1] = 0.15;
 }
 
 std::vector<double> phiAirfoilClass::genome2coord
@@ -34,8 +34,8 @@ std::vector<double> phiAirfoilClass::genome2coord
     result[0] = result[0] * deltaX + this->xlim[0];
     result[2] = result[2] * deltaX + this->xlim[0];
     
-    result[1] = result[1] * deltaZ + this->zlim[0];
-    result[3] = -(result[3] * deltaZ + this->zlim[0]);
+    result[1] = -(result[1] * deltaZ + this->zlim[0]);
+    result[3] = result[3] * deltaZ + this->zlim[0];
     
     return result;
 }
@@ -50,8 +50,6 @@ std::string phiAirfoilClass::genome2string
     ss.precision(2);
     
     ss << "[" << newGenome[0] << ", " << newGenome[1] << "]";
-    ss << std::endl;
-    
     ss << "[" << newGenome[2] << ", " << newGenome[3] << "]";
     ss << std::endl;
     
@@ -78,36 +76,42 @@ double phiAirfoilClass::eval(const std::vector<double>& genome,
     xPointsIn.resize(N);
     zPointsIn.resize(N);
     
-    for (int i=0; i<N; ++i)
+    //fixed points [0,1,3,5,6]
+    xPointsIn[0] = this->x2phi(1.);
+    xPointsIn[1] = this->x2phi(1.-0.03);
+    xPointsIn[3] = this->x2phi(0.);
+    xPointsIn[5] = 2.*constant::PI - this->x2phi(1.-0.03);
+    xPointsIn[6] = 2.*constant::PI - this->x2phi(1.);
+    
+    for (auto& z: zPointsIn)
     {
-        xPointsIn[i] = 2. * (i*1.)/(N-1.);
-        zPointsIn[i] = 0.0;
+        z = 0.0;
     }
     
-    xPointsIn[2] = newGenome[0];
+    xPointsIn[2] = this->x2phi(newGenome[0]);
     zPointsIn[2] = newGenome[1];
     
-    xPointsIn[4] = 1 + newGenome[2];
-    zPointsIn[4] = -newGenome[3];
+    xPointsIn[4] = 2.*constant::PI - this->x2phi(newGenome[2]);
+    zPointsIn[4] = newGenome[3];
     
-    for (auto& x: xPointsIn)
-    {
-        x += constant::PI;
-    }
-    
-    double xOutRad;
+//    for (auto& x: xPointsIn)
+//    {
+//        x *= constant::PI;
+//    }
+
+    double phiOut;
     if (yPrevCoord < 0)
     {
         // phi -> [0,pi]
-        xOutRad = xCoor*constant::PI;
+        phiOut = this->x2phi(xCoor);
     }
     else
     {
         // phi -> [pi, 2pi]
-        xOutRad = (xCoor + 1)*constant::PI;
+        phiOut = 2 * constant::PI - this->x2phi(xCoor);
     }
     
-    std::vector<double> xPointsOut {xOutRad};
+    std::vector<double> xPointsOut {phiOut};
     std::vector<double> zPointsOut {0.0};
     
     splineInterpolation(xPointsIn, zPointsIn, xPointsOut, zPointsOut);
@@ -117,6 +121,10 @@ double phiAirfoilClass::eval(const std::vector<double>& genome,
     return zPointsOut[0];
 }
 
+double phiAirfoilClass::x2phi(double x)
+{
+    return (acos(2.*x - 1.));
+}
 
 
 

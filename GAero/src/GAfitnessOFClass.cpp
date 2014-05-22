@@ -69,7 +69,8 @@ void GAfitnessOFClass::initialise()
     
     
     // !!! changing profile parametrisation
-    this->profile = new NACA4digits;
+    //this->profile = new NACA4digits;
+    this->profile = new phiAirfoilClass;
     this->profile->maxThickness = this->maxThickness;
     
     {
@@ -160,14 +161,13 @@ void GAfitnessOFClass::getFitness
     else if (this->RBFsetting == "wC2") RBF = 'W';
     
     std::vector<double> deltaZa;
-    std::mutex lock;
-    lock.lock();
+    this->lock_mutex.lock();
     this->interpolationKernel.interpolate(deltaZ,
                                           this->sPoints,
                                           deltaZa,
                                           this->points,
                                           RBF);
-    lock.unlock();
+    this->lock_mutex.unlock();
     
     
     // WRITE MESH
@@ -187,8 +187,8 @@ void GAfitnessOFClass::getFitness
     std::cout << this->profile->genome2string(tempGenome)
               << std::endl;
     command = this->cleanScript + " " + caseDir;
-    std::cout << "Calling clean from " + std::to_string(nThread) << std::endl;
-    std::system (command.c_str ());
+    //std::cout << "Calling clean from " + std::to_string(nThread) << std::endl;
+    //std::system (command.c_str ());
     command = this->initScript + " " + caseDir;
     std::cout << "Calling init from " + std::to_string(nThread) << std::endl;
     //std::system (command.c_str ());
@@ -227,7 +227,7 @@ void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs,
     std::string command;
     
     command = caseDir
-            + "/postProcessing/forceCoeffs/0/forceCoeffs.dat";
+            + "/postProcessing/forceCoeffs/397/forceCoeffs.dat";
     command = "tail -1 " + command + " | head -1";
     
     coeffsString = utilities::exec (command.c_str ());
@@ -588,7 +588,6 @@ bool GAfitnessOFClass::checkMesh (std::string caseDir)
     std::string command;
     
     command = this->checkScript + " " + caseDir;
-    // CAMBIADO
     result = utilities::execSys(command.c_str ());
     
     if (result.find("Mesh OK") != std::string::npos) return true;

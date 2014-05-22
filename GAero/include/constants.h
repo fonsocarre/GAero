@@ -27,7 +27,7 @@ namespace constant {
     const int PRECISION = 8;
     
     //! Pi value
-    const double PI = -acos(1.0);
+    const double PI = acos(-1.0);
 }
 
 

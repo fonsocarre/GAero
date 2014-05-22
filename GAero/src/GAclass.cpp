@@ -205,6 +205,7 @@ void GAclass::calculatePopFitness()
     }
 }
 
+
 void GAclass::calculateOldPopFitness()
 {
     std::vector<std::thread> threads;
@@ -379,6 +380,6 @@ void GAclass::fitnessWrapper (std::vector<double> genome,
                               double& fitness)
 {
     this->fitness->getFitness (genome, iThread, fitness);
-    std::cout << "    Called from thread: " << iThread << std::endl;
+    //std::cout << "    Called from thread: " << iThread << std::endl;
     return;
 }
