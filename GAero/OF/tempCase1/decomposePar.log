@@ -7,11 +7,11 @@
 \*---------------------------------------------------------------------------*/
 Build  : 2.3.0-f5222ca19ce6
 Exec   : decomposePar
-Date   : May 14 2014
-Time   : 13:12:19
+Date   : May 23 2014
+Time   : 21:42:03
 Host   : "Alfonsos-MacBook-Pro.local"
-PID    : 16359
-Case   : /Users/fonso/C++/GAero/GAero/OF/NACABCN
+PID    : 2744
+Case   : /Users/fonso/C++/GAero/GAero/OF/tempCase1
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster
@@ -29,7 +29,7 @@ Create mesh
 Calculating distribution of cells
 Selecting decompositionMethod scotch
 
-Finished decomposition in 0.05 s
+Finished decomposition in 0.08 s
 
 Calculating original mesh data
 
@@ -60,7 +60,8 @@ Max number of cells = 14415 (0.973662% above average 14276)
 Max number of processor patches = 1 (0% above average 1)
 Max number of faces between processors = 192 (0% above average 192)
 
-Time = 0
+Time = 397
+Detected additional non-decomposed files in "/Users/fonso/C++/GAero/GAero/OF/tempCase1/397/uniform"
 
 Processor 0: field transfer
 Processor 1: field transfer
