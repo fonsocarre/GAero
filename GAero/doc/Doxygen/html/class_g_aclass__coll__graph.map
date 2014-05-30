@@ -1,6 +1,0 @@
-<map id="GAclass" name="GAclass">
-<area shape="rect" id="node2" href="$class_g_arandom.html" title="GArandom" alt="" coords="5,83,91,109"/>
-<area shape="rect" id="node3" href="$class_g_afitness_class.html" title="Abstract Class for fitness function. " alt="" coords="127,5,240,32"/>
-<area shape="rect" id="node5" href="$class_g_afitness_o_f_class.html" title="OpenFOAM interface with GAero. " alt="" coords="210,83,341,109"/>
-<area shape="rect" id="node4" href="$class_g_aoutputclass.html" title="Preprocessor guard. " alt="" coords="367,83,476,109"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_g_afitness_class.html" title="Abstract Class for fitness function. " alt="" coords="6,31,119,57"/>
-<area shape="rect" id="node2" href="$class_g_afitness_o_f_class.html" title="OpenFOAM interface with GAero. " alt="" coords="169,5,301,32"/>
-<area shape="rect" id="node3" href="$class_g_afitness_sample.html" title="Inherited class from GAfitnessClass. " alt="" coords="172,56,297,83"/>
-</map>
