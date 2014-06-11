@@ -175,6 +175,7 @@ void GAfitnessOFClass::getFitness
     
     // RUN CASE
     // OF temp case run
+	this->lock_mutex.lock();
     std::cout << "Calling checkMesh from " + std::to_string(nThread) << std::endl;
     if (!this->checkMesh(caseDir))
     {
@@ -183,6 +184,8 @@ void GAfitnessOFClass::getFitness
         fitness = 0.0;
         return;
     }
+	this->lock_mutex.unlock();
+
     std::cout << "Calling OF for temp case... t=" << nThread;
     std::cout << this->profile->genome2string(tempGenome)
               << std::endl;
@@ -209,7 +212,9 @@ void GAfitnessOFClass::getFitness
     
     if (forceCoeffs[0] < maxIter)
     {
+		std::cout << "adding individual from " + std::to_string(nThread) << std::endl;
         this->addIndividual(tempGenome, fitness);
+		std::cout << "finished adding individual" << std::endl;
     }
     
     newZ.clear ();
@@ -589,7 +594,7 @@ bool GAfitnessOFClass::checkMesh (std::string caseDir)
     
     command = this->checkScript + " " + caseDir;
     result = utilities::execSys(command.c_str ());
-    
+	std::cout << "checkMesh from: " << caseDir << std::endl;    
     if (result.find("Mesh OK") != std::string::npos) return true;
     
     return false;

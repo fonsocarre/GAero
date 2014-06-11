@@ -16,6 +16,7 @@
 #include <set>
 #include <math.h>
 #include <thread>
+#include <mutex>
 
 #include "GAfitnessClass.h"
 #include "Configuration.h"
@@ -172,6 +173,12 @@ public:
                        double& fitness);
     
     int getnThreads () {return this->nThreads;};
+
+	std::string printCoordinates 
+			(const std::vector<double>& genome)
+			{
+				return this->profile->genome2csv (genome);
+			}
     
     GAfitnessOFClass () {};
     ~GAfitnessOFClass () {delete this->profile;};

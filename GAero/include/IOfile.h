@@ -30,6 +30,8 @@ inline GAoutput& operator<< (GAoutput& st, T val)
 {
     st.file     << val;
     std::cout   << val;
+    st.file.flush();
+	std::cout.flush();
     return st;
 };
 

@@ -15,13 +15,14 @@
 #include <iostream>
 #include <algorithm>
 #include <thread>
+#include <cmath>
 
 #include "GApopulation.h"
 #include "GAsettingsClass.h"
 #include "GArandomGenerator.h"
 #include "GAoutputclass.h"
 #include "utilities.h"
-//#include "GAfitnessSample.h"
+#include "IOfile.h"
 #include "GAfitnessOFClass.h"
 
 //! The main Genetic Algorithm class.
@@ -58,6 +59,9 @@ class GAclass {
     /** Last step of evolve(). Fills the empty population
         with new random inidividuals. */
     void createNewIndividuals();
+
+	void mutate();
+
     std::vector<double> oldPopFitness2vec();
     
     double fitnessVariation();
@@ -65,7 +69,7 @@ class GAclass {
     void fitnessWrapper (std::vector<double> genome,
                          const int iThread,
                          double& fitness);
-    
+    double mutationRate();
 
 public:
     // Constructors

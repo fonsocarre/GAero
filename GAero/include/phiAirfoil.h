@@ -36,5 +36,8 @@ public:
     
     std::string genome2string
                 (const std::vector<double>& genome);
+
+	std::string genome2csv
+				(const std::vector<double>& genome);
     
 };

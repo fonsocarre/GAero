@@ -110,12 +110,19 @@ void GAclass::evolve()
     this->GAout<<"    Crossing individuals...";
     this->crossIndividuals();
     this->GAout<<"DONE"<<std::endl;
-    
+
     // new individuals
     this->GAout<<"    Creating new individuals...";
     this->createNewIndividuals();
     this->GAout<<"DONE"<<std::endl;
     
+	// mutation
+	this->GAout<<"    Mutating individuals with m_r="
+			   <<this->mutationRate()
+			   <<std::endl;
+	this->mutate();
+	this->GAout<<"DONE"<<std::endl;
+
     //--------------------------------------------------
     
     // getting fitness for all pop
@@ -154,6 +161,10 @@ void GAclass::getPopFitness()
     this->GAout<<"    avg Fitness = "<<avgFitness<<std::endl;
     this->GAout<<"    best indiv.: ";
     this->GAout<<std::flush;
+	output << this->iGeneration << ", ";
+	output << this->fitness->printCoordinates(this->population[0].genome);
+	output << "\n";
+
     for (int i=0; i<this->GAsettings.genomeSize; i++)
     {
         this->GAout<<this->population[0].genome[i]<<" ";
@@ -238,13 +249,14 @@ void GAclass::calculateOldPopFitness()
                                       iThread,
                                       std::ref (this->oldPopulation[iPop].fitness));
                 //                this->fitness->getFitness (this->population[iPop].genome, iThread, this->population[iPop].fitness)
-                //std::cout << "Antes del join () tarea " << iThread << std::endl;
+                std::cout << "Antes del join () tarea " << iThread << std::endl;
             }
             
         }
         
         for (auto& thread: threads)
         {
+			std::cout << "Joining..." << std::endl;
             if (thread.joinable()) thread.join ();
         }
     }
@@ -382,4 +394,34 @@ void GAclass::fitnessWrapper (std::vector<double> genome,
     this->fitness->getFitness (genome, iThread, fitness);
     //std::cout << "    Called from thread: " << iThread << std::endl;
     return;
+}
+
+double GAclass::mutationRate()
+{
+	double K = this->GAsettings.mutationK;
+	double a = this->GAsettings.mutationA;
+
+	return K*exp(-a * static_cast<double> (this->iGeneration));
+}
+
+
+void GAclass::mutate()
+{
+	double m_r = this->mutationRate();
+	double rand;
+	int counter = 0;
+	for (auto& pop:this->population)
+	{
+		for (auto& gen:pop.genome)
+		{
+			if (this->randomGen.flipPounderedCoin(m_r))
+			{
+				// rand in [-1,1]
+				rand = -1. + 2.*this->randomGen.randDouble();
+				gen = gen * (1. + rand*m_r/2.);
+				++counter;
+			}
+		}
+	}
+	this->GAout << "Num of genes mutated: " << counter << std::endl;
 }

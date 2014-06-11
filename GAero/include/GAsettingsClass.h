@@ -24,6 +24,8 @@ class GAsettingsClass {
     int minGenerations;
     std::string fitnessSettingsFile;
     
+	double mutationK;
+	double mutationA;
     std::string logFile;
     std::string historyFile;
     bool plotHistory;

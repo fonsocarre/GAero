@@ -58,6 +58,21 @@ std::string phiAirfoilClass::genome2string
     return str;
 }
 
+std::string phiAirfoilClass::genome2csv (const std::vector<double>& genome)
+{
+	std::vector<double> coord;
+	coord = this->genome2coord(genome);
+
+	std::stringstream ss;
+	ss.precision(3);
+
+	for (auto& elem: coord)
+	{
+		ss << elem << ", ";
+	}
+	return ss.str();
+}
+
 double phiAirfoilClass::eval(const std::vector<double>& genome,
                              double& xCoor,
                              double& yPrevCoord,

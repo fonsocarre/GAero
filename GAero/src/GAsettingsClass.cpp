@@ -40,6 +40,8 @@ GAsettingsClass::GAsettingsClass(const char* settingsFile)
         this->minGenerations    = cfg->lookupInt(scope, "minGenerations");
         this->fitnessSettingsFile = cfg->lookupString
                                     (scope, "fitnessSettingsFile");
+		this->mutationK			= cfg->lookupFloat(scope, "mutationK");
+		this->mutationA			= cfg->lookupFloat(scope, "mutationA");
         cfg->destroy();
     }
     catch(const config4cpp::ConfigurationException & ex)
