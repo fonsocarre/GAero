@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 Alfonso Carre. All rights reserved.
 //
 
+#include <ctime>
+
 #include "GAclass.h"
 #include "IOfile.h"
 
 int main(int argc, const char * argv[])
 {
+    std::clock_t begin = clock();
+    
     GAclass GA("/Users/fonso/C++/GAero/GAero/Settings/settings.cfg");
     
     GA.initPop();
@@ -21,6 +25,10 @@ int main(int argc, const char * argv[])
         GA.evolve();
         if (GA.checkConvergence()) { break; }
     }
+    
+    std::clock_t end = clock();
+    std::cout << "Time elapsed: " << float(end-begin)/CLOCKS_PER_SEC;
+    std::cout << std::endl;
     
     return 0;
 }
