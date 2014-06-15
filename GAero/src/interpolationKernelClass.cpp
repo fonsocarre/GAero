@@ -10,25 +10,25 @@
 
 void interpolationKernelClass::init (std::string RBF, double rho)
 {
-    // Spline
-    if (RBF == "Spline")
-    {
-        this->RBF = &dist;
-    }
-    // Wendland C2
-    else if (RBF == "wC2")
-    {
-        this->RBF = &wendlandC2;
-    }
-    // Default case
-    else
-    {
-        std::cerr << "RBF " << RBF << "NOT implemented *****"
-                  << std::endl;
-        std::cerr << "Using Spline as default   "
-                  << std::endl;
-        this->RBF = &dist;
-    }
+//    // Spline
+//    if (RBF == "Spline")
+//    {
+//        this->RBF = &dist;
+//    }
+//    // Wendland C2
+//    else if (RBF == "wC2")
+//    {
+//        this->RBF = &wendlandC2;
+//    }
+//    // Default case
+//    else
+//    {
+//        std::cerr << "RBF " << RBF << "NOT implemented *****"
+//                  << std::endl;
+//        std::cerr << "Using Spline as default   "
+//                  << std::endl;
+//        this->RBF = &dist;
+//    }
     std::cout << "Interpolation will be done with: " << RBF
               << std::endl;
     std::cout << "    with a rho = " << rho << std::endl;

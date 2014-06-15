@@ -36,9 +36,6 @@ class NACA4digits: public airfoil {
                       double m,
                       double p,
                       double chordLength = 1.);
-    double m_;
-    double p_;
-
 public:
     //! Gives a value to the coefficients and takes NACA0012 as the default one.
     NACA4digits ();

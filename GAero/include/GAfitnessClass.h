@@ -11,6 +11,7 @@
 #define GAero_GAfitnessClass_h
 
 #include <vector>
+#include <string>
 #include "populationStorage.h"
 
 //! Abstract Class for fitness function.
@@ -29,7 +30,12 @@ public:
     //! Virtual initiate function.
     virtual void initialise() = 0;
     //! Virtual method for getFitness.
-    virtual double getFitness (const std::vector<double>& genome) = 0;
+    virtual void getFitness (const std::vector<double>& genome,
+                               const int nThread,
+                               double& fitness) = 0;
+	virtual std::string printCoordinates 
+			(const std::vector<double>& genome) = 0;
+
     //! Empty constructor
     GAfitnessClass () { };
 };

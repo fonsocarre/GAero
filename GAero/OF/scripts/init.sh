@@ -12,14 +12,14 @@ source ~/.profile
 #source ~/.bashrc
 of230
 cd $1
-cd 0.org/include
-echo "	... m4 initialConditions.m4 "
-m4 initialConditions.m4 > initialConditions
-cd ../..
-rm -rf 0
-cp -r 0.org 0
-echo "	... potentialFoam -noFunctionObjects"
-potentialFoam -noFunctionObjects > potentialFoam.log
+#cd 0.org/include
+#echo "	... m4 initialConditions.m4 "
+#m4 initialConditions.m4 > initialConditions
+#cd ../..
+#rm -rf 0
+#cp -r 0.org 0
+#echo "	... potentialFoam -noFunctionObjects"
+#potentialFoam -noFunctionObjects > potentialFoam.log
 echo "	... decomposePar"
 decomposePar > decomposePar.log
 echo "	... simpleFoam -parallel "

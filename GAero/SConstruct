@@ -1,2 +1,8 @@
-env = Environment()  # Initialize the environment
-env.Program('GAero', Glob('src/*.cpp'), LIBS=['config4cpp', 'amac64o'], LIBPATH='./lib', CPPPATH = './include')
+env = Environment()   # Initialize the environment
+env = Environment(MKLROOT = '/opt/intel/composer_xe_2013_sp1.2.139/mkl')
+env.Program('GAero',
+			Glob('src/*.cpp'),
+			LIBS=['config4cpp', 'amac64o', 'InterpolationLib', 'mkl_lapack95_lp64', 'mkl_blas95_lp64', 'mkl_intel_lp64', 'mkl_core', 'mkl_intel_thread'], 
+			LIBPATH=['./lib', '$MKLROOT/lib/'], 
+			CPPPATH = './include', 
+			CPPFLAGS='-fopenmp -std=c++11 -O3')

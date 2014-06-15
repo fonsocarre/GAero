@@ -8,6 +8,7 @@
 
 #ifndef GAero_constants_h
 #define GAero_constants_h
+#include <cmath>
 
 namespace constant {
     //! Epsilon definition for convergence check.
@@ -24,6 +25,9 @@ namespace constant {
     
     //! Output default precision
     const int PRECISION = 8;
+    
+    //! Pi value
+    const double PI = acos(-1.0);
 }
 
 

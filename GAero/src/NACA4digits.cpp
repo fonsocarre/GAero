@@ -16,9 +16,6 @@ NACA4digits::NACA4digits ()
     this->coeffVector[2] = -0.3516;
     this->coeffVector[3] =  0.2843;
     this->coeffVector[4] = -0.1036;
-    
-    this->m_ = 00;
-    this->p_ = 12;
 }
 
 double NACA4digits::eval
@@ -29,9 +26,13 @@ double NACA4digits::eval
 {
     std::vector<double> yCoorVec;
     
-    double A = static_cast<int>(genome[0]*10)/100.; // [0,1]
-    double B = static_cast<int>(genome[1]*10)/10.; // [0,1]
-    double thickness = static_cast<int>(genome[2]*100)/100. ; // [0,1]
+    std::vector<double> tempGenome {genome};
+    
+    tempGenome[2] *= static_cast<double> (this->maxThickness)/100.;
+    
+    double A = static_cast<int>(tempGenome[0]*10)/100.; // [0,1]
+    double B = static_cast<int>(tempGenome[1]*10)/10.; // [0,1]
+    double thickness = static_cast<int>(tempGenome[2]*100)/100. ; // [0,1]
     
     double yThick = this->NACAthick(xCoor, thickness);
     
@@ -105,13 +106,6 @@ double NACA4digits::NACAthick (double xCoor,
 {
     double yThick;
     
-//    if (fabs(xCoor) < constant::EPSILON1
-//        ||
-//        fabs(xCoor - 1.) < constant::EPSILON1)
-//    {
-//        return 0.0;
-//    }
-    
     yThick = 0.0;
     
     yThick += this->coeffVector[0]*sqrt (xCoor/chordLength);
@@ -131,6 +125,7 @@ std::string NACA4digits::genome2string
 {
     std::string result = "NACA";
     std::stringstream ss;
+    double genome2;
 
     ss.precision (0);
 
@@ -140,10 +135,11 @@ std::string NACA4digits::genome2string
 
     //result += std::to_string(static_cast<long double> (static_cast<int> (genome[0]*10)));
     //result += std::to_string(static_cast<long double> (static_cast<int> (genome[1]*10)));
-    if (genome[2] < 0.1) result += "0";
+    genome2 = genome[2] * static_cast<double> (this->maxThickness)/100.;
+    if (genome2 < 0.1) result += "0";
     //result += std::to_string(static_cast<long double> (static_cast<int> (genome[2]*100)));
     ss.str(std::string());
-    ss <<static_cast<int> (genome[2]*100);
+    ss <<static_cast<int> (genome2*100);
 
     result += ss.str ();   
 

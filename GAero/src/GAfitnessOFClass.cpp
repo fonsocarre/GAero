@@ -45,6 +45,8 @@ void GAfitnessOFClass::getConfiguration
                                 (scope, "maxThickness");
         this->checkScript = cfg->lookupString
                                 (scope, "checkScript");
+        this->nThreads    = cfg->lookupInt
+                                (scope, "nThreads");
         cfg->destroy();
     }
     catch (const ConfigurationException& ex)
@@ -65,7 +67,11 @@ void GAfitnessOFClass::initialise()
 //    command = this->initScript + " " + this->mainCaseDir;
 //    std::system (command.c_str ());
     
-    this->NACA = new NACA4digits;
+    
+    // !!! changing profile parametrisation
+    //this->profile = new NACA4digits;
+    this->profile = new phiAirfoilClass;
+    this->profile->maxThickness = this->maxThickness;
     
     {
         // new temporary mesh topology
@@ -87,7 +93,6 @@ void GAfitnessOFClass::initialise()
     this->interpolationKernel.init(this->RBFsetting, 2.5*this->getRho());
     
     // s points to std::vector
-    //std::vector< std::vector<double>> sPoints; // [iPoint][iCoor]
     this->sPoints.resize (this->nPointsInPatch);
     for (int iPoint=0; iPoint<this->nPointsInPatch; iPoint++)
     {
@@ -101,21 +106,22 @@ void GAfitnessOFClass::initialise()
 }
 
 
-double GAfitnessOFClass::getFitness
-                        (const std::vector<double>& genome)
+void GAfitnessOFClass::getFitness
+                        (const std::vector<double>& genome,
+                         const int nThread,
+                         double& fitness)
 {
-    double fitness;
+    //double fitness;
     std::string command;
+    
+    std::string caseDir;
+    caseDir = this->tempCaseDir + std::to_string(nThread);
     
     std::vector<double> newZ (this->nPointsInPatch);
     
     std::vector<double> tempGenome {genome};
     
-    //std::cout << genome[2] << std::endl;
-    
-
-    
-    tempGenome[2] = genome[2] * static_cast<double> (this->maxThickness)/100.;
+    //tempGenome[2] = genome[2] * static_cast<double> (this->maxThickness)/100.;
 //    genome[0] = 0.8;
 //    genome[1] = 0.2;
 //    genome[2] = 0.01;
@@ -124,7 +130,7 @@ double GAfitnessOFClass::getFitness
     // Generates new OF case duplicating the main one
     command = this->duplicateScript
             + " " + this->mainCaseDir
-            + " " + this->tempCaseDir;
+            + " " + caseDir;
     std::system (command.c_str ());
     
     double xTemp;
@@ -144,7 +150,7 @@ double GAfitnessOFClass::getFitness
         xTemp = this->points[iPoint][0];
         zTemp = this->points[iPoint][2];
         
-        newZ[i] = this->NACA->eval (tempGenome, xTemp, zTemp, 1.);
+        newZ[i] = this->profile->eval (tempGenome, xTemp, zTemp, 1.);
         deltaZ[i] = newZ[i] - zTemp;
         //oFile << iPoint+1 << "  \t" << deltaZ[i] << std::endl;
     }
@@ -155,33 +161,44 @@ double GAfitnessOFClass::getFitness
     else if (this->RBFsetting == "wC2") RBF = 'W';
     
     std::vector<double> deltaZa;
+    this->lock_mutex.lock();
     this->interpolationKernel.interpolate(deltaZ,
                                           this->sPoints,
                                           deltaZa,
                                           this->points,
                                           RBF);
+    this->lock_mutex.unlock();
     
     
     // WRITE MESH
-    this->writePointsFile(2, deltaZa);
+    this->writePointsFile(2, deltaZa, caseDir);
     
     // RUN CASE
     // OF temp case run
-    if (!this->checkMesh())
+	this->lock_mutex.lock();
+    std::cout << "Calling checkMesh from " + std::to_string(nThread) << std::endl;
+    if (!this->checkMesh(caseDir))
     {
-        std::cout << this->NACA->genome2string(tempGenome) << std::endl;
+        std::cout << this->profile->genome2string(tempGenome) << std::endl;
         std::cout << "    Mesh not good." << std::endl;
-        return 0.0;
+        fitness = 0.0;
+        return;
     }
-    std::cout << "Calling OF for temp case... ";
-    std::cout << this->NACA->genome2string(tempGenome)
+	this->lock_mutex.unlock();
+
+    std::cout << "Calling OF for temp case... t=" << nThread;
+    std::cout << this->profile->genome2string(tempGenome)
               << std::endl;
-    command = this->cleanScript + " " + this->tempCaseDir;
-    std::system (command.c_str ());
-    command = this->initScript + " " + this->tempCaseDir;
-    std::system (command.c_str ());
+    command = this->cleanScript + " " + caseDir;
+    //std::cout << "Calling clean from " + std::to_string(nThread) << std::endl;
+    //std::system (command.c_str ());
+    command = this->initScript + " " + caseDir;
+    std::cout << "Calling init from " + std::to_string(nThread) << std::endl;
+    //std::system (command.c_str ());
+    utilities::paralellExec(command.c_str ());
     std::vector<double> forceCoeffs;
-    this->getForceCoeffs(forceCoeffs);
+    std::cout << "Calling fCoeffs from " + std::to_string(nThread) << std::endl;
+    this->getForceCoeffs(forceCoeffs, caseDir);
     
     // EXTRACT FITNESS
     fitness = forceCoeffs[3]/forceCoeffs[2]; // Cl / Cd
@@ -189,34 +206,33 @@ double GAfitnessOFClass::getFitness
     
     // Deletes temp case
     command = this->deleteScript
-            + " " + this->tempCaseDir;
+            + " " + caseDir;
+    std::cout << "Calling delete from " + std::to_string(nThread) << std::endl;
     std::system (command.c_str ());
     
     if (forceCoeffs[0] < maxIter)
     {
+		std::cout << "adding individual from " + std::to_string(nThread) << std::endl;
         this->addIndividual(tempGenome, fitness);
+		std::cout << "finished adding individual" << std::endl;
     }
     
     newZ.clear ();
     
     std::cout << "---------------------------------------" << std::endl;
     
-    if (static_cast<int> (genome[2]*100) > this->maxThickness)
-    {
-        return -(fabs (fitness * 3.));
-    }
-    
-    return fitness;
+    return;
 }
 
 
-void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs)
+void GAfitnessOFClass::getForceCoeffs (std::vector<double>& forceCoeffs,
+                                       std::string caseDir)
 {
     std::string coeffsString;
     std::string command;
     
-    command = this->tempCaseDir
-            + "/postProcessing/forceCoeffs/0/forceCoeffs.dat";
+    command = caseDir
+            + "/postProcessing/forceCoeffs/397/forceCoeffs.dat";
     command = "tail -1 " + command + " | head -1";
     
     coeffsString = utilities::exec (command.c_str ());
@@ -495,11 +511,15 @@ void GAfitnessOFClass::writeTempPoints (OFtopology& mesh)
 
 void GAfitnessOFClass::writePointsFile
                            (int iDim,
-                            std::vector<double>& delta)
+                            std::vector<double>& delta,
+                            std::string caseDir)
 {
     std::ofstream pointsFile;
     
-    fileUtils::openFile(pointsFile, this->tempCaseDir +
+    std::mutex lock;
+    std::lock_guard<std::mutex> l(lock);
+    
+    fileUtils::openFile(pointsFile, caseDir +
                                     "/constant" +
                                     "/polyMesh/points");
 
@@ -543,9 +563,15 @@ void GAfitnessOFClass::writePointsFile
 void GAfitnessOFClass::addIndividual (std::vector<double>& genome,
                     double fitness)
 {
+    
+    std::lock_guard<std::mutex> lock(this->lock_mutex);
     populationSto::individual temp;
     temp.genome = genome;
     temp.fitness = fitness;
+    
+    individualsOut << fitness << ", ";
+    individualsOut << this->printCoordinates(genome);
+    individualsOut << "\n";
     
     this->population.push_back (temp);
     ++(this->nPopulation);
@@ -565,14 +591,14 @@ double GAfitnessOFClass::getRho ()
 }
 
 
-bool GAfitnessOFClass::checkMesh ()
+bool GAfitnessOFClass::checkMesh (std::string caseDir)
 {
     std::string result;
     std::string command;
     
-    command = this->checkScript + " " + this->tempCaseDir;
-    result = utilities::exec(command.c_str ());
-    
+    command = this->checkScript + " " + caseDir;
+    result = utilities::execSys(command.c_str ());
+	std::cout << "checkMesh from: " << caseDir << std::endl;    
     if (result.find("Mesh OK") != std::string::npos) return true;
     
     return false;

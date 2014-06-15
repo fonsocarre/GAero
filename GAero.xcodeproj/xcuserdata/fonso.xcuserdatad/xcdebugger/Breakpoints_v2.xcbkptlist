@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421166692.991371"
+            timestampString = "422276560.913553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,22 +32,6 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "NACA4digits::eval (const std::vector&lt;double&gt;&amp; genome, double&amp; xCoor, double&amp; yPrevCoord, double chordLength = 1.)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GAero/src/NACA4digits.cpp"
-            timestampString = "421065405.250171"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "NACA4digits::NACAthick (double xCoor, double genome, double chordLength)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -100,12 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421675369.683629"
+            timestampString = "422276560.913553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -208,12 +192,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421675369.683629"
+            timestampString = "422276560.913553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -224,11 +208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAero.cpp"
-            timestampString = "421070710.945242"
+            timestampString = "422272216.819036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -240,105 +224,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAero.cpp"
-            timestampString = "421069864.838371"
+            timestampString = "422272216.819036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GAero/src/GAclass.cpp"
-            timestampString = "421070379.11156"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "GAclass::calculateOldPopFitness()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAclass::calculateOldPopFitness()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421167030.490869"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "45">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAclass::calculateOldPopFitness()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421167030.491079"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GAero/src/GAclass.cpp"
-            timestampString = "421070380.285471"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "GAclass::calculatePopFitness()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAclass::calculatePopFitness()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421752002.052795"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "42">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GAclass::calculatePopFitness()"
-                  moduleName = "GAero"
-                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAclass.cpp"
-                  timestampString = "421752002.053091"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "85">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -360,17 +252,533 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421675369.683629"
+            timestampString = "422276560.913553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422276560.913553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422276560.913553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "421759580.363574"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "6101">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "421759580.363837"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "7007">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422276560.913553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "421759591.319167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "6101">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "421759591.319473"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "7007">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "424531214.696016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "603"
+            endingLineNumber = "603"
+            landmarkName = "GAfitnessOFClass::checkMesh (std::string caseDir)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/include/utilities.h"
+            timestampString = "421778329.575651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "execSys(const char* cmd)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "utilities::execSys(char const*)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/include/utilities.h"
+                  timestampString = "421773477.814075"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "665">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "utilities::execSys(char const*)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/include/utilities.h"
+                  timestampString = "421773477.81434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "833">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "utilities::execSys(char const*)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/include/utilities.h"
+                  timestampString = "421773477.814678"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "2184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/include/utilities.h"
+            timestampString = "421778322.871102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "paralellExec (const char *strCommand)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "utilities::paralellExec(char const*)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/include/utilities.h"
+                  timestampString = "422278574.293895"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "221">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "utilities::paralellExec(char const*)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/include/utilities.h"
+                  timestampString = "422278574.294193"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "1598">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422276351.208467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "422277916.730897"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "472">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "422277916.731176"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "2300">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422276769.399153"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "422277017.134148"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "6056">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GAfitnessOFClass::getFitness(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, int, double&amp;)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/GAfitnessOFClass.cpp"
+                  timestampString = "422277017.134588"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "6200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/phiAirfoil.cpp"
+            timestampString = "424530322.596805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "phiAirfoilClass::eval(const std::vector&lt;double&gt;&amp; genome, double&amp; xCoor, double&amp; yPrevCoord, double chordLength)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.134956"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "1777">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.13531"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "1909">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.135643"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2006">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.135962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2087">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.136346"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2119">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422277017.136621"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2181">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "422277267.903302"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "GAfitnessOFClass::getFitness (const std::vector&lt;double&gt;&amp; genome, const int nThread, double&amp; fitness)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "424531214.696016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/phiAirfoil.cpp"
+            timestampString = "424530322.596805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "phiAirfoilClass::eval(const std::vector&lt;double&gt;&amp; genome, double&amp; xCoor, double&amp; yPrevCoord, double chordLength)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422280259.54229"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1649">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "phiAirfoilClass::eval(std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt; const&amp;, double&amp;, double&amp;, double)"
+                  moduleName = "GAero"
+                  urlString = "file:///Users/fonso/C++/GAero/GAero/src/phiAirfoil.cpp"
+                  timestampString = "422280259.543215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1735">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/include"
+            timestampString = "422280258.258344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "splineInterpolation (std::vector&lt;double&gt;&amp; xPointsIn, std::vector&lt;double&gt;&amp; yPointsIn, std::vector&lt;double&gt;&amp; xPointsOut, std::vector&lt;double&gt;&amp; yPointsOut)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -380,12 +788,70 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GAero/src/GAfitnessOFClass.cpp"
-            timestampString = "421675369.683629"
+            timestampString = "422357590.708582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "GAfitnessOFClass::getFitness (std::vector&lt;double&gt; genome)"
+            startingLineNumber = "227"
+            endingLineNumber = "227">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "424531214.696016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "592"
+            endingLineNumber = "592">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAero.cpp"
+            timestampString = "423670348.529725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAclass.cpp"
+            timestampString = "424530322.596805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GAero/src/GAfitnessOFClass.cpp"
+            timestampString = "424531214.696016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
+            landmarkName = "GAfitnessOFClass::addIndividual (std::vector&lt;double&gt;&amp; genome, double fitness)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

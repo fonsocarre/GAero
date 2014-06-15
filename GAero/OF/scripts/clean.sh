@@ -10,4 +10,4 @@ rm -rf foam.log*
 rm -rf 0
 rm -rf *00
 rm -rf {1,2,3,4,5,6,7,8,9}*
-rm -f *.log
+rm -ff *.log

@@ -13,7 +13,6 @@
 #include <iostream>
 #include <fstream>
 #include <valarray>
-#include "RBF.h"
 #include "constants.h"
 #include "utilities.h"
 //#include "Algebra.h"

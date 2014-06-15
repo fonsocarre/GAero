@@ -16,6 +16,8 @@ public:
     //    operator() (const std::vector<double>& genome,
     //                double xCoord) = 0;
     
+    double maxThickness;
+    
     virtual double
             eval (const std::vector<double>& genome,
                   double& xCoor,
@@ -24,4 +26,9 @@ public:
     
     virtual std::string genome2string
             (const std::vector<double>& genome) = 0;
+    
+	virtual std::string genome2csv
+			(const std::vector<double>& genome) = 0;
+
+    virtual ~airfoil() {};
 };
