@@ -161,10 +161,16 @@ void GAclass::getPopFitness()
     this->GAout<<"    avg Fitness = "<<avgFitness<<std::endl;
     this->GAout<<"    best indiv.: ";
     this->GAout<<std::flush;
+    
 	output << this->iGeneration << ", ";
 	output << this->fitness->printCoordinates(this->population[0].genome);
 	output << "\n";
 
+    genOutput << this->iGeneration << ", ";
+    genOutput << minFitness << ", "
+              << avgFitness << ", "
+              << maxFitness << "\n";
+    
     for (int i=0; i<this->GAsettings.genomeSize; i++)
     {
         this->GAout<<this->population[0].genome[i]<<" ";
@@ -175,6 +181,7 @@ void GAclass::getPopFitness()
 void GAclass::calculatePopFitness()
 {
     std::vector<std::thread> threads;
+	std::vector<std::vector<int>> distribution;
     
     threads.resize (this->fitnessOF.getnThreads ());
     
@@ -182,59 +189,15 @@ void GAclass::calculatePopFitness()
     {
         threads.resize (std::thread::hardware_concurrency ());
     }
+
+	distribution = this->threadDistribution
+		(this->nPopulation, static_cast<int> (threads.size()));
     
-    // multithreading should be included HERE
-    int iPop = -1;
+    // multithreading included HERE
+    /*int iPop = -1;
     for ( ; ; )
     {
-        //this->population[iPop].evaluateFitness();
-        //std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
-        int iThread = 0;
-        for (auto& thread: threads)
-        {
-            iPop++;
-            if (iPop == this->nPopulation) return;
-            
-            iThread++;
-            if (!this->population[iPop].isFitnessCalculated)
-            {
-                thread = std::thread (&GAclass::fitnessWrapper,
-                                      this,
-                                      std::ref (this->population[iPop].genome),
-                                      iThread,
-                                      std::ref (this->population[iPop].fitness));
-                //                this->fitness->getFitness (this->population[iPop].genome, iThread, this->population[iPop].fitness)
-                std::cout << "Antes del join () tarea " << iThread << std::endl;
-            }
-            
-        }
-        
-        for (auto& thread: threads)
-        {
-            if (thread.joinable()) thread.join ();
-        }
-    }
-}
-
-
-void GAclass::calculateOldPopFitness()
-{
-    std::vector<std::thread> threads;
-    
-    threads.resize (this->fitnessOF.getnThreads ());
-    
-    if (this->fitnessOF.getnThreads () <= 0)
-    {
-        threads.resize (std::thread::hardware_concurrency ());
-    }
-    
-    // multithreading should be included HERE
-    int iPop = -1;
-    for ( ; ; )
-    {
-        //this->population[iPop].evaluateFitness();
-        //std::cout << this->oldPopulation[iPop].isFitnessCalculated << std::endl;
-        int iThread = 0;
+        int iThread = -1;
         for (auto& thread: threads)
         {
             iPop++;
@@ -248,18 +211,91 @@ void GAclass::calculateOldPopFitness()
                                       std::ref (this->oldPopulation[iPop].genome),
                                       iThread,
                                       std::ref (this->oldPopulation[iPop].fitness));
-                //                this->fitness->getFitness (this->population[iPop].genome, iThread, this->population[iPop].fitness)
-                std::cout << "Antes del join () tarea " << iThread << std::endl;
             }
             
         }
-        
+     */
+
+	for (int iThread=0; iThread<static_cast<int>(threads.size()); iThread++)
+	{
+		threads[iThread] = std::thread (&GAclass::fitnessWrapper,
+										this,
+										distribution[iThread],
+										false,
+										iThread);
+	}
+
         for (auto& thread: threads)
         {
-			std::cout << "Joining..." << std::endl;
             if (thread.joinable()) thread.join ();
         }
+}
+
+
+void GAclass::calculateOldPopFitness()
+{
+    std::vector<std::thread> threads;
+	std::vector<std::vector<int>> distribution;
+    
+    threads.resize (this->fitnessOF.getnThreads ());
+    
+    if (this->fitnessOF.getnThreads () <= 0)
+    {
+        threads.resize (std::thread::hardware_concurrency ());
     }
+
+	distribution = this->threadDistribution
+		(this->nPopulation, static_cast<int> (threads.size()));
+    
+    // multithreading included HERE
+    /*int iPop = -1;
+    for ( ; ; )
+    {
+        int iThread = -1;
+        for (auto& thread: threads)
+        {
+            iPop++;
+            if (iPop == this->nPopulation) return;
+            
+            iThread++;
+            if (!this->oldPopulation[iPop].isFitnessCalculated)
+            {
+                thread = std::thread (&GAclass::fitnessWrapper,
+                                      this,
+                                      std::ref (this->oldPopulation[iPop].genome),
+                                      iThread,
+                                      std::ref (this->oldPopulation[iPop].fitness));
+            }
+            
+        }
+     */
+
+	for (int iThread=0; iThread<static_cast<int>(threads.size()); iThread++)
+	{
+		threads[iThread] = std::thread (&GAclass::fitnessWrapper,
+										this,
+										distribution[iThread],
+										true,
+										iThread);
+	}
+
+        for (auto& thread: threads)
+        {
+            if (thread.joinable()) thread.join ();
+        }
+}
+
+
+std::vector<std::vector<int>> GAclass::threadDistribution(const int nPop, const int nThreads)
+{
+	std::vector<std::vector<int>> threads;
+
+	threads.resize(nThreads);
+	for (int iPop=0; iPop<nPop; iPop++)
+	{
+		threads[iPop%nThreads].push_back(iPop);	
+	}
+	return threads;
 }
 
 void GAclass::evolveElitists()
@@ -387,13 +423,36 @@ double GAclass::fitnessVariation()
 }
 
 
-void GAclass::fitnessWrapper (std::vector<double> genome,
+/*void GAclass::fitnessWrapper (std::vector<double> genome,
                               const int iThread,
                               double& fitness)
 {
     this->fitness->getFitness (genome, iThread, fitness);
-    //std::cout << "    Called from thread: " << iThread << std::endl;
     return;
+}*/
+
+void GAclass::fitnessWrapper (std::vector<int> popVec, 
+							  bool isOldPop,
+							  int iThread)
+{
+	for (auto& iPop: popVec)
+	{
+		if (isOldPop)
+		{
+			this->fitness->getFitness
+				(this->oldPopulation[iPop].genome,
+				 iThread,
+				 this->oldPopulation[iPop].fitness);
+		}
+		else
+		{
+
+			this->fitness->getFitness
+				(this->population[iPop].genome,
+				 iThread,
+				 this->population[iPop].fitness);
+		}
+	}
 }
 
 double GAclass::mutationRate()

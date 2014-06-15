@@ -569,6 +569,10 @@ void GAfitnessOFClass::addIndividual (std::vector<double>& genome,
     temp.genome = genome;
     temp.fitness = fitness;
     
+    individualsOut << fitness << ", ";
+    individualsOut << this->printCoordinates(genome);
+    individualsOut << "\n";
+    
     this->population.push_back (temp);
     ++(this->nPopulation);
 }

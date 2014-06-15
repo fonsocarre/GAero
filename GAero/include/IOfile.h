@@ -16,10 +16,11 @@ class GAoutput {
     std::string fileName;
     
 public:
-    GAoutput(std::string fileName)
+    GAoutput(std::string fileName, std::string comment)
     {
         this->fileName = fileName;
         file.open(this->fileName);
+        this->file << comment << "\n";
     };
     std::ofstream file;
     GAoutput& operator<< (std::ostream& (*pfun)(std::ostream&));
@@ -35,4 +36,8 @@ inline GAoutput& operator<< (GAoutput& st, T val)
     return st;
 };
 
-static GAoutput output("GAeroOutput.txt");
+static GAoutput output("GAeroOutput.txt", "# iGen, genome vars ");
+static GAoutput genOutput("GenOutput.txt", "#  iGen, min, avg, max");
+static GAoutput individualsOut("individuals.txt", "# iGen, fitness, genome vars");
+
+

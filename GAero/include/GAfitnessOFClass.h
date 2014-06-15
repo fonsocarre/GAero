@@ -30,6 +30,7 @@
 #include "NACA4digits.h"
 #include "phiAirfoil.h"
 #include "interpolationKernelClass.h"
+#include "IOfile.h"
 
 
 //! OpenFOAM interface with GAero

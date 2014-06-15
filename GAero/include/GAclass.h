@@ -66,10 +66,17 @@ class GAclass {
     
     double fitnessVariation();
     
-    void fitnessWrapper (std::vector<double> genome,
+     /*void fitnessWrapper (std::vector<double> genome,
                          const int iThread,
-                         double& fitness);
+                         double& fitness); */
+
+	void fitnessWrapper (std::vector<int> popVec,
+						 bool isOldPop,
+						 int iThread);
+
     double mutationRate();
+
+	std::vector<std::vector<int>> threadDistribution(const int nPop, const int nThreads);
 
 public:
     // Constructors

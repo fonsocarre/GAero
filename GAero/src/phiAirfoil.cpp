@@ -65,10 +65,18 @@ std::string phiAirfoilClass::genome2csv (const std::vector<double>& genome)
 
 	std::stringstream ss;
 	ss.precision(3);
-
+    
+    int size = static_cast<int>(coord.size());
+    
+    int counter = -1;
 	for (auto& elem: coord)
 	{
-		ss << elem << ", ";
+        counter++;
+		ss << elem;
+        if (counter != size-1)
+        {
+            ss<< ", ";
+        }
 	}
 	return ss.str();
 }
