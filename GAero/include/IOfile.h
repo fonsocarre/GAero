@@ -21,6 +21,7 @@ public:
         this->fileName = fileName;
         file.open(this->fileName);
         this->file << comment << "\n";
+        this->file.flush();
     };
     std::ofstream file;
     GAoutput& operator<< (std::ostream& (*pfun)(std::ostream&));
@@ -30,9 +31,9 @@ template <class T>
 inline GAoutput& operator<< (GAoutput& st, T val)
 {
     st.file     << val;
-    std::cout   << val;
+    //std::cout   << val;
     st.file.flush();
-	std::cout.flush();
+	//std::cout.flush();
     return st;
 };
 

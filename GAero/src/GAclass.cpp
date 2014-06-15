@@ -87,11 +87,13 @@ void GAclass::initPop()
         this->oldPopulation[i].fitness = 0.;
     }
     
+    std::cout << "Initialising first population..." << std::endl;
     this->calculateOldPopFitness();
     
     // sorting old population
     std::sort (this->oldPopulation.begin(), this->oldPopulation.end());
     std::reverse (this->oldPopulation.begin(), this->oldPopulation.end());
+    std::cout << "    ...DONE" << std::endl;
 }
 
 
@@ -118,8 +120,7 @@ void GAclass::evolve()
     
 	// mutation
 	this->GAout<<"    Mutating individuals with m_r="
-			   <<this->mutationRate()
-			   <<std::endl;
+               <<this->mutationRate() << std::endl;
 	this->mutate();
 	this->GAout<<"DONE"<<std::endl;
 
@@ -482,5 +483,5 @@ void GAclass::mutate()
 			}
 		}
 	}
-	this->GAout << "Num of genes mutated: " << counter << std::endl;
+	this->GAout << "        Num of genes mutated: " << counter << std::endl;
 }

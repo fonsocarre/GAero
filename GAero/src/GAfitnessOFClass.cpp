@@ -176,7 +176,7 @@ void GAfitnessOFClass::getFitness
     // RUN CASE
     // OF temp case run
 	this->lock_mutex.lock();
-    std::cout << "Calling checkMesh from " + std::to_string(nThread) << std::endl;
+    //std::cout << "Calling checkMesh from " + std::to_string(nThread) << std::endl;
     if (!this->checkMesh(caseDir))
     {
         std::cout << this->profile->genome2string(tempGenome) << std::endl;
@@ -186,40 +186,40 @@ void GAfitnessOFClass::getFitness
     }
 	this->lock_mutex.unlock();
 
-    std::cout << "Calling OF for temp case... t=" << nThread;
-    std::cout << this->profile->genome2string(tempGenome)
-              << std::endl;
+    //std::cout << "Calling OF for temp case... t=" << nThread;
+    //std::cout << this->profile->genome2string(tempGenome)
+    //          << std::endl;
     command = this->cleanScript + " " + caseDir;
     //std::cout << "Calling clean from " + std::to_string(nThread) << std::endl;
     //std::system (command.c_str ());
     command = this->initScript + " " + caseDir;
-    std::cout << "Calling init from " + std::to_string(nThread) << std::endl;
+    //std::cout << "Calling init from " + std::to_string(nThread) << std::endl;
     //std::system (command.c_str ());
     utilities::paralellExec(command.c_str ());
     std::vector<double> forceCoeffs;
-    std::cout << "Calling fCoeffs from " + std::to_string(nThread) << std::endl;
+    //std::cout << "Calling fCoeffs from " + std::to_string(nThread) << std::endl;
     this->getForceCoeffs(forceCoeffs, caseDir);
     
     // EXTRACT FITNESS
     fitness = forceCoeffs[3]/forceCoeffs[2]; // Cl / Cd
-    std::cout << "    fitness = " << fitness << std::endl;
+    //std::cout << "    fitness = " << fitness << std::endl;
     
     // Deletes temp case
     command = this->deleteScript
             + " " + caseDir;
-    std::cout << "Calling delete from " + std::to_string(nThread) << std::endl;
+    //std::cout << "Calling delete from " + std::to_string(nThread) << std::endl;
     std::system (command.c_str ());
     
     if (forceCoeffs[0] < maxIter)
     {
-		std::cout << "adding individual from " + std::to_string(nThread) << std::endl;
+		//std::cout << "adding individual from " + std::to_string(nThread) << std::endl;
         this->addIndividual(tempGenome, fitness);
-		std::cout << "finished adding individual" << std::endl;
+		//std::cout << "finished adding individual" << std::endl;
     }
     
     newZ.clear ();
     
-    std::cout << "---------------------------------------" << std::endl;
+    //std::cout << "---------------------------------------" << std::endl;
     
     return;
 }
@@ -598,7 +598,7 @@ bool GAfitnessOFClass::checkMesh (std::string caseDir)
     
     command = this->checkScript + " " + caseDir;
     result = utilities::execSys(command.c_str ());
-	std::cout << "checkMesh from: " << caseDir << std::endl;    
+	//std::cout << "checkMesh from: " << caseDir << std::endl;
     if (result.find("Mesh OK") != std::string::npos) return true;
     
     return false;
