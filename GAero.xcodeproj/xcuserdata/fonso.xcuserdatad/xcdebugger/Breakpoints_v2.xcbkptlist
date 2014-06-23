@@ -836,7 +836,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "234"
-            endingLineNumber = "234">
+            endingLineNumber = "234"
+            landmarkName = "GAclass::calculateOldPopFitness()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -194,29 +194,6 @@ void GAclass::calculatePopFitness()
 	distribution = this->threadDistribution
 		(this->nPopulation, static_cast<int> (threads.size()));
     
-    // multithreading included HERE
-    /*int iPop = -1;
-    for ( ; ; )
-    {
-        int iThread = -1;
-        for (auto& thread: threads)
-        {
-            iPop++;
-            if (iPop == this->nPopulation) return;
-            
-            iThread++;
-            if (!this->oldPopulation[iPop].isFitnessCalculated)
-            {
-                thread = std::thread (&GAclass::fitnessWrapper,
-                                      this,
-                                      std::ref (this->oldPopulation[iPop].genome),
-                                      iThread,
-                                      std::ref (this->oldPopulation[iPop].fitness));
-            }
-            
-        }
-     */
-
 	for (int iThread=0; iThread<static_cast<int>(threads.size()); iThread++)
 	{
 		threads[iThread] = std::thread (&GAclass::fitnessWrapper,
@@ -225,13 +202,12 @@ void GAclass::calculatePopFitness()
 										false,
 										iThread);
 	}
-
-        for (auto& thread: threads)
-        {
-            if (thread.joinable()) thread.join ();
-        }
+    
+    for (auto& thread: threads)
+    {
+        if (thread.joinable()) thread.join ();
+    }
 }
-
 
 void GAclass::calculateOldPopFitness()
 {
@@ -248,29 +224,6 @@ void GAclass::calculateOldPopFitness()
 	distribution = this->threadDistribution
 		(this->nPopulation, static_cast<int> (threads.size()));
     
-    // multithreading included HERE
-    /*int iPop = -1;
-    for ( ; ; )
-    {
-        int iThread = -1;
-        for (auto& thread: threads)
-        {
-            iPop++;
-            if (iPop == this->nPopulation) return;
-            
-            iThread++;
-            if (!this->oldPopulation[iPop].isFitnessCalculated)
-            {
-                thread = std::thread (&GAclass::fitnessWrapper,
-                                      this,
-                                      std::ref (this->oldPopulation[iPop].genome),
-                                      iThread,
-                                      std::ref (this->oldPopulation[iPop].fitness));
-            }
-            
-        }
-     */
-
 	for (int iThread=0; iThread<static_cast<int>(threads.size()); iThread++)
 	{
 		threads[iThread] = std::thread (&GAclass::fitnessWrapper,
@@ -279,13 +232,12 @@ void GAclass::calculateOldPopFitness()
 										true,
 										iThread);
 	}
-
-        for (auto& thread: threads)
-        {
-            if (thread.joinable()) thread.join ();
-        }
+    
+    for (auto& thread: threads)
+    {
+        if (thread.joinable()) thread.join ();
+    }
 }
-
 
 std::vector<std::vector<int>> GAclass::threadDistribution(const int nPop, const int nThreads)
 {

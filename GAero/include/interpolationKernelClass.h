@@ -15,7 +15,6 @@
 #include <valarray>
 #include "constants.h"
 #include "utilities.h"
-//#include "Algebra.h"
 #include "interpolationInterface.h"
 
 class interpolationKernelClass {
@@ -25,14 +24,8 @@ class interpolationKernelClass {
                    std::valarray<double>& coord2,
                    double rho);
     
-    //! Flag for creating G only on the first call
-    //bool firstCall;
-    
     //! Rho to be used in the RBF
     double rho_;
-    
-    //! G storage
-    //std::valarray<double> G_;
     
     // ***********   METHODS   *******
     void valarray2f90
